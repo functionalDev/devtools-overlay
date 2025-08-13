@@ -1,4 +1,4 @@
-import devtools from 'solid-devtools/vite'
+import devtools from 'devtools/vite'
 import {defineConfig} from 'vite'
 import solid from 'vite-plugin-solid'
 
@@ -8,7 +8,7 @@ export default defineConfig(mode => {
     const is_build = mode.command === 'build'
 
     return {
-        server: {port: 3000},
+        server: {port: 3005},
         plugins: [
             devtools({
                 autoname: true,
@@ -23,7 +23,7 @@ export default defineConfig(mode => {
         define: {
             'import.meta.env.EXT': JSON.stringify(is_ext),
         },
-        base: '', // for github pages to not start with absolute "/"
+        // base: '', // for github pages to not start with absolute "/"
         mode: 'development',
         resolve: {
             conditions: ['browser', 'development']
@@ -34,7 +34,7 @@ export default defineConfig(mode => {
             sourcemap: true,
         },
         optimizeDeps: {
-            exclude: ['solid-devtools', '@solid-devtools/*']
+            exclude: ['devtools', '@devtools/*']
         },
     }
 })

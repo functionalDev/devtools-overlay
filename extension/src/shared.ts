@@ -4,8 +4,8 @@ File for utilities, constants and types related to the communication between the
 
 */
 
-import * as debug from '@solid-devtools/debugger/types'
-import * as utils from '@solid-devtools/shared/utils'
+import * as debug from '@devtools/debugger/types'
+import * as utils from '@devtools/shared/utils'
 
 
 export const ICON_SOLID_BLUE_16  = 'solid-normal-16.png'
@@ -34,7 +34,7 @@ export const ICONS_GRAY: chrome.runtime.ManifestIcons = {
     128: ICON_SOLID_GRAY_128,
 }
 
-export const DEVTOOLS_ID_PREFIX = '[solid-devtools]_'
+export const DEVTOOLS_ID_PREFIX = '[devtools]_'
 
 export const enum Place_Name {
     Content             = 'Content_Script',

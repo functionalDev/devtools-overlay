@@ -1,7 +1,7 @@
 import * as s from 'solid-js'
 import {throttle} from '@solid-primitives/scheduled'
 import {defer} from '@solid-primitives/utils'
-import {msg} from '@solid-devtools/shared/utils'
+import {msg} from '@devtools/shared/utils'
 import {ObjectType, getObjectById} from '../main/id.ts'
 import {DevtoolsMainView, NodeType, type InspectedState, type NodeID, type OutputEmit, type Solid} from '../main/types.ts'
 import {getNode} from '../main/utils.ts'

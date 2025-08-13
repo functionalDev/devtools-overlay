@@ -6,5 +6,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["solid-devtools-example-*"]
+  "ignore": ["devtools-example-*"]
 }

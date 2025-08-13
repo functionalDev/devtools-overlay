@@ -12,8 +12,8 @@ import {
     observeValueUpdate,
     onParentCleanup,
     removeValueUpdateObserver,
-} from '@solid-devtools/debugger'
-import {NodeType, type Solid} from '@solid-devtools/debugger/types'
+} from '@devtools/debugger'
+import {NodeType, type Solid} from '@devtools/debugger/types'
 import {type Many, arrayEquals, asArray} from '@solid-primitives/utils'
 import {$PROXY, type Accessor, createEffect, getOwner, on, onCleanup, untrack} from 'solid-js'
 import {

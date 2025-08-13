@@ -1,4 +1,4 @@
-import {trimString} from '@solid-devtools/shared/utils'
+import {trimString} from '@devtools/shared/utils'
 import {type Node, type Solid, NodeType} from './types.ts'
 import setup from './setup.ts'
 

@@ -1,5 +1,6 @@
 .overlay__container {
     --height: calc(var(--progress) * 100vh);
+    font-size: 18px;
 }
 
 .overlay__container[data-open='true'] {

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import * as s from 'solid-js'
 import {createToken, resolveTokens} from '@solid-primitives/jsx-tokenizer'
 import {combineStyle} from '@solid-primitives/props'
-import * as theme from '@solid-devtools/shared/theme'
+import * as theme from '@devtools/shared/theme'
 
 export type ToggleTabsOptionProps<T> = (T extends string ? {title?: string} : {title: string}) & {
     for: T

@@ -8,7 +8,7 @@ It also starts listening to Solid DEV events and stores them to be sent to the d
 
 import * as s     from 'solid-js'
 import * as store from 'solid-js/store'
-import {assert, error} from '@solid-devtools/shared/utils'
+import {assert, error} from '@devtools/shared/utils'
 import * as debug from './types.ts'
 
 /** @deprecated use `setLocatorOptions` */
@@ -16,22 +16,22 @@ export function useLocator(options: debug.LocatorOptions) {
     setLocatorOptions(options)
 }
 export function setLocatorOptions(options: debug.LocatorOptions) {
-    assert(globalThis.SolidDevtools$$, 'solid-devtools is not setup')
+    assert(globalThis.SolidDevtools$$, 'devtools is not setup')
     globalThis.SolidDevtools$$.locator_options = options
 }
 
 export function setElementInterface(eli: debug.ElementInterface<any>) {
-    assert(globalThis.SolidDevtools$$, 'solid-devtools is not setup')
+    assert(globalThis.SolidDevtools$$, 'devtools is not setup')
     globalThis.SolidDevtools$$.eli = eli
 }
 
 export function setClientVersion(version: string) {
-    assert(globalThis.SolidDevtools$$, 'solid-devtools is not setup')
+    assert(globalThis.SolidDevtools$$, 'devtools is not setup')
     globalThis.SolidDevtools$$.versions.client = version
 }
 
 export function setSolidVersion(version: string, expected: string) {
-    assert(globalThis.SolidDevtools$$, 'solid-devtools is not setup')
+    assert(globalThis.SolidDevtools$$, 'devtools is not setup')
     globalThis.SolidDevtools$$.versions.solid = version
     globalThis.SolidDevtools$$.versions.expected_solid = expected
 }

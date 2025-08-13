@@ -1,5 +1,5 @@
 import type {KbdKey} from '@solid-primitives/keyboard'
-import type {ToDyscriminatedUnion} from '@solid-devtools/shared/utils'
+import type {ToDyscriminatedUnion} from '@devtools/shared/utils'
 import {type NodeID, type SourceLocation} from '../main/types.ts'
 
 export type LocatorOptions = {

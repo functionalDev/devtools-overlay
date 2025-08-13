@@ -41,6 +41,7 @@ const dirname  = path.dirname(filename)
  using options exported from /packages/ * /build.ts
 */
 
+console.log('test0');
 const packages_dirname = path.join(dirname, 'packages')
 
 const packages_dirents = fs.readdirSync(packages_dirname, {withFileTypes: true})
@@ -50,6 +51,7 @@ for (let dirent of packages_dirents) {
         packages_names.push(dirent.name)
     }
 }
+console.log('test1');
 
 type Build_Task = {
     promise: Promise<void>
@@ -72,11 +74,16 @@ let configs: Build_Config[] = []
 for (let name of packages_names) {
 
     let pkg_path = path.join(packages_dirname, name)
+    console.log('packages_dirname', packages_dirname);
+    console.log('name', name);
+    console.log('pkg_path', pkg_path);
 
     let pkg_json_path = path.join(pkg_path, 'package.json')
+    console.log('pkg_json_path', pkg_json_path);
     let pkg_json      = JSON.parse(fs.readFileSync(pkg_json_path) as any) as Package_Json
     
-    let build_path   = path.join(pkg_path, 'build.ts')
+    let build_path   = path.join(pkg_path, 'build.ts').replace(dirname, './')
+    console.log('build_path', build_path);
     let options_list = (await import(build_path)).default() as esb.BuildOptions[]
 
     for (let options of options_list) {
@@ -141,6 +148,8 @@ for (let config of configs) {
     ]
 }
 
+console.log('test3');
+
 /* Watch - never terminates */
 if (is_dev) {
     for (let c of configs) {
@@ -150,5 +159,7 @@ if (is_dev) {
 }
 /* Build once - wait for all to finish */
 else {
+    
+console.log('test4');
     await Promise.all(configs.map(c => esb.build(c.options)))
 }

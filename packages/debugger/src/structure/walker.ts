@@ -1,4 +1,4 @@
-import {untrackedCallback} from '@solid-devtools/shared/primitives'
+import {untrackedCallback} from '@devtools/shared/primitives'
 import {ObjectType, getSdtId, get_id_el} from '../main/id.ts'
 import {observeComputationUpdate} from '../main/observe.ts'
 import {

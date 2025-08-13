@@ -4,7 +4,7 @@ import * as crx      from '@crxjs/vite-plugin'
 import * as vite     from 'vite'
 import      solid    from 'vite-plugin-solid'
 import      pkg      from './package.json' with {type: 'json'}
-import      main_pkg from 'solid-devtools/package.json' with {type: 'json'}
+import      main_pkg from 'devtools/package.json' with {type: 'json'}
 
 import {
     ICONS_BLUE,
@@ -134,7 +134,7 @@ for (let browser of browsers) {
                 name: 'replace-version',
                 enforce: 'pre',
                 transform(code, id) {
-                    if (id.includes('solid-devtools')) {
+                    if (id.includes('devtools')) {
                         code = code.replace(/import\.meta\.env\.EXPECTED_CLIENT/g, main_version)
                     }
                     return code
@@ -163,7 +163,7 @@ for (let browser of browsers) {
             dropLabels: [is_dev ? 'PROD' : 'DEV'],
         },
         optimizeDeps: {
-            exclude: ['@solid-devtools/debugger'],
+            exclude: ['@devtools/debugger'],
         },
     }
 

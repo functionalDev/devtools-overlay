@@ -9,7 +9,7 @@
 
 */
 
-import * as detect from '@solid-devtools/shared/detect'
+import * as detect from '@devtools/shared/detect'
 
 import {
     Place_Name, type Detection_State,
@@ -74,14 +74,14 @@ function main() {
 
 async function attach_debugger() {
 
-    let debug = await import('@solid-devtools/debugger')
+    let debug = await import('@devtools/debugger')
 
     const instance = debug.useDebugger()
 
     /* Check versions */
     warn_on_version_mismatch(instance.versions.get_client(),
                              import.meta.env.EXPECTED_CLIENT,
-                             'solid-devtools')
+                             'devtools')
 
     warn_on_version_mismatch(instance.versions.get_solid(),
                              instance.versions.get_expected_solid(),

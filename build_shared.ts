@@ -39,7 +39,7 @@ export type Package_Json = {
 export const DEFAULT_EXTERNAL_DEPS: string[] = [
     'solid-js',
     'solid-js/*',
-    '@solid-devtools/shared/*',
+    '@devtools/shared/*',
 ]
 
 export function get_external_deps_from_pkg(pkg_filename: string): string[] {

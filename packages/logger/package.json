@@ -1,5 +1,5 @@
 {
-    "name": "@solid-devtools/logger",
+    "name": "@devtools/logger",
     "version": "0.9.11",
     "description": "Solid debugging utilities for logging the state of the reactivity graph to the console.",
     "license": "MIT",
@@ -26,7 +26,7 @@
     "module": "./dist/server.js",
     "types": "./dist/index.d.ts",
     "exports": {
-        "@solid-devtools/source": "./src/index.ts",
+        "@devtools/source": "./src/index.ts",
         "browser": {
             "development": {
                 "import": "./dist/index.js",
@@ -45,8 +45,8 @@
     "scripts": {},
     "dependencies": {
         "@nothing-but/utils": "~0.17.0",
-        "@solid-devtools/debugger": "workspace:^",
-        "@solid-devtools/shared": "workspace:^",
+        "@devtools/debugger": "workspace:^",
+        "@devtools/shared": "workspace:^",
         "@solid-primitives/utils": "^6.3.1"
     },
     "peerDependencies": {

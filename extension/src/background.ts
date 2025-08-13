@@ -6,7 +6,7 @@ It has to coordinate the communication between the different scripts based on th
 
 */
 
-import {assert} from '@solid-devtools/shared/utils'
+import {assert} from '@devtools/shared/utils'
 
 import {
     Place_Name, Connection_Name, type Port,

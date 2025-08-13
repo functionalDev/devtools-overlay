@@ -7,7 +7,7 @@ const cwd  = 'root/src'
 const file = 'test.tsx'
 process.cwd = () => cwd
 
-import * as debug  from '@solid-devtools/debugger/types'
+import * as debug  from '@devtools/debugger/types'
 import * as plugin from './babel.ts'
 
 

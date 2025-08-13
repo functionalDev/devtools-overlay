@@ -36,7 +36,7 @@ export const ANSI_BG_MAGENTA = '\x1b[45m'
 export const ANSI_BG_BLUE    = '\x1b[44m'
 export const ANSI_BG_GRAY    = '\x1b[100m'
 
-export const LOG_LABEL_CYAN = `\x1b[1;30m\x1b[46msolid-devtools\x1b[0m`
+export const LOG_LABEL_CYAN = `\x1b[1;30m\x1b[46mdevtools\x1b[0m`
 
 export function info<T>(data: T): T {
     // eslint-disable-next-line no-console

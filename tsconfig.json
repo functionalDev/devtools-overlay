@@ -3,12 +3,14 @@
         /*
          Module resolution, imports
         */
-        "module":                       "NodeNext",
-        "moduleResolution":             "NodeNext",
+        "module":                       "ESNext",
+        "moduleResolution":             "Bundler",
         "verbatimModuleSyntax":         true,
         "resolveJsonModule":            true,
         "allowImportingTsExtensions":   true,
         "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
         /*
          JS
         */
@@ -25,14 +27,14 @@
         /*
          Types
         */
-        "types":           ["@total-typescript/ts-reset"],
+        "types":           ["@total-typescript/ts-reset", "vite/client"],
         "lib":             ["DOM", "DOM.Iterable", "DOM.AsyncIterable", "ESNext"],
         "jsx":             "preserve",
         "jsxImportSource": "solid-js",
         /*
          Use source files locally
         */
-        "customConditions": ["@solid-devtools/source"],
+        "customConditions": ["@devtools/source"],
         /*
          Checking
         */

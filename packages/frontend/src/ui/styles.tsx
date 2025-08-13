@@ -1,21 +1,18 @@
 import * as s from 'solid-js'
-import * as theme from '@solid-devtools/shared/theme'
-import {value_node_styles} from '../inspector.tsx'
-import {owner_path_styles} from '../structure.tsx'
-import {highlight_styles} from './highlight.tsx'
+import * as theme from '@devtools/shared/theme'
 import {custom_scrollbar_styles} from './scrollable.tsx'
 import {toggle_button_styles} from './toggle-button.tsx'
+import { tag_brackets } from './commonConsts.ts'
 
 export {
     highlight_color_var,
     highlight_container,
     highlight_element,
     highlight_opacity_var,
-} from './highlight.tsx'
+} from './highlight.tsx';
 
-export {toggle_button, toggle_button_styles} from './toggle-button.tsx'
+export {toggle_button, toggle_button_styles} from './toggle-button.tsx';
 
-export const tag_brackets = 'tag_brackets'
 
 export const tag_brackets_styles = /*css*/ `
     .${tag_brackets}:before {
@@ -37,9 +34,6 @@ export function Styles(): s.JSXElement {
         <style>
             {var_styles}
             {toggle_button_styles}
-            {highlight_styles}
-            {owner_path_styles}
-            {value_node_styles}
             {tag_brackets_styles}
             {custom_scrollbar_styles}
         </style>

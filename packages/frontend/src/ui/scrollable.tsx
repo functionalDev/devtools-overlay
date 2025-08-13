@@ -1,7 +1,7 @@
 import * as s from 'solid-js'
 import clsx from 'clsx'
 import {combineProps} from '@solid-primitives/props'
-import * as theme from '@solid-devtools/shared/theme'
+import * as theme from '@devtools/shared/theme'
 import * as color from './color.ts'
 
 const thumb_color = (opacity: number): string =>

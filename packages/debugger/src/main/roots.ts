@@ -1,4 +1,4 @@
-import {warn} from '@solid-devtools/shared/utils'
+import {warn} from '@devtools/shared/utils'
 import {ObjectType, getSdtId} from './id.ts'
 import setup from './setup.ts'
 import {type NodeID, type Solid, NodeType} from './types.ts'

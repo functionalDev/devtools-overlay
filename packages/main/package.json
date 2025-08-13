@@ -1,5 +1,5 @@
 {
-    "name": "solid-devtools",
+    "name": "devtools",
     "version": "0.34.3",
     "description": "Runtime library for hooking up SolidJS application with Solid Devtools Extension",
     "license": "MIT",
@@ -27,7 +27,7 @@
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "@solid-devtools/source": "./src/index.ts",
+            "@devtools/source": "./src/index.ts",
             "browser": {
                 "development": {
                     "import": {
@@ -46,7 +46,7 @@
             }
         },
         "./setup": {
-            "@solid-devtools/source": "./src/setup.ts",
+            "@devtools/source": "./src/setup.ts",
             "browser": {
                 "development": {
                     "import": {
@@ -65,14 +65,14 @@
             }
         },
         "./vite": {
-            "@solid-devtools/source": "./src/vite.ts",
+            "@devtools/source": "./src/vite.ts",
             "import": {
                 "types": "./dist/vite.d.ts",
                 "default": "./dist/vite.js"
             }
         },
         "./babel": {
-            "@solid-devtools/source": "./src/babel.ts",
+            "@devtools/source": "./src/babel.ts",
             "import": {
                 "types": "./dist/babel.d.ts",
                 "default": "./dist/babel.js"
@@ -105,8 +105,8 @@
         "@babel/core": "^7.27.4",
         "@babel/plugin-syntax-typescript": "^7.27.1",
         "@babel/types": "^7.27.6",
-        "@solid-devtools/debugger": "workspace:^",
-        "@solid-devtools/shared": "workspace:^"
+        "@devtools/debugger": "workspace:^",
+        "@devtools/shared": "workspace:^"
     },
     "peerDependencies": {
         "solid-js": "^1.9.0",

@@ -1,23 +1,30 @@
-import '@solid-devtools/debugger/setup'
+import '@devtools/debugger/setup'
 
 import * as s from 'solid-js'
 import * as web from 'solid-js/web'
 import {createBodyCursor} from '@solid-primitives/cursor'
 import {makeEventListener} from '@solid-primitives/event-listener'
 import * as num from '@nothing-but/utils/num'
-import {useDebugger} from '@solid-devtools/debugger/bundled'
-import {Icon, MountIcons, createDevtools} from '@solid-devtools/frontend'
-import {useIsMobile, useIsTouch, atom} from '@solid-devtools/shared/primitives'
-import {msg} from '@solid-devtools/shared/utils'
+import {useDebugger} from '@devtools/debugger/bundled'
+import {Icon, MountIcons, createDevtools} from '@devtools/frontend'
+import {useIsMobile, useIsTouch, atom} from '@devtools/shared/primitives'
+import {msg} from '@devtools/shared/utils'
 
-import frontendStyles from '@solid-devtools/frontend/dist/styles.css'
-import overlayStyles from './styles.css'
+import frontendStyles from '@devtools/frontend/dist/index.css?inline'
+import overlayStyles from './styles.css?inline'
+import { makePersisted } from '@solid-primitives/storage'
+
 
 export type OverlayOptions = {
     defaultOpen?: boolean
     alwaysOpen?:  boolean
     noPadding?:   boolean
 }
+
+const [ isOpen, setIsOpen ] = makePersisted(s.createSignal(), {
+    name: 'devtools-overlay-open',
+    storage: sessionStorage,
+})
 
 export function attachDevtoolsOverlay(props?: OverlayOptions): (() => void) {
 
@@ -43,18 +50,18 @@ const Overlay: s.Component<OverlayOptions> = props => {
 
     let {alwaysOpen, defaultOpen, noPadding} = props
 
-    const instance = useDebugger()
+    // const instance = useDebugger()
 
-    if (defaultOpen || alwaysOpen) {
-        instance.toggleEnabled(true)
+    // if (defaultOpen || alwaysOpen) {
+    //     instance.toggleEnabled(true)
+    // }
+    if(isOpen() === null && defaultOpen) {
+        setIsOpen(true);
     }
 
-    const isOpen = atom(alwaysOpen || instance.enabled())
-    function toggleOpen(enabled?: boolean) {
+    function toggleOpen() {
         if (!alwaysOpen) {
-            enabled ??= !isOpen()
-            instance.toggleEnabled(enabled)
-            isOpen.set(enabled)
+           setIsOpen(s => !s)
         }
     }
 
@@ -69,21 +76,25 @@ const Overlay: s.Component<OverlayOptions> = props => {
     makeEventListener(window, 'pointermove', e => {
         if (!dragging()) return
         const vh = window.innerHeight
-        progress().set(1 - num.clamp(e.y, 0, vh - 300) / vh)
+        progress().set(1 - num.clamp(e.y, 0, vh - 200) / vh)
     })
     makeEventListener(window, 'pointerup', () => dragging.set(false))
 
     createBodyCursor(() => dragging() && 'row-resize')
 
+    let ref;
+    
+
     return (
-        <web.Portal useShadow mount={document.documentElement}>
+        <web.Portal mount={document.documentElement}>
             <div
                 data-darkreader-ignore
                 class="overlay__container"
                 classList={{'no-padding': noPadding}}
                 data-open={isOpen()}
                 style={{'--progress': progress()()}}
-                data-testid="solid-devtools-overlay"
+                data-testid="devtools-overlay"
+                ref={ref}
             >
                 <div class="overlay__container__fixed">
                     {!alwaysOpen && (
@@ -108,20 +119,12 @@ const Overlay: s.Component<OverlayOptions> = props => {
                         <s.Show when={isOpen()}>
                         {_ => {
                             
-                            instance.emit(msg('ResetState', undefined))
+                            // instance.emit(msg('ResetState', undefined))
                         
-                            s.onCleanup(() => instance.emit(msg('InspectNode', null)))
+                            // s.onCleanup(() => instance.emit(msg('InspectNode', null)))
                         
                             const devtools = createDevtools({
                                 headerSubtitle: () => 'overlay',
-                            })
-                        
-                            devtools.output.listen(e => {
-                                separate(e, instance.emit)
-                            })
-                        
-                            instance.listen(e => {
-                                separate(e, devtools.input.emit)
                             })
                         
                             return <devtools.Devtools />
@@ -131,8 +134,8 @@ const Overlay: s.Component<OverlayOptions> = props => {
                 </div>
             </div>
             <MountIcons />
-            <style>{frontendStyles}</style>
-            <style>{overlayStyles}</style>
+            <style>{frontendStyles.replaceAll(/(\d)rem/g, '$1em')}</style>
+            <style>{overlayStyles.replaceAll(/(\d)rem/g, '$1em')}</style>
         </web.Portal>
     )
 }

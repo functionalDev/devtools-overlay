@@ -1,5 +1,5 @@
 {
-    "name": "@solid-devtools/extension",
+    "name": "@devtools/extension",
     "version": "0.33.5",
     "private": true,
     "license": "MIT",
@@ -19,10 +19,10 @@
         "@types/chrome": "^0.0.326"
     },
     "dependencies": {
-        "@solid-devtools/debugger": "workspace:^",
-        "@solid-devtools/frontend": "workspace:^",
-        "@solid-devtools/shared": "workspace:^",
-        "solid-devtools": "workspace:^"
+        "@devtools/debugger": "workspace:^",
+        "@devtools/frontend": "workspace:^",
+        "@devtools/shared": "workspace:^",
+        "devtools": "workspace:^"
     },
     "overrides": {
         "@crxjs/vite-plugin": {

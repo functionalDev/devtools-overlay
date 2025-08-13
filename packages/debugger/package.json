@@ -1,5 +1,5 @@
 {
-    "name": "@solid-devtools/debugger",
+    "name": "@devtools/debugger",
     "version": "0.28.1",
     "description": "Debugger of the Solid's reactivity graph — a cornerstone of all solid-devtools.",
     "license": "MIT",
@@ -27,21 +27,21 @@
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "@solid-devtools/source": "./src/index.ts",
+            "@devtools/source": "./src/index.ts",
             "import": {
                 "types": "./dist/index.d.ts",
                 "default": "./dist/index.js"
             }
         },
         "./bundled": {
-            "@solid-devtools/source": "./src/index.ts",
+            "@devtools/source": "./src/index.ts",
             "import": {
                 "types": "./dist/index.d.ts",
                 "default": "./dist/bundled.js"
             }
         },
         "./*": {
-            "@solid-devtools/source": "./src/*.ts",
+            "@devtools/source": "./src/*.ts",
             "import": {
                 "types": "./dist/*.d.ts",
                 "default": "./dist/*.js"
@@ -50,7 +50,7 @@
     },
     "dependencies": {
         "@nothing-but/utils": "~0.17.0",
-        "@solid-devtools/shared": "workspace:^",
+        "@devtools/shared": "workspace:^",
         "@solid-primitives/bounds": "^0.1.1",
         "@solid-primitives/event-listener": "^2.4.1",
         "@solid-primitives/keyboard": "^1.3.1",

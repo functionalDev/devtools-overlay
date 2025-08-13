@@ -1,6 +1,6 @@
 import * as s from 'solid-js'
 import {scheduleIdle, throttle} from '@solid-primitives/scheduled'
-import {msg, warn} from '@solid-devtools/shared/utils'
+import {msg, warn} from '@devtools/shared/utils'
 import {ObjectType, getObjectById} from '../main/id.ts'
 import {addSolidUpdateListener} from '../main/observe.ts'
 import {type InspectedState, type Mapped, type NodeID, type OutputEmit, type Solid, type ValueItemID} from '../main/types.ts'

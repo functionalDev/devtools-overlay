@@ -1,7 +1,7 @@
 import * as s from 'solid-js'
 import {createStaticStore} from '@solid-primitives/static-store'
 import {defer} from '@solid-primitives/utils'
-import {assert, log_message, msg, mutate_remove, type Timeout} from '@solid-devtools/shared/utils'
+import {assert, log_message, msg, mutate_remove, type Timeout} from '@devtools/shared/utils'
 import {createDependencyGraph} from '../dependency/index.ts'
 import {createInspector} from '../inspector/index.ts'
 import {createLocator} from '../locator/index.ts'
@@ -24,7 +24,7 @@ import { attachDebugger, UNOWNED_ROOT } from './roots.ts'
 import { isSolidComponent, isSolidRoot } from './utils.ts'
 
 function createDebugger() {
-    assert(globalThis.SolidDevtools$$, 'solid-devtools is not setup')
+    assert(globalThis.SolidDevtools$$, 'devtools is not setup')
 
     const _output_listeners: OutputListener[] = []
 

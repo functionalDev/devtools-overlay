@@ -1,43 +1,88 @@
 import * as s from 'solid-js'
-import * as theme from '@solid-devtools/shared/theme'
+import * as theme from '@devtools/shared/theme'
 import * as ui from './ui/index.ts'
 import {createSidePanel} from './SidePanel.tsx'
-import {StructureView} from './structure.tsx'
+import type { Module } from './ModuleFactory/ModuleFactory.tsx'
+import { MainView } from './MainView/MainView.tsx'
+import { UIContextProvider, useUIContext } from './UIContext.tsx'
+import { StyledEngineProvider } from '@suid/material'
+
+const getMuiStyles = (): NodeListOf<HTMLStyleElement> => document.querySelectorAll('style[id][data-uses]');
+const updateCopyForMuiStyles = (styleEl: HTMLStyleElement) => {
+    let copyEl = document.getElementById(`${styleEl.id}-copy`);
+    if(!copyEl){
+        copyEl = document.createElement('style');
+        copyEl.id = `${styleEl.id}-copy`;
+        const styleContainer = document.getElementById("mui-style-copy-container");
+        styleContainer?.append(copyEl);
+    }
+    // since we adjust font-size to 10px on the page we need to change all "rem" to "em" otherwise everything is small
+    const normalizedStyles = styleEl.textContent?.replaceAll(/(\d)rem/g, '$1em')
+    copyEl.textContent = normalizedStyles || null;
+}
+
+const copyAllMuiStyles = () => {
+    const callback: MutationCallback = () => {
+        getMuiStyles().forEach(updateCopyForMuiStyles)
+    };
+    const observer = new MutationObserver(callback);
+    
+    const config = { attributes: true, childList: true, subtree: true };
+    
+    const targetNode = document.head;
+    observer.observe(targetNode, config);
+    
+    getMuiStyles().forEach(updateCopyForMuiStyles)
+}
 
 
-export const App: s.Component<{headerSubtitle?: s.JSX.Element}> = props => {
+
+
+export const App: s.Component<{
+    headerSubtitle?: s.JSX.Element,
+    modules: Module[],
+}> = props => {
     // side panel is created here to keep the state between renders
     const sidePanel = createSidePanel()
+    copyAllMuiStyles();
 
     return (
         <div
             class="h-full w-full overflow-hidden grid text-base font-sans bg-panel-bg text-text"
-            style={{'grid-template-rows': `${theme.spacing[10]} 1fr`}}
+            style={{'grid-template-rows': `min-content min-content 1fr`}}
         >
-            <header class="p-2 flex items-center gap-x-2 bg-panel-bg b-b b-solid b-panel-border text-text">
+            <div style={{ display: 'none'}} id="mui-style-copy-container"></div>
+            <header
+                class="p-2 flex items-center gap-x-2 bg-panel-bg b-b text-text"
+            >
                 <div class="flex items-center gap-x-2">
-                    <ui.icon.SolidWhite class="w-4 h-4 text-disabled" />
+                    {/* <ui.icon.SolidWhite class="w-4 h-4 text-disabled" /> */}
                     <div>
-                        <h3>Solid Developer Tools</h3>
-                        {props.headerSubtitle && (
+                        <h3 style={{ 'font-size': '1em', 'margin-bottom': '0' }}>NEST Developer Tools</h3>
+                        {/* {props.headerSubtitle && (
                             <p class="text-disabled font-mono text-sm">{props.headerSubtitle}</p>
-                        )}
+                        )} */}
                     </div>
                 </div>
                 {/* <MainViewTabs /> */}
                 <Options />
             </header>
             <div class="overflow-hidden">
-                <ui.SplitterRoot>
-                    <ui.SplitterPanel>
-                        <StructureView />
-                    </ui.SplitterPanel>
-                    {sidePanel.isOpen() && (
+                <StyledEngineProvider>
+
+                <UIContextProvider modules={props.modules}>
+                    <ui.SplitterRoot>
                         <ui.SplitterPanel>
-                            <sidePanel.SidePanel />
+                            <MainView />
                         </ui.SplitterPanel>
-                    )}
-                </ui.SplitterRoot>
+                        <s.Show when={useUIContext().getCurrentModule()?.SidePanel && useUIContext().isSidePanelOpen()}>
+                            <ui.SplitterPanel>
+                                <sidePanel.SidePanel/>
+                            </ui.SplitterPanel>
+                        </s.Show>
+                    </ui.SplitterRoot>
+                </UIContextProvider>
+                </StyledEngineProvider>
             </div>
         </div>
     )
@@ -89,56 +134,26 @@ const Options: s.Component = () => {
                 <div
                     role='menu'
                     class='flex flex-col items-stretch gap-0.5'>
-                    <a
+                    <button
                         role='menuitem'
                         tabindex='0'
-                        href='https://github.com/thetarnav/solid-devtools/issues'
-                        target='_blank'
                         class='
                             flex items-center gap-1 p-1 rounded-md outline-none
                             text-text transition-colors hover:bg-orange-500/10 focus:bg-orange-500/10'>
                         <ui.icon.Bug class='w-3 h-3 mb-px text-orange-500 dark:text-orange-400' />
                         Report a bug
-                    </a>
-                    <a
+                    </button>
+                    <button
                         role='menuitem'
                         tabindex='0'
-                        href='https://github.com/sponsors/thetarnav'
-                        target='_blank'
                         class='
                             flex items-center gap-1 p-1 rounded-md outline-none
                             text-text transition-colors hover:bg-pink-500/10 focus:bg-pink-500/10'>
                         <ui.icon.Heart class='w-3 h-3 mb-px text-pink-500 dark:text-pink-400' />
                         Support the project
-                    </a>
+                    </button>
                 </div>
             </div>
         </details>
     )
 }
-
-
-// const MainViewTabs: Component = () => {
-//   const { view } = useController()
-
-//   return (
-//     <button
-//       style={{
-//         margin: '0 10px',
-//         padding: '5px 10px',
-//         border: '1px solid #fff',
-//         'border-radius': '5px',
-//         cursor: 'pointer',
-//       }}
-//       onClick={() => {
-//         view.set(
-//           view.get() === DevtoolsMainView.Structure
-//             ? DevtoolsMainView.Dgraph
-//             : DevtoolsMainView.Structure,
-//         )
-//       }}
-//     >
-//       View: {view.get().toUpperCase()}
-//     </button>
-//   )
-// }

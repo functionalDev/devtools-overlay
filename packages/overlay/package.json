@@ -1,5 +1,5 @@
 {
-    "name": "@solid-devtools/overlay",
+    "name": "@devtools/overlay",
     "version": "0.33.5",
     "description": "On-page Devtools Overlay for SolidJS Applications.",
     "license": "MIT",
@@ -30,7 +30,7 @@
     "module": "./dist/index_noop.js",
     "types": "./dist/index.d.ts",
     "exports": {
-        "@solid-devtools/source": "./src/index.tsx",
+        "@devtools/source": "./src/index.tsx",
         "browser": {
             "development": {
                 "types": "./dist/index.d.ts",
@@ -42,16 +42,20 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index_noop.js"
     },
-    "scripts": {},
+    "scripts": {
+        "build": "vite build"
+    },
     "dependencies": {
+        "@devtools/debugger": "workspace:^",
+        "@devtools/frontend": "workspace:^",
+        "@devtools/shared": "workspace:^",
         "@nothing-but/utils": "~0.17.0",
-        "@solid-devtools/debugger": "workspace:^",
-        "@solid-devtools/frontend": "workspace:^",
-        "@solid-devtools/shared": "workspace:^",
         "@solid-primitives/cursor": "^0.1.1",
         "@solid-primitives/event-listener": "^2.4.1",
         "@solid-primitives/media": "^2.3.1",
-        "@solid-primitives/utils": "^6.3.1"
+        "@solid-primitives/storage": "^4.3.3",
+        "@solid-primitives/utils": "^6.3.1",
+        "unocss": "^66.4.2"
     },
     "peerDependencies": {
         "solid-js": "^1.9.0"

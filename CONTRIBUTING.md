@@ -2,7 +2,7 @@
 
 :+1::tada: Thank you for checking out the project and wanting to contribute! :tada::+1:
 
-The following document is a _(work in progress)_ guide for contributing to Solid Developer Tools. It is a work in progress, so please feel free to suggest changes and improvements. If you have any questions, please feel free to ask on the [Solid Discord](https://discord.com/invite/solidjs). (We have a #solid-devtools channel there)
+The following document is a _(work in progress)_ guide for contributing to Solid Developer Tools. It is a work in progress, so please feel free to suggest changes and improvements. If you have any questions, please feel free to ask on the [Solid Discord](https://discord.com/invite/solidjs). (We have a #devtools channel there)
 
 ## Tooling
 

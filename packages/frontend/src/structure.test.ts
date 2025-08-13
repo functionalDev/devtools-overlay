@@ -1,4 +1,4 @@
-import * as debug from '@solid-devtools/debugger/types'
+import * as debug from '@devtools/debugger/types'
 import {describe, expect, test} from 'vitest'
 import * as structure from './structure.tsx'
 

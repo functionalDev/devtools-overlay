@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import * as s from 'solid-js'
 import {combineProps} from '@solid-primitives/props'
-import * as theme from '@solid-devtools/shared/theme'
+import * as theme from '@devtools/shared/theme'
 import {icon} from './icons.tsx'
 import * as color from './color.ts'
 

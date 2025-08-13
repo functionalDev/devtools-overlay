@@ -1,4 +1,4 @@
-import type {Union} from '@solid-devtools/shared/utils'
+import type {Union} from '@devtools/shared/utils'
 import type {EncodedValue, InspectorUpdate, PropGetterState, ToggleInspectedValueData} from '../inspector/types.ts'
 import * as locator from '../locator/locator.ts'
 import type {StructureUpdates, DGraphUpdate} from '../types.ts'

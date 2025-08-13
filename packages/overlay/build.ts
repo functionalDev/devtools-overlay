@@ -40,11 +40,11 @@ export default () => {
 
     const external = [
         // need true solid-js references
-        '@solid-devtools/debugger/setup',
+        '@devtools/debugger/setup',
         // already bundled
-        '@solid-devtools/debugger/bundled',
+        '@devtools/debugger/bundled',
         // pure
-        '@solid-devtools/shared/utils',
+        '@devtools/shared/utils',
         '@nothing-but/utils',
     ]
 

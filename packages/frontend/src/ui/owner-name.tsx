@@ -1,7 +1,7 @@
 import * as s from 'solid-js'
 import clsx from 'clsx'
-import {NodeType, UNKNOWN} from '@solid-devtools/debugger/types'
-import {createPingedSignal} from '@solid-devtools/shared/primitives'
+import {NodeType, UNKNOWN} from '@devtools/debugger/types'
+import {createPingedSignal} from '@devtools/shared/primitives'
 import {Highlight} from './highlight.tsx'
 import * as ui from '../ui/index.ts'
 
