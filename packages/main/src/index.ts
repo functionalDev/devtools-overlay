@@ -1,4 +1,4 @@
-import {warn} from '@devtools/shared/utils'
+import {warn} from '@devtools/shared'
 import './setup'
 
 warn(`\`import "devtools";\` is an entry point for the vite plugin.

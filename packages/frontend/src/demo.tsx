@@ -1,12 +1,10 @@
 import { render } from "solid-js/web";
-import { createDevtools } from "./controller.tsx";
+import { Devtools } from "./controller.tsx";
 import 'virtual:uno.css';
+import { exampleModules } from "./ModuleFactory/exampleModules.tsx";
 
 const Main = () => {
-    const devTools = createDevtools({
-        headerSubtitle: () => 'overlay',
-    });
-    return <devTools.Devtools></devTools.Devtools>
+    return <Devtools modules={exampleModules}></Devtools>
 }
 
 render(() => <Main/>, document.getElementById('root')!)

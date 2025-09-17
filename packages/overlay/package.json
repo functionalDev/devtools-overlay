@@ -26,21 +26,18 @@
         "dist"
     ],
     "type": "module",
-    "main": "./dist/index_noop.js",
-    "module": "./dist/index_noop.js",
-    "types": "./dist/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
-        "@devtools/source": "./src/index.tsx",
-        "browser": {
-            "development": {
+        ".": {
+            "@devtools/source": "./src/index.tsx",
+            "import": {
                 "types": "./dist/index.d.ts",
                 "default": "./dist/index.js"
-            },
-            "types": "./dist/index.d.ts",
-            "default": "./dist/index_noop.js"
+            }
         },
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index_noop.js"
+        "./dist/index.css": "./dist/index.css"
     },
     "scripts": {
         "build": "vite build"
@@ -55,9 +52,8 @@
         "@solid-primitives/media": "^2.3.1",
         "@solid-primitives/storage": "^4.3.3",
         "@solid-primitives/utils": "^6.3.1",
-        "unocss": "^66.4.2"
-    },
-    "peerDependencies": {
-        "solid-js": "^1.9.0"
+        "solid-js": "^1.9.0",
+        "unocss": "^66.4.2",
+        "vite-plugin-dts": "^4.5.4"
     }
 }

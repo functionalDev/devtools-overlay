@@ -629,165 +629,6 @@ const Search: ProxyIconComponent<'Search'> = ({id}) => (
     </svg>
 )
 
-const Heart: ProxyIconComponent<'Heart'> = ({id}) => (
-    <svg
-        id={`sdt_icon_${id}`}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 256 256"
-        fill="none">
-        <path
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
-            d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"
-        />
-    </svg>
-)
-
-const Bug: ProxyIconComponent<'Bug'> = ({id}) => (
-    <svg
-        id={`sdt_icon_${id}`}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 256 256"
-        fill="none">
-        <path
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
-            d="M144,92a12,12,0,1,1,12,12A12,12,0,0,1,144,92ZM100,80a12,12,0,1,0,12,12A12,12,0,0,0,100,80Zm116,64A87.76,87.76,0,0,1,213,167l22.24,9.72A8,8,0,0,1,232,192a7.89,7.89,0,0,1-3.2-.67L207.38,182a88,88,0,0,1-158.76,0L27.2,191.33A7.89,7.89,0,0,1,24,192a8,8,0,0,1-3.2-15.33L43,167A87.76,87.76,0,0,1,40,144v-8H16a8,8,0,0,1,0-16H40v-8a87.76,87.76,0,0,1,3-23L20.8,79.33a8,8,0,1,1,6.4-14.66L48.62,74a88,88,0,0,1,158.76,0l21.42-9.36a8,8,0,0,1,6.4,14.66L213,89.05a87.76,87.76,0,0,1,3,23v8h24a8,8,0,0,1,0,16H216ZM56,120H200v-8a72,72,0,0,0-144,0Zm64,95.54V136H56v8A72.08,72.08,0,0,0,120,215.54ZM200,144v-8H136v79.54A72.08,72.08,0,0,0,200,144Z"
-        />
-    </svg>
-)
-
-export const SolidWhite: IconComponent = props => (
-    <svg viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" class={props.class}>
-        <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M0 17.5569L3.02113 12.2752L12.3803 9.25407C13.6743 8.86604 15.0548 8.87396 16.3442 9.2768C17.6337 9.67965 18.7732 10.459 19.6162 11.5146C19.9908 12.0056 20.2184 12.5928 20.2726 13.2079C20.3269 13.8231 20.2055 14.441 19.9225 14.99L17.1761 19.8914C17.3586 19.4022 17.4049 18.8726 17.3101 18.3591C17.2152 17.8456 16.9827 17.3676 16.6373 16.9759L16.4894 16.7963C15.6604 15.7712 14.5635 14.996 13.3204 14.5569C12.0297 14.1607 10.6499 14.1607 9.35916 14.5569L2.5669 16.7224L0 17.5569Z"
-            fill="url(#paint0_linear_505_5)"
-        />
-        <g opacity="0.84">
-            <path
-                d="M0.000222357 17.557L0.68662 18.0427L1.34155 18.4758C2.44645 19.1816 3.5929 19.82 4.77465 20.3878C7.04542 21.5449 9.5383 22.2005 12.0845 22.3103C12.7958 22.3112 13.5047 22.2297 14.1972 22.0674L14.662 21.9089C15.6807 21.4931 16.5541 20.7883 17.1769 19.8892C17.3588 19.4006 17.4048 18.8719 17.3101 18.3593C17.2239 17.8932 17.0245 17.4564 16.7301 17.0868L15.8451 18.6448C15.4278 19.3734 14.7763 19.9393 13.9965 20.2505L13.7746 20.3244C11.0916 20.9688 7.84859 19.8174 5.58803 18.7505C4.49851 18.232 3.44035 17.65 2.41901 17.0075L2.5802 16.7178L0.172375 17.501L0.000222357 17.557Z"
-                fill="url(#paint1_linear_505_5)"
-            />
-            <path
-                d="M0.000161216 17.5568L0 17.5568L9.35076e-05 17.5569L0.000161216 17.5568Z"
-                fill="url(#paint2_linear_505_5)"
-            />
-        </g>
-        <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M24 4.72201L21.2852 9.2537C20.663 8.80146 20.0178 8.38188 19.3521 7.99666C16.7641 6.44384 12.0739 4.09877 8.0387 4.59525C7.77226 4.6212 7.50768 4.66353 7.24644 4.72201L6.64433 4.8699C5.89184 5.06977 5.21775 5.49338 4.71123 6.08469L4.58447 6.24314L4.67954 6.08469L6.94011 2.11286L7.24644 1.65863C7.79758 1.00447 8.53427 0.53299 9.35912 0.306519L9.81335 0.200886C15.9929 -1.16179 24 4.72201 24 4.72201Z"
-            fill="url(#paint3_linear_505_5)"
-        />
-        <g opacity="0.84">
-            <path
-                d="M4.71092 6.085L4.71456 6.08068C5.22066 5.49158 5.89332 5.06952 6.64402 4.87012L7.24614 4.72223C7.49702 4.66607 7.751 4.6248 8.00674 4.59863L7.32007 5.12373C7.24377 5.26786 7.16066 5.40519 7.08167 5.53571L7.0816 5.53582L7.08151 5.53597L7.08118 5.53652C7.06192 5.56834 7.04291 5.59976 7.0243 5.63077C6.74965 6.07443 6.51726 6.45471 6.26374 6.93007L6.18979 7.04626C5.95849 7.34984 5.83322 7.72095 5.83322 8.1026C5.83322 8.48426 5.95849 8.85536 6.18979 9.15894C6.76766 9.8101 7.51012 10.2936 8.33913 10.5587L5.93566 11.3346C5.47405 11.0161 5.06144 10.6319 4.71092 10.1942C4.29779 9.62354 4.06493 8.94232 4.04234 8.23822C4.01975 7.53411 4.20846 6.83937 4.58416 6.24345L4.71092 6.085Z"
-                fill="url(#paint4_linear_505_5)"
-            />
-            <path
-                d="M18.2975 10.2568L21.2838 9.25316C20.6679 8.80551 20.0294 8.38986 19.3707 8.00787L19.3609 8.00241L19.3467 7.99453L15.9187 9.15894L15.9237 9.16044C16.0647 9.19471 16.2049 9.23358 16.3441 9.27705C17.0478 9.49692 17.7069 9.82894 18.2975 10.2568Z"
-                fill="url(#paint5_linear_505_5)"
-            />
-        </g>
-        <defs>
-            <linearGradient
-                id="paint0_linear_505_5"
-                x1="4.01408"
-                y1="10.416"
-                x2="17.3345"
-                y2="19.4689"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="currentColor" stop-opacity="0.8" />
-                <stop offset="0.08" stop-color="currentColor" stop-opacity="0.84" />
-                <stop offset="0.39" stop-color="currentColor" stop-opacity="0.95" />
-                <stop offset="0.56" stop-color="currentColor" />
-                <stop offset="0.65" stop-color="currentColor" stop-opacity="0.98" />
-                <stop offset="0.76" stop-color="currentColor" stop-opacity="0.92" />
-                <stop offset="0.88" stop-color="currentColor" stop-opacity="0.82" />
-                <stop offset="1" stop-color="currentColor" stop-opacity="0.7" />
-            </linearGradient>
-            <linearGradient
-                id="paint1_linear_505_5"
-                x1="0"
-                y1="19.5216"
-                x2="17.3768"
-                y2="19.5216"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="currentColor" stop-opacity="0.9" />
-                <stop offset="0.06" stop-color="currentColor" stop-opacity="0.91" />
-                <stop offset="0.5" stop-color="currentColor" stop-opacity="0.95" />
-                <stop offset="0.69" stop-color="currentColor" stop-opacity="0.91" />
-                <stop offset="1" stop-color="currentColor" stop-opacity="0.8" />
-            </linearGradient>
-            <linearGradient
-                id="paint2_linear_505_5"
-                x1="0"
-                y1="19.5216"
-                x2="17.3768"
-                y2="19.5216"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="currentColor" stop-opacity="0.9" />
-                <stop offset="0.06" stop-color="currentColor" stop-opacity="0.91" />
-                <stop offset="0.5" stop-color="currentColor" stop-opacity="0.95" />
-                <stop offset="0.69" stop-color="currentColor" stop-opacity="0.91" />
-                <stop offset="1" stop-color="currentColor" stop-opacity="0.8" />
-            </linearGradient>
-            <linearGradient
-                id="paint3_linear_505_5"
-                x1="4.75349"
-                y1="3.79243"
-                x2="23.9683"
-                y2="5.13398"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="currentColor" stop-opacity="0.9" />
-                <stop offset="0.07" stop-color="currentColor" stop-opacity="0.92" />
-                <stop offset="0.28" stop-color="currentColor" stop-opacity="0.98" />
-                <stop offset="0.47" stop-color="currentColor" />
-                <stop offset="1" stop-color="currentColor" stop-opacity="0.9" />
-            </linearGradient>
-            <linearGradient
-                id="paint4_linear_505_5"
-                x1="4.48909"
-                y1="7.79626"
-                x2="21.7285"
-                y2="9.00048"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="currentColor" stop-opacity="0.9" />
-                <stop offset="0.07" stop-color="currentColor" stop-opacity="0.92" />
-                <stop offset="0.28" stop-color="currentColor" stop-opacity="0.98" />
-                <stop offset="0.47" stop-color="currentColor" />
-                <stop offset="1" stop-color="currentColor" stop-opacity="0.9" />
-            </linearGradient>
-            <linearGradient
-                id="paint5_linear_505_5"
-                x1="4.48909"
-                y1="7.79626"
-                x2="21.7285"
-                y2="9.00048"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="currentColor" stop-opacity="0.9" />
-                <stop offset="0.07" stop-color="currentColor" stop-opacity="0.92" />
-                <stop offset="0.28" stop-color="currentColor" stop-opacity="0.98" />
-                <stop offset="0.47" stop-color="currentColor" />
-                <stop offset="1" stop-color="currentColor" stop-opacity="0.9" />
-            </linearGradient>
-        </defs>
-    </svg>
-)
 
 const embedIconComponents = {
     ArrowLeft,
@@ -810,15 +651,10 @@ const embedIconComponents = {
     Code,
     Search,
     Graph,
-    Heart,
-    Bug,
 } as const
 
-const iconComponents = {
-    SolidWhite,
-} as const
 
-export type IconName = keyof typeof embedIconComponents | keyof typeof iconComponents
+export type IconName = keyof typeof embedIconComponents
 
 export const icon: {[key in IconName]: IconComponent} = {} as any
 
@@ -828,10 +664,6 @@ for (const name in embedIconComponents) {
             <use href={`#sdt_icon_${name.toString()}`} />
         </svg>
     )
-}
-
-for (const name in iconComponents) {
-    ;(icon as any)[name] = iconComponents[name as keyof typeof iconComponents]
 }
 
 export function Icon(props: {

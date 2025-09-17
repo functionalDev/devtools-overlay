@@ -1,6 +1,5 @@
 import * as s from 'solid-js'
-import * as theme from '@devtools/shared/theme'
-import {custom_scrollbar_styles} from './scrollable.tsx'
+import * as theme from '@devtools/shared'
 import {toggle_button_styles} from './toggle-button.tsx'
 import { tag_brackets } from './commonConsts.ts'
 
@@ -35,7 +34,6 @@ export function Styles(): s.JSXElement {
             {var_styles}
             {toggle_button_styles}
             {tag_brackets_styles}
-            {custom_scrollbar_styles}
         </style>
     )
 }

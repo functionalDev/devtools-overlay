@@ -1,6 +1,7 @@
 import devtools from 'devtools/vite'
 import {defineConfig} from 'vite'
 import solid from 'vite-plugin-solid'
+import dts from 'vite-plugin-dts';
 
 const is_ext = process.argv.includes('--ext')
 
@@ -19,6 +20,7 @@ export default defineConfig(mode => {
                 },
             }),
             solid({hot: true, dev: true}),
+            dts(),
         ],
         define: {
             'import.meta.env.EXT': JSON.stringify(is_ext),

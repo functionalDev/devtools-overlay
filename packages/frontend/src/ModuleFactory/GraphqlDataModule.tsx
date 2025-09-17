@@ -1,3 +1,4 @@
+import { render } from "solid-js/web";
 import type { ModuleFactory } from "./ModuleFactory.tsx";
 
 
@@ -17,5 +18,6 @@ export const GraphqlDataModule: ModuleFactory = () => {
             </div>
         ),
         title: 'Graphql data',
+        render
 }
 }

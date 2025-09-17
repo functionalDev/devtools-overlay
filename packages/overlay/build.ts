@@ -44,7 +44,7 @@ export default () => {
         // already bundled
         '@devtools/debugger/bundled',
         // pure
-        '@devtools/shared/utils',
+        '@devtools/shared',
         '@nothing-but/utils',
     ]
 

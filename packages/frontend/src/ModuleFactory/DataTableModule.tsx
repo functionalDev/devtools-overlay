@@ -1,8 +1,8 @@
 import { Alert, Table, TableBody, TableCell, TableHead, TableRow, ToggleButton, ToggleButtonGroup } from "@suid/material";
 import type { Module, ModuleFactory } from "./ModuleFactory.tsx";
 import { createEffect, createSignal, For, Show } from "solid-js";
-import { useUIContext } from "../UIContext.tsx";
 import "@andypf/json-viewer"
+import { render } from "solid-js/web";
 
 type Filter<T> = {
     label: T[keyof T],
@@ -28,12 +28,12 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
     const [ getSelectedRow, setSelectedRow ] = createSignal<T | null>(null);
     return () => ({
         ...params,
-        MainView: () => {
+        MainView: ({ isSidePanelOpen, openSidePanel }) => {
             const { fieldFilter, columnNames, columnDataFns, getDataList } = options;
-            const filters = getValuesOfField(fieldFilter, getDataList())
-            const [ currentFilters, setFilters] = createSignal(filters);
-            
-            const { isSidePanelOpen, openSidePanel } = useUIContext();
+            const getFilters = () => getValuesOfField(fieldFilter, getDataList());
+            const [ currentFilters, setFilters] = createSignal<Filter<T>[]>([]);
+            const [ showAll, setShowAll ] = createSignal(true);
+        
             
             createEffect(() => {
                 if(!isSidePanelOpen()){
@@ -47,8 +47,7 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
                 } else {
                     setSelectedRow(null);
                     openSidePanel(() => false);
-
-                }
+                }                
             }
             return (
                 <Show when={getDataList().length > 0} fallback={<Alert severity="error">No tracking data found!</Alert>}>
@@ -59,28 +58,41 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
                         sx={{
                             paddingLeft: '16px',
                         }}
-                        value={currentFilters()}
+                        value={showAll() ? getFilters().map(f => f.label) : currentFilters().map(f => f.label)}
                         onChange={(event, newfilters) => {
-                            setFilters(newfilters);
+                            if(newfilters.length === getFilters().length){
+                                return setShowAll(true);
+                            }
+                            setShowAll(false);
+                            setFilters(getFilters().filter(f => newfilters.includes(f.label)));
                         }}>
-                        <For each={filters}>{
-                            filter =>  <ToggleButton size="small" value={filter}>{filter.label as string}</ToggleButton> 
+                        <For each={getFilters().map(f => f.label)}>{
+                            filterlabel =>  <ToggleButton style={{
+                                color: 'var(--text-default)', 
+                                'border-color': 'var(--panel__border)',
+                                'background': currentFilters().map(f => f.label).includes(filterlabel) || showAll() ? '' : 'var(--gray_highlight__color)',
+                            }} 
+                            size="small" 
+                            value={filterlabel}
+                        >
+                            {filterlabel as string}
+                        </ToggleButton> 
                         }</For>
                     </ToggleButtonGroup>
-                    <Table size="small">
+                    <Table size="small" style={{ 'margin-block': '25px' }}>
                         <TableHead>
                             <TableRow>
                                 <For each={columnNames}>{
-                                    columnName => <TableCell>{columnName}</TableCell>
+                                    columnName => <TableCell sx={{color: 'var(--text-default)'}}>{columnName}</TableCell>
                                 }</For>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <For each={getDataList().filter(entry => currentFilters().some(({ fn }) => fn(entry)))}>{
+                            <For each={getDataList().filter(entry => showAll() || currentFilters().some(({ fn }) => fn(entry)))}>{
                                 row => (
                                     <TableRow selected={getSelectedRow() === row} onClick={() => handleRowClick(row)}>
                                         <For each={columnDataFns}>{
-                                            columnDataFn => <TableCell>{columnDataFn(row) as string}</TableCell>
+                                            columnDataFn => <TableCell sx={{color: 'var(--text-default)'}}>{columnDataFn(row) as string}</TableCell>
                                         }</For>
                                     </TableRow>
                             )}</For>
@@ -90,10 +102,11 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
                 </Show>
                 
         )},
-        SidePanel: () => <>
+        SidePanel: (props) => <>
             {/* 
             // @ts-expect-error typescript doesnt register web-component  from "@andypf/json-viewer" */}
-            <andypf-json-viewer data={JSON.stringify(getSelectedRow())}></andypf-json-viewer>
-        </>
+            <andypf-json-viewer show-toolbar="true" theme={props.colorScheme === 'light' ? 'default-light' : 'default-dark'} show-data-types="false"  data={JSON.stringify(getSelectedRow())}></andypf-json-viewer>
+        </>,
+        render,
     })
 }

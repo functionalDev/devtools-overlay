@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 import { createDataTableModuleFactory } from "./DataTableModule.tsx";
+import { render } from "solid-js/web";
 
 type Event = {
     action: "sendEvent",
@@ -47,6 +48,7 @@ type ObserveVisibleEvent = Event &{
         threshold: number,
         minTimeMilliseconds: number,
         selector: string,
+        visiblePercentage: number,
     }
 }
 
@@ -80,9 +82,8 @@ const watchFunctionCall = function <T extends object>(obj: T, prop: keyof T, han
     }
 }
 
-export const TrackingModule = createDataTableModuleFactory<TrackingEvent>({
-    getDataList: (() => {
-        const [ dataList, setDataList ] = createSignal<TrackingEvent[]>([]);
+export const TrackingModule = () => {
+    const [ dataList, setDataList ] = createSignal<TrackingEvent[]>([]);
         if(!window.dw_tracking_events){
             watch(window, 'dw_tracking_events', () => {
                 // @ts-ignore
@@ -100,11 +101,13 @@ export const TrackingModule = createDataTableModuleFactory<TrackingEvent>({
                     setDataList([...window.dw_tracking_events?.toReversed()]);
             })
         }
-        return dataList;
-    })(),
+    return createDataTableModuleFactory<TrackingEvent>({
+    getDataList: dataList,
     columnNames: [
         'eventName',
         'label',
+        '% visible',
+        'timeVisible',
         'level1',
         'level2',
         'level3',
@@ -112,15 +115,21 @@ export const TrackingModule = createDataTableModuleFactory<TrackingEvent>({
     columnDataFns: [
         (t) => t.eventName,
         // @ts-ignore
-        (t) => t.clickEventData?.label,
+        (t) => t.clickEventData?.label || t.observeEventData?.label,
         // @ts-ignore
-        (t) => t.clickEventData?.level1,
+        (t) => t.observeEventData?.visiblePercentage ? t.observeEventData.visiblePercentage.toFixed(2) * 100 + '%' : '',
         // @ts-ignore
-        (t) => t.clickEventData?.level2,
+        (t) => t.observeEventData?.timeVisible,
         // @ts-ignore
-        (t) => t.clickEventData?.level3,
+        (t) => t.clickEventData?.level1 || t.observeEventData?.level1,
+        // @ts-ignore
+        (t) => t.clickEventData?.level2 || t.observeEventData?.level2,
+        // @ts-ignore
+        (t) => t.clickEventData?.level3 || t.observeEventData?.level3,
     ],
     fieldFilter: 'eventName',
 }, {
     title: 'Tracking',
-})
+    render,
+})()
+}

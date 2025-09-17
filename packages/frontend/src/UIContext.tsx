@@ -1,52 +1,28 @@
-import { createContext, createSignal, useContext, type Accessor, type Component, type Setter } from "solid-js";
+import { createSignal } from "solid-js";
 import { makePersisted } from '@solid-primitives/storage'
 import type { Module } from "./ModuleFactory/ModuleFactory";
-
-type UIContext = {
-    isSidePanelOpen: Accessor<boolean>,
-    openSidePanel: Setter<boolean>,
-    getCurrentModule: ()  => Module | null
-    setCurrentModule: (mod: Module)  => void
-    getModules: ()  => Module[],
-}
 
 const [ getCurrentModuleName, setCurrentModuleName ] = makePersisted(createSignal<string>(''), {
     name: 'devtools-frontend-lastmodule',
     storage: sessionStorage,
 });
 
-const defaultContext: UIContext = {
-    isSidePanelOpen: () => false,
-    openSidePanel: () => false, 
-    getCurrentModule: ()  => null,
-    setCurrentModule: ()  => null,
-    getModules: ()  => [],
-}
+const [ _isSidePanelOpen, _openSidePanel ] = createSignal(false);
+const [ _getModules, setModules ] = createSignal<Module[]>([]);
 
-const UIContext = createContext(defaultContext);
 
-export const useUIContext = () => {
-    return useContext(UIContext);
+const getDefaultModule =  (): Module | undefined => getModules()[0];
+const getModuleByTitle = (title: string) => getModules().find(m => m.title === title);
+
+export const getCurrentModule = () => getModuleByTitle(getCurrentModuleName()) || getDefaultModule()
+export const setCurrentModule = (mod: Module) => setCurrentModuleName(mod.title)
+
+export const isSidePanelOpen = _isSidePanelOpen;
+export const openSidePanel = _openSidePanel;
+
+export const getModules = _getModules;
+export const initModules = (modules: Module[]) => {
+    modules.forEach(mod => mod.connector?.initFn())
+    setModules(() => modules)
 };
 
-export const UIContextProvider: Component<{ children: any, modules: Module[] }> = (props) => {
-    const [ isSidePanelOpen, openSidePanel ] = createSignal(false);
-    
-    // @ts-ignore
-    const defaultModule: Module = props.modules[0];
-    const getModuleByTitle = (title: string) => props.modules.find(m => m.title === title);
-    const getCurrentModule = () => getModuleByTitle(getCurrentModuleName()) || defaultModule
-    const setCurrentModule = (mod: Module) => setCurrentModuleName(mod.title)
-    
-    return (
-        <UIContext.Provider value={{
-            isSidePanelOpen,
-            openSidePanel,
-            getCurrentModule,
-            setCurrentModule,
-            getModules: () => props.modules,
-        }}>
-            {props.children}
-        </UIContext.Provider>
-    )
-}

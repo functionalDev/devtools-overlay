@@ -1,24 +1,26 @@
-import '@devtools/debugger/setup'
-
 import * as s from 'solid-js'
 import * as web from 'solid-js/web'
 import {createBodyCursor} from '@solid-primitives/cursor'
 import {makeEventListener} from '@solid-primitives/event-listener'
 import * as num from '@nothing-but/utils/num'
-import {useDebugger} from '@devtools/debugger/bundled'
-import {Icon, MountIcons, createDevtools} from '@devtools/frontend'
-import {useIsMobile, useIsTouch, atom} from '@devtools/shared/primitives'
-import {msg} from '@devtools/shared/utils'
+import {Icon, MountIcons, Devtools} from '@devtools/frontend'
 
 import frontendStyles from '@devtools/frontend/dist/index.css?inline'
 import overlayStyles from './styles.css?inline'
 import { makePersisted } from '@solid-primitives/storage'
+import type { Module } from '../../frontend/src/ModuleFactory/ModuleFactory'
+import { exampleModules } from '../../frontend/src/ModuleFactory/exampleModules'
 
 
 export type OverlayOptions = {
     defaultOpen?: boolean
     alwaysOpen?:  boolean
     noPadding?:   boolean
+    modules: Module[]
+}
+
+const defaultOptions = {
+    modules: exampleModules,
 }
 
 const [ isOpen, setIsOpen ] = makePersisted(s.createSignal(), {
@@ -26,20 +28,22 @@ const [ isOpen, setIsOpen ] = makePersisted(s.createSignal(), {
     storage: sessionStorage,
 })
 
-export function attachDevtoolsOverlay(props?: OverlayOptions): (() => void) {
+
+export function attachDevtoolsOverlay(props: OverlayOptions): (() => void) {
 
     /*
      Only load the overlay after the page is loaded
     */
-    let show = atom(false)
+    let [show, setShow] = s.createSignal(false)
     setTimeout(() => {
-        show.set(true)
+        setShow(() => true)
     })
+    const modules = [ ...defaultOptions.modules, ...props.modules];
 
     return s.createRoot(dispose => {
         s.createEffect(() => {
             if (show()) {
-                <Overlay {...props} />
+                <Overlay {...props} modules={modules} />
             }
         })
         return dispose
@@ -47,6 +51,8 @@ export function attachDevtoolsOverlay(props?: OverlayOptions): (() => void) {
 }
 
 const Overlay: s.Component<OverlayOptions> = props => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if(!window) return;
 
     let {alwaysOpen, defaultOpen, noPadding} = props
 
@@ -65,20 +71,20 @@ const Overlay: s.Component<OverlayOptions> = props => {
         }
     }
 
-    const isMobile = useIsMobile()
-    const isTouch  = useIsTouch()
+    const [progress, setProgress] = makePersisted(s.createSignal(0.5), {
+        name: 'devtools-overlay-height',
+        storage: localStorage,
 
-    const progress = s.createMemo(
-        () => atom(isMobile() ? 0.8 : 0.5)
-    )
-    const dragging = atom(false)
+    });
+
+    const [dragging, setDragging] = s.createSignal(false)
 
     makeEventListener(window, 'pointermove', e => {
         if (!dragging()) return
         const vh = window.innerHeight
-        progress().set(1 - num.clamp(e.y, 0, vh - 200) / vh)
+        setProgress(1 - num.clamp(e.y, 0, vh - 200) / vh)
     })
-    makeEventListener(window, 'pointerup', () => dragging.set(false))
+    makeEventListener(window, 'pointerup', () => setDragging(false))
 
     createBodyCursor(() => dragging() && 'row-resize')
 
@@ -86,13 +92,16 @@ const Overlay: s.Component<OverlayOptions> = props => {
     
 
     return (
-        <web.Portal mount={document.documentElement}>
+        <web.Portal mount={document.body}>
             <div
                 data-darkreader-ignore
                 class="overlay__container"
                 classList={{'no-padding': noPadding}}
                 data-open={isOpen()}
-                style={{'--progress': progress()()}}
+                style={{
+                    '--progress': isOpen() ? progress(): -10,
+                    display: 'contents',
+                }}
                 data-testid="devtools-overlay"
                 ref={ref}
             >
@@ -106,48 +115,21 @@ const Overlay: s.Component<OverlayOptions> = props => {
                             />
                         </button>
                     )}
-                    <s.Show when={!isTouch()}>
                         <div
                             class="overlay__container__resizer"
                             onPointerDown={e => {
                                 e.preventDefault()
-                                dragging.set(true)
+                                setDragging(true)
                             }}
                         />
-                    </s.Show>
                     <div class="overlay__container__inner">
-                        <s.Show when={isOpen()}>
-                        {_ => {
-                            
-                            // instance.emit(msg('ResetState', undefined))
-                        
-                            // s.onCleanup(() => instance.emit(msg('InspectNode', null)))
-                        
-                            const devtools = createDevtools({
-                                headerSubtitle: () => 'overlay',
-                            })
-                        
-                            return <devtools.Devtools />
-                        }}
-                        </s.Show>
+                        <Devtools modules={props.modules} />
                     </div>
                 </div>
             </div>
-            <MountIcons />
             <style>{frontendStyles.replaceAll(/(\d)rem/g, '$1em')}</style>
             <style>{overlayStyles.replaceAll(/(\d)rem/g, '$1em')}</style>
         </web.Portal>
     )
 }
 
-
-
-function clone<T>(data: T): T {
-    return typeof data === 'object' ? (JSON.parse(JSON.stringify(data)) as T) : data
-}
-function separate<T>(data: T, callback: (value: T) => void): void {
-    queueMicrotask(() => {
-        const v = clone(data)
-        queueMicrotask(() => callback(v))
-    })
-}

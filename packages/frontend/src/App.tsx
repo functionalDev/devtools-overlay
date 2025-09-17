@@ -1,11 +1,10 @@
 import * as s from 'solid-js'
-import * as theme from '@devtools/shared/theme'
 import * as ui from './ui/index.ts'
-import {createSidePanel} from './SidePanel.tsx'
-import type { Module } from './ModuleFactory/ModuleFactory.tsx'
+import {SidePanel} from './SidePanel.tsx'
 import { MainView } from './MainView/MainView.tsx'
-import { UIContextProvider, useUIContext } from './UIContext.tsx'
+import { getCurrentModule, isSidePanelOpen, openSidePanel } from './UIContext.tsx'
 import { StyledEngineProvider } from '@suid/material'
+import { makePersisted } from '@solid-primitives/storage'
 
 const getMuiStyles = (): NodeListOf<HTMLStyleElement> => document.querySelectorAll('style[id][data-uses]');
 const updateCopyForMuiStyles = (styleEl: HTMLStyleElement) => {
@@ -36,32 +35,49 @@ const copyAllMuiStyles = () => {
 }
 
 
+const [ colorScheme, setColorScheme ] = makePersisted(s.createSignal<'light' | 'dark' | undefined>(), {
+    name: 'devtools-overlay-color-scheme',
+    storage: localStorage,
+});
+
+type opacityValue = '1' | '0.9' | '0.7';
+const [ appOpacity, setAppOpacity ] = makePersisted(s.createSignal<opacityValue>('1'), {
+    name: 'devtools-overlay-opactiy',
+    storage: localStorage,
+});
+
+const opacityCycle: opacityValue[] = ['1', '0.9', '0.7', '1'];
+const changeOpacity = () => setAppOpacity(s => opacityCycle[opacityCycle.indexOf(s) + 1] || '1');
+
+const [ osColorScheme , setOsColorScheme ] = s.createSignal<'light' | 'dark'>(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark': 'light')
+
+const getColorScheme = () => colorScheme() || osColorScheme();
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    setOsColorScheme(event.matches ? "dark" : "light");
+});
 
 
-export const App: s.Component<{
-    headerSubtitle?: s.JSX.Element,
-    modules: Module[],
-}> = props => {
-    // side panel is created here to keep the state between renders
-    const sidePanel = createSidePanel()
+export const App = () => {
     copyAllMuiStyles();
 
     return (
         <div
             class="h-full w-full overflow-hidden grid text-base font-sans bg-panel-bg text-text"
-            style={{'grid-template-rows': `min-content min-content 1fr`}}
+            style={{
+                'grid-template-rows': `min-content 1fr`,
+                'color-scheme': getColorScheme(),
+                opacity: appOpacity(),
+            }}
         >
+            <ui.MountIcons />
             <div style={{ display: 'none'}} id="mui-style-copy-container"></div>
             <header
                 class="p-2 flex items-center gap-x-2 bg-panel-bg b-b text-text"
             >
                 <div class="flex items-center gap-x-2">
-                    {/* <ui.icon.SolidWhite class="w-4 h-4 text-disabled" /> */}
                     <div>
                         <h3 style={{ 'font-size': '1em', 'margin-bottom': '0' }}>NEST Developer Tools</h3>
-                        {/* {props.headerSubtitle && (
-                            <p class="text-disabled font-mono text-sm">{props.headerSubtitle}</p>
-                        )} */}
                     </div>
                 </div>
                 {/* <MainViewTabs /> */}
@@ -69,19 +85,16 @@ export const App: s.Component<{
             </header>
             <div class="overflow-hidden">
                 <StyledEngineProvider>
-
-                <UIContextProvider modules={props.modules}>
                     <ui.SplitterRoot>
                         <ui.SplitterPanel>
-                            <MainView />
+                            <MainView isSidePanelOpen={isSidePanelOpen} openSidePanel={openSidePanel} />
                         </ui.SplitterPanel>
-                        <s.Show when={useUIContext().getCurrentModule()?.SidePanel && useUIContext().isSidePanelOpen()}>
+                        <s.Show when={getCurrentModule()?.SidePanel && isSidePanelOpen()}>
                             <ui.SplitterPanel>
-                                <sidePanel.SidePanel/>
+                                <SidePanel colorScheme={getColorScheme()}/>
                             </ui.SplitterPanel>
                         </s.Show>
                     </ui.SplitterRoot>
-                </UIContextProvider>
                 </StyledEngineProvider>
             </div>
         </div>
@@ -124,6 +137,10 @@ const Options: s.Component = () => {
                 }
             }}>
             <summary
+            
+                    style={{
+                        color: 'var(--default-text-color)'
+                    }}
                 class={`${ui.toggle_button} rounded-md ml-auto w-7 h-7`}>
                 <ui.icon.Options
                     class="w-4.5 h-4.5"
@@ -135,22 +152,27 @@ const Options: s.Component = () => {
                     role='menu'
                     class='flex flex-col items-stretch gap-0.5'>
                     <button
+
                         role='menuitem'
                         tabindex='0'
+                        style={{ padding: '0.5em 20px'}}
+                        onClick={() => setColorScheme(s => s === 'light' ? 'dark': 'light')}
                         class='
-                            flex items-center gap-1 p-1 rounded-md outline-none
+                            items-center gap-1 p-1 rounded-md outline-none
                             text-text transition-colors hover:bg-orange-500/10 focus:bg-orange-500/10'>
-                        <ui.icon.Bug class='w-3 h-3 mb-px text-orange-500 dark:text-orange-400' />
-                        Report a bug
+                        {/* <ui.icon.Bug class='w-3 h-3 mb-px text-orange-500 dark:text-orange-400' /> */}
+                        {colorScheme() === 'light' ? 'dark mode': 'light mode'}
                     </button>
                     <button
                         role='menuitem'
                         tabindex='0'
+                        style={{ padding: '0.5em 20px'}}
+                        onClick={() => changeOpacity()}
                         class='
-                            flex items-center gap-1 p-1 rounded-md outline-none
+                            items-center gap-1 p-1 rounded-md outline-none
                             text-text transition-colors hover:bg-pink-500/10 focus:bg-pink-500/10'>
-                        <ui.icon.Heart class='w-3 h-3 mb-px text-pink-500 dark:text-pink-400' />
-                        Support the project
+                        {/* <ui.icon.Heart class='w-3 h-3 mb-px text-pink-500 dark:text-pink-400' /> */}
+                        opacity {appOpacity()}
                     </button>
                 </div>
             </div>

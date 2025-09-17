@@ -1,10 +1,8 @@
 import type { Component } from "solid-js"
-import { useUIContext } from "../UIContext.tsx"
 import { ToggleButton, ToggleButtonGroup } from "@suid/material";
+import { getCurrentModule, getModules, openSidePanel, setCurrentModule } from "../UIContext";
 
 export const Tabbar: Component = () => {
-    const { getCurrentModule, setCurrentModule, openSidePanel, getModules } = useUIContext();
-    const modules = getModules();
     return (
         <div class="mr-auto h-full">
             <ToggleButtonGroup
@@ -13,13 +11,17 @@ export const Tabbar: Component = () => {
                 exclusive
                 onChange={(event, newModuleName) => {
                     // @ts-ignore
-                    setCurrentModule(modules.find(({ title}) => title === newModuleName) || modules[0]);
+                    setCurrentModule(getModules().find(({ title}) => title === newModuleName) || getModules()[0]);
                     openSidePanel(false)
                 }}
                 >
                 {
                     getModules().map(module => (
                     <ToggleButton
+                        style={{
+                            color: getCurrentModule()?.title === module.title ? '' :'var(--default-text)',
+                            'border-color': 'var(--panel__border)',
+                        }}
                         value={module.title}
                     >
                         {module.title}

@@ -5,12 +5,12 @@ export type ModuleConnector<ModuleContext> = {
 }
 
 export type MainViewProps = {
-    isSidePanelOpen: Accessor<boolean>,
+    isSidePanelOpen: Accessor<boolean | undefined>,
     openSidePanel: Setter<boolean>,
 }
 
 export type SidePanelProps = {
-
+    colorScheme: 'light' | 'dark'
 }
 
 export type Module<ModuleContext = object> = {
@@ -18,7 +18,7 @@ export type Module<ModuleContext = object> = {
     connector?: ModuleConnector<ModuleContext>,
     MainView: (props: MainViewProps) => JSXElement,
     SidePanel?: (props: SidePanelProps) => JSXElement,
-    // render: (element: HTMLElement) => any,
+    render: (component: any,element: HTMLElement) => any,
 }
 
 export type ModuleFactory<T = object> = () => Module<T>

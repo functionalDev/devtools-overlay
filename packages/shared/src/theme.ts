@@ -192,13 +192,9 @@ export const vars = {
 export function make_var_styles(root_class: string): string {
     return `
         .${root_class} {
-            ${css_vars.map(css_var => `${css_var.name}: ${css_var.light};`).join('')}
+            ${css_vars.map(css_var => `${css_var.name}: light-dark(${css_var.light}, ${css_var.dark});`).join('')}
         }
-        @media (prefers-color-scheme: dark) {
-            .${root_class} {
-                ${css_vars.map(css_var => `${css_var.name}: ${css_var.dark};`).join('')}
-            }
-        }
+
     `
 }
 
