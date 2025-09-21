@@ -3,7 +3,7 @@ import * as web from 'solid-js/web'
 import {createBodyCursor} from '@solid-primitives/cursor'
 import {makeEventListener} from '@solid-primitives/event-listener'
 import * as num from '@nothing-but/utils/num'
-import {Icon, MountIcons, Devtools} from '@devtools/frontend'
+import {Icon, Devtools} from '@devtools/frontend'
 
 import frontendStyles from '@devtools/frontend/dist/index.css?inline'
 import overlayStyles from './styles.css?inline'

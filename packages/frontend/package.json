@@ -1,16 +1,16 @@
 {
     "name": "@devtools/frontend",
-    "version": "0.15.4",
+    "version": "0.15.5",
     "license": "MIT",
-    "author": "Damian Tarnawski <gthetarnav@gmail.com>",
+    "author": "Paul Stolz <functionalgamer2s@gmail.com>",
     "contributors": [],
-    "homepage": "https://github.com/thetarnav/solid-devtools/tree/main/packages/frontend#readme",
+    "homepage": "https://github.com/functionalDev/devtools-overlay/tree/main/packages/frontend#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/thetarnav/solid-devtools.git"
+        "url": "git+https://github.com/functionalDev/devtools-overlay.git"
     },
     "bugs": {
-        "url": "https://github.com/thetarnav/solid-devtools/issues"
+        "url": "https://github.com/functionalDev/devtools-overlay/issues"
     },
     "private": false,
     "publishConfig": {
@@ -45,7 +45,6 @@
     },
     "dependencies": {
         "@andypf/json-viewer": "^2.2.0",
-        "@devtools/debugger": "workspace:^",
         "@devtools/shared": "workspace:^",
         "@nothing-but/utils": "~0.17.0",
         "@solid-primitives/context": "^0.3.1",

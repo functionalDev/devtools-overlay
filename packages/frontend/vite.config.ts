@@ -4,7 +4,8 @@ import solid from 'vite-plugin-solid'
 import UnoCSS from 'unocss/vite';
 import suidPlugin from "@suid/vite-plugin";
 import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath } from 'node:url';
+import dts from 'vite-plugin-dts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -27,6 +28,7 @@ export default defineConfig(() => {
             configFile: '../../uno.config.ts'
         }),
         suidPlugin(),
+        dts(),
     ],
     }
 })

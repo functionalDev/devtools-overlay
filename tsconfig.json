@@ -4,13 +4,15 @@
          Module resolution, imports
         */
         "module":                       "ESNext",
-        "moduleResolution":             "Bundler",
+        "moduleResolution":             "bundler",
         "verbatimModuleSyntax":         true,
         "resolveJsonModule":            true,
         "allowImportingTsExtensions":   true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "isolatedModules": true,
+        "sourceMap": true,
+
         /*
          JS
         */
@@ -38,11 +40,13 @@
         /*
          Checking
         */
-        "strict":                             true,
-        "skipLibCheck":                       true,
-        "forceConsistentCasingInFileNames":   true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noUncheckedIndexedAccess":           true,
+        "strict":                               true,
+        "strictNullChecks":                     true,
+        "skipLibCheck":                         true,
+        "forceConsistentCasingInFileNames":     true,
+        "noPropertyAccessFromIndexSignature":   true,
+        "noUncheckedIndexedAccess":             true,
+        "noUnusedLocals":                       true,
     },
     "exclude": [
         "**/node_modules/**/*",

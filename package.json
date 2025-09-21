@@ -1,10 +1,26 @@
 {
     "name": "devtools-monorepo",
-    "private": true,
-    "type": "module",
+    "version": "0.0.1",
+    "private": false,
+    "description": "<p>Framework agnostic customizable Devtools</p>",
+    "keywords": [
+        "devtools"
+    ],
+    "homepage": "https://github.com/functionalDev/devtools-overlay#readme",
+    "bugs": {
+        "url": "https://github.com/functionalDev/devtools-overlay/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/functionalDev/devtools-overlay.git"
+    },
     "license": "MIT",
-    "author": "Damian Tarnawski <gthetarnav@gmail.com>",
+    "author": "Paul Stolz <functionalgamer2s@gmail.com>",
     "contributors": [],
+    "type": "module",
+    "directories": {
+        "example": "examples"
+    },
     "scripts": {
         "----------------------DEV----------------------": "",
         "dev:ext": "pnpm -dir extension run dev",
@@ -12,7 +28,7 @@
         "dev:sandbox": "pnpm -dir examples/sandbox run dev",
         "dev:sandbox:ext": "pnpm -dir examples/sandbox run dev:ext",
         "----------------------BUILD----------------------": "",
-        "build:packages": "node --experimental-transform-types ./build.ts",
+        "build:packages": "nx build @devtools/shared && nx build @devtools/frontend && nx build @devtools/overlay",
         "build:sandbox": "pnpm -dir examples/sandbox run build",
         "build:ext": "pnpm -dir extension run build",
         "build:types": "tsc -b packages/*",
@@ -43,15 +59,16 @@
         "eslint": "^9.28.0",
         "eslint-plugin-no-only-tests": "^3.3.0",
         "jsdom": "^26.1.0",
+        "nx": "^21.5.3",
         "solid-js": "^1.9.7",
         "typescript": "^5.8.3",
         "vite": "6.3.5",
         "vite-plugin-solid": "^2.11.6",
         "vitest": "^3.2.3"
     },
-    "packageManager": "pnpm@10.12.1",
     "engines": {
         "node": ">=22",
         "pnpm": ">=10.6.0"
-    }
+    },
+    "packageManager": "pnpm@10.12.1"
 }

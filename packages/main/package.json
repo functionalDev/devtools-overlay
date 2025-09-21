@@ -1,11 +1,11 @@
 {
     "name": "devtools",
-    "version": "0.34.3",
-    "description": "Runtime library for hooking up SolidJS application with Solid Devtools Extension",
+    "version": "0.34.4",
+    "description": "Runtime library for hooking up application with Devtools Extension",
     "license": "MIT",
-    "author": "Damian Tarnawski <gthetarnav@gmail.com>",
+    "author": "Paul Stolz <functionalgamer2s@gmail.com>",
     "contributors": [],
-    "homepage": "https://github.com/thetarnav/solid-devtools/tree/main/packages/main#readme",
+    "homepage": "https://github.com/functionalDev/devtools-overlay/tree/main/packages/main#readme",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/thetarnav/solid-devtools.git"

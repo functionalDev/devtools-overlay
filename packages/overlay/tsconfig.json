@@ -9,6 +9,5 @@
     "references": [
         {"path": "../frontend"},
         {"path": "../shared"},
-        {"path": "../debugger"},
     ],
 }

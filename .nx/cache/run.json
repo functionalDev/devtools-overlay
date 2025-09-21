@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx build @devtools/overlay",
+    "startTime": "2025-09-21T12:38:18.322Z",
+    "endTime": "2025-09-21T12:38:25.250Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@devtools/overlay:build",
+      "target": "build",
+      "projectName": "@devtools/overlay",
+      "hash": "12011431782640188391",
+      "startTime": "2025-09-21T12:38:18.346Z",
+      "endTime": "2025-09-21T12:38:25.250Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}

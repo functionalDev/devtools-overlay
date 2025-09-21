@@ -1,43 +1,43 @@
-<a href="https://github.com/thetarnav/solid-devtools/tree/main/packages/overlay#readme" target="_blank">
-  <p>
-    <img width="100%" src="https://assets.solidjs.com/banner?type=Devtools&background=tiles&project=Devtools%20Overlay" alt="Solid Devtools Overlay">
-  </p>
-</a>
+<p>
+   For now this is the package to add NEST developer tools to the page
+</p>
 
-# @solid-devtools/overlay
+# @devtools-overlay/overlay
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
-[![version](https://img.shields.io/npm/v/@solid-devtools/overlay?style=for-the-badge)](https://www.npmjs.com/package/@solid-devtools/overlay)
-[![npm](https://img.shields.io/npm/dw/@solid-devtools/overlay?style=for-the-badge)](https://www.npmjs.com/package/@solid-devtools/overlay)
+[![version](https://img.shields.io/npm/v/@devtools-overlay/overlay?style=for-the-badge)](https://www.npmjs.com/package/@devtools-overlay/overlay)
+[![npm](https://img.shields.io/npm/dw/@devtools-overlay/overlay?style=for-the-badge)](https://www.npmjs.com/package/@devtools-overlay/overlay)
 
-An on-page devtools overlay for debugging SolidJS Applications without a chrome extension.
+An on-page devtools overlay for debugging NEST webapp without a chrome extension.
 
-Simply add the Overlay component to your app and get access to a powerful, in-browser devtools experience during development. _(It will be removed in production)_
+Simply add the call the overlay function and get access to a powerful, in-browser devtools experience during.
 
 ## Try it online!
 
+🚧 TODO 🚧
 A couple of deployed demo websites where you can see the Overlay in action:
+🚧 TODO 🚧
 
-- [Sandbox Website](https://thetarnav.github.io/solid-devtools) - [Source code](https://github.com/thetarnav/solid-devtools/tree/main/examples/sandbox)
+- [Sandbox Website](https://thetarnav.github.io/devtools-overlay) - [Source code](https://github.com/thetarnav/solid-devtools/tree/main/examples/sandbox)
 
 ## Getting started
 
 ### Installation
 
 ```bash
-npm i @solid-devtools/overlay
+npm i @devtools-overlay/overlay
 # or
-yarn add @solid-devtools/overlay
+yarn add @devtools-overlay/overlay
 # or
-pnpm add @solid-devtools/overlay
+pnpm add @devtools-overlay/overlay
 ```
 
 ### Attach the overlay
 
-Simply place the overlay component in the client entry file.
+Simply call the overlay component in the client entry file.
 
 ```tsx
-import { attachDevtoolsOverlay } from '@solid-devtools/overlay'
+import { attachDevtoolsOverlay } from '@devtools-overlay/overlay'
 
 attachDevtoolsOverlay()
 
@@ -49,32 +49,73 @@ attachDevtoolsOverlay({
 })
 ```
 
-Don't worry about wrapping it with a `isDev` guard, the Overlay takes care of that for you. It should be excluded from production builds automatically.
+🚧 TODO 🚧
+~~Don't worry about wrapping it with a `isDev` guard, the Overlay takes care of that for you. It should be excluded from production builds automatically.~~
 
-### Enabling the autoname
+### Extending with custom tabs/modules
 
-Enabling the autoname setting is optional, but can display name of SolidJS's reactive state in overlay.
+Custom tabs can be added to the devtools by passing the parameter `modules` to the overlay function.
 
-To enable it you need to add it to plugins array in your `.vite.config.ts` file:
-
+#### With react
 ```ts
-// vite.config.ts
+import { attachDevtoolsOverlay } from '@devtools-overlay/overlay'
+import { render, hydrate } from 'react';
 
-import { defineConfig } from 'vite'
-import solid from 'vite-plugin-solid'
-import devtools from 'solid-devtools/vite'
-
-export default defineConfig({
-  plugins: [
-    devtools({
-      autoname: true,
-    }),
-    solid(),
-  ],
+attachDevtoolsOverlay({
+  modules: [{
+    title: 'tab name',
+    MainView: ({ openSidePanel }) => (
+      <>
+        <h2>
+          This is the main view
+        </h2>
+        <div>
+          <button onClick={() => openSidePanel(b => !b)}>
+                  Open side panel
+          </button>
+        </div>
+      </>
+    ),
+    SidePanel: () => (
+      <div>
+        <h3>This is the sidepanel</h3>
+      </div>
+    ),
+    render: (Component, el) => render(<Component/>, el),
+  }]
 })
 ```
 
-[**See vite plugin**](https://github.com/thetarnav/solid-devtools/blob/main/packages/main/src/vite/vite.ts)
+#### With solidjs
+```ts
+import { attachDevtoolsOverlay } from '@devtools-overlay/overlay'
+import { render } from "solid-js/web";
+
+attachDevtoolsOverlay({
+  modules: [{
+    title: 'tab name',
+    MainView: ({ openSidePanel }) => (
+      <>
+        <h2>
+          This is the main view
+        </h2>
+        <div>
+          <button onClick={() => openSidePanel(b => !b)}>
+                  Open side panel
+          </button>
+        </div>
+      </>
+    ),
+    SidePanel: () => (
+      <div>
+        <h3>This is the sidepanel</h3>
+      </div>
+    ),
+    render: (Component, el) => render(<Component/>, el),
+  }]
+})
+```
+
 
 ## Changelog
 

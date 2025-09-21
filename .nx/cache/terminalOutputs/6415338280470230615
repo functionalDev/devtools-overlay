@@ -1,0 +1,29 @@
+
+> @devtools/overlay@0.0.1 build C:\workspaces\devtools-overlay\packages\overlay
+> vite build
+
+[36mvite v6.3.5 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 636 modules transformed.
+rendering chunks...
+
+[vite:dts] Start generate declaration files...
+[96msrc/index.tsx[0m:[93m6[0m:[93m30[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/frontend/dist/index.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/frontend/src/index.tsx'.
+
+[7m6[0m import {Icon, Devtools} from '@devtools/frontend'
+[7m [0m [91m                             ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/index.tsx[0m:[93m11[0m:[93m29[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/frontend/dist/ModuleFactory/ModuleFactory.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/frontend/src/ModuleFactory/ModuleFactory.tsx'.
+
+[7m11[0m import type { Module } from '../../frontend/src/ModuleFactory/ModuleFactory'
+[7m  [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/index.tsx[0m:[93m12[0m:[93m32[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/frontend/dist/ModuleFactory/exampleModules.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/frontend/src/ModuleFactory/exampleModules.tsx'.
+
+[7m12[0m import { exampleModules } from '../../frontend/src/ModuleFactory/exampleModules'
+[7m  [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+computing gzip size...
+[vite:dts] Declaration files built in 798ms.
+
+[2mdist/[22m[36mindex.js  [39m[1m[33m680.69 kB[39m[22m[2m │ gzip: 164.10 kB[22m
+[2mdist/[22m[36mindex.umd.cjs  [39m[1m[2m494.45 kB[22m[1m[22m[2m │ gzip: 139.64 kB[22m
+[32m✓ built in 4.13s[39m

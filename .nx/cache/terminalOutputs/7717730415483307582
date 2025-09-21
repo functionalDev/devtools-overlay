@@ -1,0 +1,51 @@
+
+> @devtools/frontend@0.15.4 build C:\workspaces\devtools-overlay\packages\frontend
+> vite build
+
+[36mvite v6.3.5 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 194 modules transformed.
+rendering chunks...
+
+[vite:dts] Start generate declaration files...
+[96msrc/SidePanel.tsx[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/shared/dist/index.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/shared/src/index.ts'.
+
+[7m3[0m import * as theme from '@devtools/shared'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/structure.test.ts[0m:[93m1[0m:[93m24[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/debugger/dist/types.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/debugger/src/types.ts'.
+
+[7m1[0m import * as debug from '@devtools/debugger/types'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/structure.test.ts[0m:[93m3[0m:[93m28[0m - [91merror[0m[90m TS2307: [0mCannot find module './structure.tsx' or its corresponding type declarations.
+
+[7m3[0m import * as structure from './structure.tsx'
+[7m [0m [91m                           ~~~~~~~~~~~~~~~~~[0m
+[96msrc/ui/highlight.tsx[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/shared/dist/index.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/shared/src/index.ts'.
+
+[7m3[0m import * as theme from '@devtools/shared'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ui/styles.tsx[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/shared/dist/index.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/shared/src/index.ts'.
+
+[7m2[0m import * as theme from '@devtools/shared'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ui/toggle-button.tsx[0m:[93m4[0m:[93m24[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/shared/dist/index.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/shared/src/index.ts'.
+
+[7m4[0m import * as theme from '@devtools/shared'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ui/toggle-tabs.tsx[0m:[93m5[0m:[93m24[0m - [91merror[0m[90m TS6305: [0mOutput file 'C:/workspaces/devtools-overlay/packages/shared/dist/index.d.ts' has not been built from source file 'C:/workspaces/devtools-overlay/packages/shared/src/index.ts'.
+
+[7m5[0m import * as theme from '@devtools/shared'
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/virtual.test.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './structure.tsx' or its corresponding type declarations.
+
+[7m2[0m import {getVirtualVars} from './structure.tsx'
+[7m [0m [91m                             ~~~~~~~~~~~~~~~~~[0m
+
+computing gzip size...
+[2mdist/[22m[35mindex.css  [39m[1m[2m  9.89 kB[22m[1m[22m[2m │ gzip:  2.39 kB[22m
+[2mdist/[22m[36mindex.js   [39m[1m[2m138.21 kB[22m[1m[22m[2m │ gzip: 38.92 kB[22m
+[vite:dts] Declaration files built in 2984ms.
+
+[2mdist/[22m[35mindex.css      [39m[1m[2m  9.89 kB[22m[1m[22m[2m │ gzip:  2.39 kB[22m
+[2mdist/[22m[36mindex.umd.cjs  [39m[1m[2m104.11 kB[22m[1m[22m[2m │ gzip: 34.39 kB[22m
+[32m✓ built in 4.52s[39m

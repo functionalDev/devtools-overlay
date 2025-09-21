@@ -1,6 +1,6 @@
 {
     "name": "@devtools/logger",
-    "version": "0.9.11",
+    "version": "0.9.12",
     "description": "Solid debugging utilities for logging the state of the reactivity graph to the console.",
     "license": "MIT",
     "author": "Damian Tarnawski <gthetarnav@gmail.com>",

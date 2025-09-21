@@ -1,17 +1,17 @@
 {
     "name": "@devtools/overlay",
-    "version": "0.33.5",
-    "description": "On-page Devtools Overlay for SolidJS Applications.",
+    "version": "0.0.2",
+    "description": "On-page Devtools Overlay for applications.",
     "license": "MIT",
-    "author": "Damian Tarnawski <gthetarnav@gmail.com>",
+    "author": "Paul Stolz <functionalgamer2s@gmail.com>",
     "contributors": [],
-    "homepage": "https://github.com/thetarnav/solid-devtools/tree/main/packages/overlay#readme",
+    "homepage": "https://github.com/functionalDev/devtools-overlay/tree/main/packages/overlay#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/thetarnav/solid-devtools.git"
+        "url": "git+https://github.com/functionalDev/devtools-overlay.git"
     },
     "bugs": {
-        "url": "https://github.com/thetarnav/solid-devtools/issues"
+        "url": "https://github.com/functionalDev/devtools-overlay/issues"
     },
     "keywords": [
         "solid",
@@ -43,17 +43,13 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@devtools/debugger": "workspace:^",
         "@devtools/frontend": "workspace:^",
         "@devtools/shared": "workspace:^",
         "@nothing-but/utils": "~0.17.0",
         "@solid-primitives/cursor": "^0.1.1",
         "@solid-primitives/event-listener": "^2.4.1",
-        "@solid-primitives/media": "^2.3.1",
         "@solid-primitives/storage": "^4.3.3",
-        "@solid-primitives/utils": "^6.3.1",
         "solid-js": "^1.9.0",
-        "unocss": "^66.4.2",
         "vite-plugin-dts": "^4.5.4"
     }
 }
