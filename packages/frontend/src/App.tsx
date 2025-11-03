@@ -3,36 +3,36 @@ import * as ui from './ui/index.ts'
 import {SidePanel} from './SidePanel.tsx'
 import { MainView } from './MainView/MainView.tsx'
 import { getCurrentModule, isSidePanelOpen, openSidePanel } from './UIContext.tsx'
-import { StyledEngineProvider } from '@suid/material'
 import { makePersisted } from '@solid-primitives/storage'
+import { Tabbar } from './ui/Tabbar.tsx'
 
-const getMuiStyles = (): NodeListOf<HTMLStyleElement> => document.querySelectorAll('style[id][data-uses]');
-const updateCopyForMuiStyles = (styleEl: HTMLStyleElement) => {
-    let copyEl = document.getElementById(`${styleEl.id}-copy`);
-    if(!copyEl){
-        copyEl = document.createElement('style');
-        copyEl.id = `${styleEl.id}-copy`;
-        const styleContainer = document.getElementById("mui-style-copy-container");
-        styleContainer?.append(copyEl);
-    }
-    // since we adjust font-size to 10px on the page we need to change all "rem" to "em" otherwise everything is small
-    const normalizedStyles = styleEl.textContent?.replaceAll(/(\d)rem/g, '$1em')
-    copyEl.textContent = normalizedStyles || null;
-}
+// const getMuiStyles = (): NodeListOf<HTMLStyleElement> => document.querySelectorAll('style[id][data-uses]');
+// const updateCopyForMuiStyles = (styleEl: HTMLStyleElement) => {
+//     let copyEl = document.getElementById(`${styleEl.id}-copy`);
+//     if(!copyEl){
+//         copyEl = document.createElement('style');
+//         copyEl.id = `${styleEl.id}-copy`;
+//         const styleContainer = document.getElementById("mui-style-copy-container");
+//         styleContainer?.append(copyEl);
+//     }
+//     // since we adjust font-size to 10px on the page we need to change all "rem" to "em" otherwise everything is small
+//     const normalizedStyles = styleEl.textContent?.replaceAll(/(\d)rem/g, '$1em')
+//     copyEl.textContent = normalizedStyles || null;
+// }
 
-const copyAllMuiStyles = () => {
-    const callback: MutationCallback = () => {
-        getMuiStyles().forEach(updateCopyForMuiStyles)
-    };
-    const observer = new MutationObserver(callback);
+// const copyAllMuiStyles = () => {
+//     const callback: MutationCallback = () => {
+//         getMuiStyles().forEach(updateCopyForMuiStyles)
+//     };
+//     const observer = new MutationObserver(callback);
     
-    const config = { attributes: true, childList: true, subtree: true };
+//     const config = { attributes: true, childList: true, subtree: true };
     
-    const targetNode = document.head;
-    observer.observe(targetNode, config);
+//     const targetNode = document.head;
+//     observer.observe(targetNode, config);
     
-    getMuiStyles().forEach(updateCopyForMuiStyles)
-}
+//     getMuiStyles().forEach(updateCopyForMuiStyles)
+// }
 
 
 const [ colorScheme, setColorScheme ] = makePersisted(s.createSignal<'light' | 'dark' | undefined>(), {
@@ -59,32 +59,32 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
 
 
 export const App = () => {
-    copyAllMuiStyles();
 
     return (
         <div
-            class="h-full w-full overflow-hidden grid text-base font-sans bg-panel-bg text-text"
+            class={`h-full w-full overflow-hidden grid text-base font-sans  bg-panel-bg text-text ${getColorScheme() === 'dark' ? 'dark': ''}`}
             style={{
-                'grid-template-rows': `min-content 1fr`,
+                'grid-template-columns': `max-content 1fr`,
+                'grid-template-rows': 'min-content 1fr',
                 'color-scheme': getColorScheme(),
                 opacity: appOpacity(),
+                'font-size': '20px', // need to overwrite NEST root font-size of 10px
             }}
         >
             <ui.MountIcons />
-            <div style={{ display: 'none'}} id="mui-style-copy-container"></div>
+            {/* <div style={{ display: 'none'}} id="mui-style-copy-container"></div> */}
             <header
-                class="p-2 flex items-center gap-x-2 bg-panel-bg b-b text-text"
+                class="col-span-full p-2 flex items-center gap-x-2 bg-panel-2 text-text"
             >
-                <div class="flex items-center gap-x-2">
-                    <div>
-                        <h3 style={{ 'font-size': '1em', 'margin-bottom': '0' }}>NEST Developer Tools</h3>
-                    </div>
+                <div class="flex px-3 items-center gap-x-2">
+                        <h3 style={{ 'font-size': '0.8em', 'margin': '0', opacity: '0.6' }}>NEST Developer Tools</h3>
                 </div>
-                {/* <MainViewTabs /> */}
                 <Options />
+                {/* <MainViewTabs /> */}
             </header>
-            <div class="overflow-hidden">
-                <StyledEngineProvider>
+            
+            <Tabbar />
+            <div class="overflow-hidden p-2">
                     <ui.SplitterRoot>
                         <ui.SplitterPanel>
                             <MainView isSidePanelOpen={isSidePanelOpen} openSidePanel={openSidePanel} />
@@ -95,7 +95,6 @@ export const App = () => {
                             </ui.SplitterPanel>
                         </s.Show>
                     </ui.SplitterRoot>
-                </StyledEngineProvider>
             </div>
         </div>
     )
@@ -141,7 +140,7 @@ const Options: s.Component = () => {
                     style={{
                         color: 'var(--default-text-color)'
                     }}
-                class={`${ui.toggle_button} rounded-md ml-auto w-7 h-7`}>
+                class={`${ui.toggle_button} rounded-md ml-auto w-4 h-4`}>
                 <ui.icon.Options
                     class="w-4.5 h-4.5"
                 />

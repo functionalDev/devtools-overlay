@@ -1,4 +1,4 @@
-import {type Solid} from '@devtools/debugger/types'
+import {type Solid} from '@devtoolsoverlay/overlay/debugger/types'
 import {createComputed, createRoot, getOwner, runWithOwner} from 'solid-js'
 
 export function getFunctionSources(fn: () => unknown): Solid.Signal[] {

@@ -1,6 +1,6 @@
 {
     "name": "devtools-monorepo",
-    "version": "0.0.1",
+    "version": "0.0.5",
     "private": false,
     "description": "<p>Framework agnostic customizable Devtools</p>",
     "keywords": [
@@ -28,7 +28,7 @@
         "dev:sandbox": "pnpm -dir examples/sandbox run dev",
         "dev:sandbox:ext": "pnpm -dir examples/sandbox run dev:ext",
         "----------------------BUILD----------------------": "",
-        "build:packages": "nx build @devtools/shared && nx build @devtools/frontend && nx build @devtools/overlay",
+        "build:packages": "nx build @devtoolsoverlay/shared && nx build @devtoolsoverlay/frontend && nx build @devtoolsoverlay/overlay",
         "build:sandbox": "pnpm -dir examples/sandbox run build",
         "build:ext": "pnpm -dir extension run build",
         "build:types": "tsc -b packages/*",
@@ -70,5 +70,11 @@
         "node": ">=22",
         "pnpm": ">=10.6.0"
     },
-    "packageManager": "pnpm@10.12.1"
+    "packageManager": "pnpm@10.12.1",
+    "dependencies": {
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.3.1",
+        "unocss-preset-animations": "^1.2.1"
+    }
 }

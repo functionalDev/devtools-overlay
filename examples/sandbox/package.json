@@ -10,12 +10,10 @@
         "build": "vite build",
         "preview": "vite preview"
     },
-    "devDependencies": {
-        "devtools": "workspace:^"
-    },
     "dependencies": {
-        "@devtools/debugger": "workspace:^",
-        "@devtools/logger": "workspace:^",
-        "@devtools/overlay": "workspace:^"
+        "@devtoolsoverlay/debugger": "workspace:^",
+        "@devtoolsoverlay/logger": "workspace:^",
+        "@devtoolsoverlay/overlay": "workspace:^",
+        "vite-plugin-dts": "^4.5.4"
     }
 }

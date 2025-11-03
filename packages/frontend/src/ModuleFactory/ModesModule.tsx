@@ -1,7 +1,8 @@
 import type { ModuleFactory } from "./ModuleFactory.tsx";
 import { createEffect, createSignal, type Component } from "solid-js";
-import { Switch } from "@suid/material";
 import { render } from "solid-js/web";
+import { ModesIcon } from "../icons/ModesIcon.jsx";
+import { Switch } from "../ui/Switch.tsx";
 
 export enum StorageType {
     LOCAL_STORAGE,
@@ -24,13 +25,13 @@ const StorageButton: Component<{
     });
     return (
         <>
-            <label>{props.label}</label>
-            <Switch  
+            <Switch class="inline-flex items-center gap-2 cursor-pointer select-none"
                 checked={storageValue() === 'true'}
                 onChange={() => {
                     setStorageValue(s => s === 'true'? 'false': 'true')
-                }}
-            />
+                }}>
+                    {props.label}
+            </Switch>
         </>
     )
 }
@@ -61,13 +62,12 @@ const QueryParamButton: Component<{
     return (
         
         <>
-            <label>{props.label}</label>
             <Switch  
                 checked={storageValue() === props.value}
                 onChange={() => {
                     setStorageValue((s) => s === props.value ? 'null': props.value)
                 }}
-            />
+            >{props.label}</Switch>
         </>
     )
 }
@@ -76,17 +76,18 @@ export const ModesModule: ModuleFactory = () => ({
         MainView: () => (
             <div style={{
                 display: 'grid',
-                "grid-template-columns": 'max-content 1fr',
+                "grid-template-columns": 'max-content',
                 "align-items": 'center',
-                gap: '5px',
+                gap: '15px',
                 padding: '5px',
             }}>
                 <StorageButton storageType={StorageType.SESSION_STORAGE} storageKey="next-features" label="next features"/>
                 <QueryParamButton queryParam='mobileApp' value="true" label="mobile mode"/>
-                <QueryParamButton queryParam='pagestats' value="true" label="page stats"/>
+                <QueryParamButton queryParam='stats' value="1" label="page stats"/>
                 <StorageButton storageType={StorageType.LOCAL_STORAGE} storageKey="forced-dark-theme" label="dark mode"/>
             </div>
         ),
+        Icon: <ModesIcon/>,
         title: 'Modes',
         render,
 })

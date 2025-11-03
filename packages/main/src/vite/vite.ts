@@ -1,7 +1,7 @@
 import * as path from 'node:path'
 import * as vite from 'vite'
 import {type PluginItem, transformAsync} from '@babel/core'
-import * as debug from '@devtools/debugger/types'
+import * as debug from '@devtoolsoverlay/debugger/types'
 // @ts-expect-error
 import plugin_ts_syntax from '@babel/plugin-syntax-typescript'
 import * as babel from '../babel.ts'

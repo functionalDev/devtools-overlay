@@ -1,11 +1,11 @@
 {
   "nodes": {
-    "@devtools/debugger": {
-      "name": "@devtools/debugger",
+    "@devtoolsoverlay/debugger": {
+      "name": "@devtoolsoverlay/debugger",
       "type": "lib",
       "data": {
         "root": "packages/debugger",
-        "name": "@devtools/debugger",
+        "name": "@devtoolsoverlay/debugger",
         "tags": [
           "npm:public",
           "npm:solid",
@@ -17,24 +17,24 @@
           "targetGroups": {},
           "description": "Debugger of the Solid's reactivity graph — a cornerstone of all solid-devtools.",
           "js": {
-            "packageName": "@devtools/debugger",
+            "packageName": "@devtoolsoverlay/debugger",
             "packageExports": {
               ".": {
-                "@devtools/source": "./src/index.ts",
+                "@devtoolsoverlay/source": "./src/index.ts",
                 "import": {
                   "types": "./dist/index.d.ts",
                   "default": "./dist/index.js"
                 }
               },
               "./bundled": {
-                "@devtools/source": "./src/index.ts",
+                "@devtoolsoverlay/source": "./src/index.ts",
                 "import": {
                   "types": "./dist/index.d.ts",
                   "default": "./dist/bundled.js"
                 }
               },
               "./*": {
-                "@devtools/source": "./src/*.ts",
+                "@devtoolsoverlay/source": "./src/*.ts",
                 "import": {
                   "types": "./dist/*.d.ts",
                   "default": "./dist/*.js"
@@ -49,12 +49,12 @@
         "implicitDependencies": []
       }
     },
-    "@devtools/frontend": {
-      "name": "@devtools/frontend",
+    "@devtoolsoverlay/frontend": {
+      "name": "@devtoolsoverlay/frontend",
       "type": "lib",
       "data": {
         "root": "packages/frontend",
-        "name": "@devtools/frontend",
+        "name": "@devtoolsoverlay/frontend",
         "tags": [
           "npm:public",
           "npm:solid",
@@ -69,10 +69,10 @@
             ]
           },
           "js": {
-            "packageName": "@devtools/frontend",
+            "packageName": "@devtoolsoverlay/frontend",
             "packageExports": {
               ".": {
-                "@devtools/source": "./src/index.tsx",
+                "@devtoolsoverlay/source": "./src/index.tsx",
                 "import": {
                   "types": "./dist/index.d.ts",
                   "default": "./dist/index.js"
@@ -125,12 +125,12 @@
         "implicitDependencies": []
       }
     },
-    "@devtools/overlay": {
-      "name": "@devtools/overlay",
+    "@devtoolsoverlay/overlay": {
+      "name": "@devtoolsoverlay/overlay",
       "type": "lib",
       "data": {
         "root": "packages/overlay",
-        "name": "@devtools/overlay",
+        "name": "@devtoolsoverlay/overlay",
         "tags": [
           "npm:public",
           "npm:solid",
@@ -144,10 +144,10 @@
           },
           "description": "On-page Devtools Overlay for applications.",
           "js": {
-            "packageName": "@devtools/overlay",
+            "packageName": "@devtoolsoverlay/overlay",
             "packageExports": {
               ".": {
-                "@devtools/source": "./src/index.tsx",
+                "@devtoolsoverlay/source": "./src/index.tsx",
                 "import": {
                   "types": "./dist/index.d.ts",
                   "default": "./dist/index.js"
@@ -253,12 +253,12 @@
         "implicitDependencies": []
       }
     },
-    "@devtools/logger": {
-      "name": "@devtools/logger",
+    "@devtoolsoverlay/logger": {
+      "name": "@devtoolsoverlay/logger",
       "type": "lib",
       "data": {
         "root": "packages/logger",
-        "name": "@devtools/logger",
+        "name": "@devtoolsoverlay/logger",
         "tags": [
           "npm:public",
           "npm:solid",
@@ -271,9 +271,9 @@
           "targetGroups": {},
           "description": "Solid debugging utilities for logging the state of the reactivity graph to the console.",
           "js": {
-            "packageName": "@devtools/logger",
+            "packageName": "@devtoolsoverlay/logger",
             "packageExports": {
-              "@devtools/source": "./src/index.ts",
+              "@devtoolsoverlay/source": "./src/index.ts",
               "browser": {
                 "development": {
                   "import": "./dist/index.js",
@@ -297,12 +297,12 @@
         "implicitDependencies": []
       }
     },
-    "@devtools/shared": {
-      "name": "@devtools/shared",
+    "@devtoolsoverlay/shared": {
+      "name": "@devtoolsoverlay/shared",
       "type": "lib",
       "data": {
         "root": "packages/shared",
-        "name": "@devtools/shared",
+        "name": "@devtoolsoverlay/shared",
         "tags": [
           "npm:public",
           "npm:solid",
@@ -315,18 +315,18 @@
             ]
           },
           "js": {
-            "packageName": "@devtools/shared",
+            "packageName": "@devtoolsoverlay/shared",
             "packageExports": {
               ".": {
                 "import": {
-                  "@devtools/source": "./src/index.ts",
+                  "@devtoolsoverlay/source": "./src/index.ts",
                   "types": "./dist/index.d.ts",
                   "default": "./dist/index.js"
                 }
               },
               "./*": {
                 "import": {
-                  "@devtools/source": "./src/*.ts",
+                  "@devtoolsoverlay/source": "./src/*.ts",
                   "types": "./dist/*.d.ts",
                   "default": "./dist/*.js"
                 }
@@ -353,12 +353,12 @@
         "implicitDependencies": []
       }
     },
-    "devtools": {
-      "name": "devtools",
+    "devtools-overlay": {
+      "name": "devtools-overlay",
       "type": "lib",
       "data": {
         "root": "packages/main",
-        "name": "devtools",
+        "name": "devtools-overlay",
         "tags": [
           "npm:public",
           "npm:solid",
@@ -371,10 +371,10 @@
           "targetGroups": {},
           "description": "Runtime library for hooking up application with Devtools Extension",
           "js": {
-            "packageName": "devtools",
+            "packageName": "devtools-overlay",
             "packageExports": {
               ".": {
-                "@devtools/source": "./src/index.ts",
+                "@devtoolsoverlay/source": "./src/index.ts",
                 "browser": {
                   "development": {
                     "import": {
@@ -393,7 +393,7 @@
                 }
               },
               "./setup": {
-                "@devtools/source": "./src/setup.ts",
+                "@devtoolsoverlay/source": "./src/setup.ts",
                 "browser": {
                   "development": {
                     "import": {
@@ -412,14 +412,14 @@
                 }
               },
               "./vite": {
-                "@devtools/source": "./src/vite.ts",
+                "@devtoolsoverlay/source": "./src/vite.ts",
                 "import": {
                   "types": "./dist/vite.d.ts",
                   "default": "./dist/vite.js"
                 }
               },
               "./babel": {
-                "@devtools/source": "./src/babel.ts",
+                "@devtoolsoverlay/source": "./src/babel.ts",
                 "import": {
                   "types": "./dist/babel.d.ts",
                   "default": "./dist/babel.js"
@@ -435,12 +435,12 @@
         "implicitDependencies": []
       }
     },
-    "@devtools/extension": {
-      "name": "@devtools/extension",
+    "@devtoolsoverlay/extension": {
+      "name": "@devtoolsoverlay/extension",
       "type": "app",
       "data": {
         "root": "extension",
-        "name": "@devtools/extension",
+        "name": "@devtoolsoverlay/extension",
         "tags": [
           "npm:private"
         ],
@@ -457,7 +457,7 @@
             ]
           },
           "js": {
-            "packageName": "@devtools/extension",
+            "packageName": "@devtoolsoverlay/extension",
             "isInPackageManagerWorkspaces": true
           }
         },
@@ -1083,6 +1083,15 @@
         "hash": "sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q=="
       }
     },
+    "npm:@corvu/utils": {
+      "type": "npm",
+      "name": "npm:@corvu/utils",
+      "data": {
+        "version": "0.4.2",
+        "packageName": "@corvu/utils",
+        "hash": "sha512-Ox2kYyxy7NoXdKWdHeDEjZxClwzO4SKM8plAaVwmAJPxHMqA0rLOoAsa+hBDwRLpctf+ZRnAd/ykguuJidnaTA=="
+      }
+    },
     "npm:@crxjs/vite-plugin": {
       "type": "npm",
       "name": "npm:@crxjs/vite-plugin",
@@ -1488,6 +1497,33 @@
         "hash": "sha512-4SaFZCNfJqvk/kenHpI8xvN42DMaoycy4PzKc5otHxRswww1kAt82OlBuwRVLofCACCTZEcla2Ydxv8scMXaTg=="
       }
     },
+    "npm:@floating-ui/core": {
+      "type": "npm",
+      "name": "npm:@floating-ui/core",
+      "data": {
+        "version": "1.7.3",
+        "packageName": "@floating-ui/core",
+        "hash": "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="
+      }
+    },
+    "npm:@floating-ui/dom": {
+      "type": "npm",
+      "name": "npm:@floating-ui/dom",
+      "data": {
+        "version": "1.7.4",
+        "packageName": "@floating-ui/dom",
+        "hash": "sha512-OOchDgh4F2CchOX94cRVqhvy7b3AFb+/rQXyswmzmGakRfkMgoWVjfnLWkRirfLEfuD4ysVW16eXzwt3jHIzKA=="
+      }
+    },
+    "npm:@floating-ui/utils": {
+      "type": "npm",
+      "name": "npm:@floating-ui/utils",
+      "data": {
+        "version": "0.2.10",
+        "packageName": "@floating-ui/utils",
+        "hash": "sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ=="
+      }
+    },
     "npm:@humanfs/core": {
       "type": "npm",
       "name": "npm:@humanfs/core",
@@ -1549,6 +1585,24 @@
         "version": "3.0.0",
         "packageName": "@iconify/utils",
         "hash": "sha512-Bjf0HTRAB59thKK9QFvyLEXE9S793IqxqJEhNQEboh+IjOXj0nDtOIFh63oz+Y6X/ye4UWpxne5sVQ2W250iSA=="
+      }
+    },
+    "npm:@internationalized/date": {
+      "type": "npm",
+      "name": "npm:@internationalized/date",
+      "data": {
+        "version": "3.10.0",
+        "packageName": "@internationalized/date",
+        "hash": "sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw=="
+      }
+    },
+    "npm:@internationalized/number": {
+      "type": "npm",
+      "name": "npm:@internationalized/number",
+      "data": {
+        "version": "3.6.5",
+        "packageName": "@internationalized/number",
+        "hash": "sha512-6hY4Kl4HPBvtfS62asS/R22JzNNy8vi/Ssev7x6EobfCp+9QIB2hKvI2EtbdJ0VSQacxVNtqhE/NmF/NZ0gm6g=="
       }
     },
     "npm:@isaacs/balanced-match": {
@@ -1657,6 +1711,24 @@
         "version": "0.3.29",
         "packageName": "@jridgewell/trace-mapping",
         "hash": "sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ=="
+      }
+    },
+    "npm:@kobalte/core": {
+      "type": "npm",
+      "name": "npm:@kobalte/core",
+      "data": {
+        "version": "0.13.11",
+        "packageName": "@kobalte/core",
+        "hash": "sha512-hK7TYpdib/XDb/r/4XDBFaO9O+3ZHz4ZWryV4/3BfES+tSQVgg2IJupDnztKXB0BqbSRy/aWlHKw1SPtNPYCFQ=="
+      }
+    },
+    "npm:@kobalte/utils": {
+      "type": "npm",
+      "name": "npm:@kobalte/utils",
+      "data": {
+        "version": "0.9.1",
+        "packageName": "@kobalte/utils",
+        "hash": "sha512-eeU60A3kprIiBDAfv9gUJX1tXGLuZiKMajUfSQURAF2pk4ZoMYiqIzmrMBvzcxP39xnYttgTyQEVLwiTZnrV4w=="
       }
     },
     "npm:@manypkg/find-root": {
@@ -1864,15 +1936,6 @@
         "version": "1.0.0-next.29",
         "packageName": "@polka/url",
         "hash": "sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww=="
-      }
-    },
-    "npm:@popperjs/core": {
-      "type": "npm",
-      "name": "npm:@popperjs/core",
-      "data": {
-        "version": "2.11.8",
-        "packageName": "@popperjs/core",
-        "hash": "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A=="
       }
     },
     "npm:@quansync/fs": {
@@ -2208,6 +2271,15 @@
         "hash": "sha512-lAgQ1Jou8nxywifWsWjDTla9MI7Pfr46JRTC40K81fqz8dw4E8t/4gYuIwqP1EHVG0mItfIb3XqDw0wEQh+QYA=="
       }
     },
+    "npm:@solid-primitives/map": {
+      "type": "npm",
+      "name": "npm:@solid-primitives/map",
+      "data": {
+        "version": "0.4.13",
+        "packageName": "@solid-primitives/map",
+        "hash": "sha512-B1zyFbsiTQvqPr+cuPCXO72sRuczG9Swncqk5P74NCGw1VE8qa/Ry9GlfI1e/VdeQYHjan+XkbE3rO2GW/qKew=="
+      }
+    },
     "npm:@solid-primitives/media": {
       "type": "npm",
       "name": "npm:@solid-primitives/media",
@@ -2325,6 +2397,15 @@
         "hash": "sha512-M7xrZ/rIq2qEas3fZHLoKQjvseRgNH5IGOl7ZkDxlSJDa5RxAcnzdNPmJiMZH/9+PWrViCrnO0RxLs8w/YIOpg=="
       }
     },
+    "npm:@solid-primitives/trigger": {
+      "type": "npm",
+      "name": "npm:@solid-primitives/trigger",
+      "data": {
+        "version": "1.2.2",
+        "packageName": "@solid-primitives/trigger",
+        "hash": "sha512-IWoptVc0SWYgmpBPpCMehS5b07+tpFcvw15tOQ3QbXedSYn6KP8zCjPkHNzMxcOvOicTneleeZDP7lqmz+PQ6g=="
+      }
+    },
     "npm:@solid-primitives/utils@6.3.1": {
       "type": "npm",
       "name": "npm:@solid-primitives/utils@6.3.1",
@@ -2343,85 +2424,13 @@
         "hash": "sha512-hZ/M/qr25QOCcwDPOHtGjxTD8w2mNyVAYvcfgwzBHq2RwNqHNdDNsMZYap20+ruRwW4A3Cdkczyoz0TSxLCAPQ=="
       }
     },
-    "npm:@suid/base": {
+    "npm:@swc/helpers": {
       "type": "npm",
-      "name": "npm:@suid/base",
+      "name": "npm:@swc/helpers",
       "data": {
-        "version": "0.11.0",
-        "packageName": "@suid/base",
-        "hash": "sha512-jNe+LlXuxfkSZo8/MP9koqYYWswucDWSCwc7ViqUhQ0Y/V7sP2RiQ/Bnms+ePSMBZsk5k1b9fAjvj7DtNbbHXw=="
-      }
-    },
-    "npm:@suid/css": {
-      "type": "npm",
-      "name": "npm:@suid/css",
-      "data": {
-        "version": "0.4.1",
-        "packageName": "@suid/css",
-        "hash": "sha512-Hsi4O3dBOm7rrlqKoWfNoTeRFAXm/7TPaeEmyxNx+wFaT3eROjMVdhadAIiagFT+PsHrq/6fDauUI5TkL+5Zvg=="
-      }
-    },
-    "npm:@suid/icons-material": {
-      "type": "npm",
-      "name": "npm:@suid/icons-material",
-      "data": {
-        "version": "0.9.0",
-        "packageName": "@suid/icons-material",
-        "hash": "sha512-2idgaT/JARd12dwDfocZBQizaiZVgR0ujRsVc61OlAuPZbeH+3TrSxUJkE3Z7+TPftw9+6p0A24GhJjJLvi6RQ=="
-      }
-    },
-    "npm:@suid/material": {
-      "type": "npm",
-      "name": "npm:@suid/material",
-      "data": {
-        "version": "0.19.0",
-        "packageName": "@suid/material",
-        "hash": "sha512-vfudxYpHdur5CWTjd3eBb7q1b6A9X/pDWTEf2twc0gXVTcErS9VtY/VPBLa65AzO2SPJsdjAE+BCdVZiXASBbA=="
-      }
-    },
-    "npm:@suid/styled-engine": {
-      "type": "npm",
-      "name": "npm:@suid/styled-engine",
-      "data": {
-        "version": "0.9.0",
-        "packageName": "@suid/styled-engine",
-        "hash": "sha512-IfNHjQ3Im63mFIjFl/doiwdn5qbwgcwi/vUXnX7dmIUC/Cw1f3LPhzVT9V8Z3eqyvvFToy53O+BsuLy2e/WmDw=="
-      }
-    },
-    "npm:@suid/system": {
-      "type": "npm",
-      "name": "npm:@suid/system",
-      "data": {
-        "version": "0.14.0",
-        "packageName": "@suid/system",
-        "hash": "sha512-aRVilPP53hHkqyAyQp2pasT/u8aQCcELwU4kFDnt3b+rj4fsPQRlhMumlX5mZ5aijIboH1CngU6TDG6Z9Mr3UA=="
-      }
-    },
-    "npm:@suid/types": {
-      "type": "npm",
-      "name": "npm:@suid/types",
-      "data": {
-        "version": "0.8.0",
-        "packageName": "@suid/types",
-        "hash": "sha512-/Z2abkbypMjF6ygSpnjqnWohcmPqvgw8Xpx1wPPHeh+LajBP2imNT6uEa5dBqNEkJY8O3wEUCVqErAad/rmn5Q=="
-      }
-    },
-    "npm:@suid/utils": {
-      "type": "npm",
-      "name": "npm:@suid/utils",
-      "data": {
-        "version": "0.11.0",
-        "packageName": "@suid/utils",
-        "hash": "sha512-dk+6YJkex9kcU2qQHCOk8J0/zkOKKbng0SsjC0LBLyBrf2OC3OtDQq7o22pH3m/8CU/0M6uyM7tnyzZA4eWF3Q=="
-      }
-    },
-    "npm:@suid/vite-plugin": {
-      "type": "npm",
-      "name": "npm:@suid/vite-plugin",
-      "data": {
-        "version": "0.4.1",
-        "packageName": "@suid/vite-plugin",
-        "hash": "sha512-UqdrbkzyfqnSIKu4K6pGeYKQmxPDE4axwSwYwpeaf4aBnEaH31WmS5PpSVsZ1P8HieYyltx1HsKSFQgWfEEFIA=="
+        "version": "0.5.17",
+        "packageName": "@swc/helpers",
+        "hash": "sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A=="
       }
     },
     "npm:@total-typescript/ts-reset": {
@@ -3529,6 +3538,15 @@
         "version": "3.9.0",
         "packageName": "ci-info",
         "hash": "sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ=="
+      }
+    },
+    "npm:class-variance-authority": {
+      "type": "npm",
+      "name": "npm:class-variance-authority",
+      "data": {
+        "version": "0.7.1",
+        "packageName": "class-variance-authority",
+        "hash": "sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg=="
       }
     },
     "npm:cli-cursor": {
@@ -6150,6 +6168,24 @@
         "hash": "sha512-/saTKi8iWEM233n5OSi1YHCCuh66ZIQ7aK2hsToPe4tqGm7qAejU1SwNuTPivbWAYq7SjuHVVYxxuZQNRbICiw=="
       }
     },
+    "npm:solid-presence": {
+      "type": "npm",
+      "name": "npm:solid-presence",
+      "data": {
+        "version": "0.1.8",
+        "packageName": "solid-presence",
+        "hash": "sha512-pWGtXUFWYYUZNbg5YpG5vkQJyOtzn2KXhxYaMx/4I+lylTLYkITOLevaCwMRN+liCVk0pqB6EayLWojNqBFECA=="
+      }
+    },
+    "npm:solid-prevent-scroll": {
+      "type": "npm",
+      "name": "npm:solid-prevent-scroll",
+      "data": {
+        "version": "0.1.10",
+        "packageName": "solid-prevent-scroll",
+        "hash": "sha512-KplGPX2GHiWJLZ6AXYRql4M127PdYzfwvLJJXMkO+CMb8Np4VxqDAg5S8jLdwlEuBis/ia9DKw2M8dFx5u8Mhw=="
+      }
+    },
     "npm:solid-refresh": {
       "type": "npm",
       "name": "npm:solid-refresh",
@@ -6310,6 +6346,15 @@
         "version": "3.2.4",
         "packageName": "symbol-tree",
         "hash": "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="
+      }
+    },
+    "npm:tailwind-merge": {
+      "type": "npm",
+      "name": "npm:tailwind-merge",
+      "data": {
+        "version": "3.3.1",
+        "packageName": "tailwind-merge",
+        "hash": "sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g=="
       }
     },
     "npm:tar-stream": {
@@ -6580,6 +6625,24 @@
         "version": "2.0.1",
         "packageName": "universalify",
         "hash": "sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw=="
+      }
+    },
+    "npm:unocss-preset-animations": {
+      "type": "npm",
+      "name": "npm:unocss-preset-animations",
+      "data": {
+        "version": "1.2.1",
+        "packageName": "unocss-preset-animations",
+        "hash": "sha512-HFdYPSLZ8SaAgTLfTNoiV5+1xAdcttOtFSPsZyHbA0qSis7Sansf90pz7a2yhs9Yq6Nos9P4onDttfdO8dwKPA=="
+      }
+    },
+    "npm:unocss-preset-primitives": {
+      "type": "npm",
+      "name": "npm:unocss-preset-primitives",
+      "data": {
+        "version": "0.0.2-beta.2",
+        "packageName": "unocss-preset-primitives",
+        "hash": "sha512-wFgm6lJX1r2chTgEeSMl8E/AJKSsOZaRI6AYU/7IItKgVplMfy7h/T5EMCJlw7RSLrWc4vtbkHPmIK8OzokzWw=="
       }
     },
     "npm:unocss": {
@@ -6899,449 +6962,439 @@
     }
   },
   "dependencies": {
-    "@devtools/debugger": [
+    "@devtoolsoverlay/debugger": [
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:solid-js",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@nothing-but/utils",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
-        "target": "@devtools/shared",
+        "source": "@devtoolsoverlay/debugger",
+        "target": "@devtoolsoverlay/shared",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/bounds",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/event-listener",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/keyboard",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/rootless",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/scheduled",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/static-store",
         "type": "static"
       },
       {
-        "source": "@devtools/debugger",
+        "source": "@devtoolsoverlay/debugger",
         "target": "npm:@solid-primitives/utils@6.3.1",
         "type": "static"
       }
     ],
-    "@devtools/frontend": [
+    "@devtoolsoverlay/frontend": [
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:vite",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@andypf/json-viewer",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
-        "target": "@devtools/shared",
+        "source": "@devtoolsoverlay/frontend",
+        "target": "@devtoolsoverlay/shared",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
+        "target": "npm:@kobalte/core",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@nothing-but/utils",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/context",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/cursor",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/date",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/event-bus",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/event-listener",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/jsx-tokenizer",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/keyboard",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/keyed",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/media",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/mouse",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/props",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/range",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/resize-observer",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/scheduled",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/static-store",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/storage",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/styles",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/timer",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:@solid-primitives/utils@6.3.1",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
-        "target": "npm:@suid/icons-material",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/frontend",
-        "target": "npm:@suid/material",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/frontend",
-        "target": "npm:@suid/vite-plugin",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:clsx",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:solid-js",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:unocss",
         "type": "static"
       },
       {
-        "source": "@devtools/frontend",
+        "source": "@devtoolsoverlay/frontend",
+        "target": "npm:unocss-preset-primitives",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/frontend",
         "target": "npm:vite-plugin-dts",
         "type": "static"
       }
     ],
-    "@devtools/overlay": [
+    "@devtoolsoverlay/overlay": [
       {
-        "source": "@devtools/overlay",
-        "target": "@devtools/frontend",
+        "source": "@devtoolsoverlay/overlay",
+        "target": "npm:vite-plugin-dts",
         "type": "static"
       },
       {
-        "source": "@devtools/overlay",
-        "target": "@devtools/shared",
+        "source": "@devtoolsoverlay/overlay",
+        "target": "@devtoolsoverlay/frontend",
         "type": "static"
       },
       {
-        "source": "@devtools/overlay",
+        "source": "@devtoolsoverlay/overlay",
+        "target": "@devtoolsoverlay/shared",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/overlay",
         "target": "npm:@nothing-but/utils",
         "type": "static"
       },
       {
-        "source": "@devtools/overlay",
+        "source": "@devtoolsoverlay/overlay",
         "target": "npm:@solid-primitives/cursor",
         "type": "static"
       },
       {
-        "source": "@devtools/overlay",
+        "source": "@devtoolsoverlay/overlay",
         "target": "npm:@solid-primitives/event-listener",
         "type": "static"
       },
       {
-        "source": "@devtools/overlay",
+        "source": "@devtoolsoverlay/overlay",
         "target": "npm:@solid-primitives/storage",
         "type": "static"
       },
       {
-        "source": "@devtools/overlay",
+        "source": "@devtoolsoverlay/overlay",
         "target": "npm:solid-js",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/overlay",
-        "target": "npm:vite-plugin-dts",
         "type": "static"
       }
     ],
     "devtools-example-sandbox": [
       {
         "source": "devtools-example-sandbox",
-        "target": "devtools",
+        "target": "@devtoolsoverlay/debugger",
         "type": "static"
       },
       {
         "source": "devtools-example-sandbox",
-        "target": "@devtools/debugger",
+        "target": "@devtoolsoverlay/logger",
         "type": "static"
       },
       {
         "source": "devtools-example-sandbox",
-        "target": "@devtools/logger",
+        "target": "@devtoolsoverlay/overlay",
         "type": "static"
       },
       {
         "source": "devtools-example-sandbox",
-        "target": "@devtools/overlay",
-        "type": "static"
-      }
-    ],
-    "@devtools/logger": [
-      {
-        "source": "@devtools/logger",
-        "target": "npm:solid-js",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/logger",
-        "target": "npm:@nothing-but/utils",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/logger",
-        "target": "@devtools/debugger",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/logger",
-        "target": "@devtools/shared",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/logger",
-        "target": "npm:@solid-primitives/utils@6.3.1",
-        "type": "static"
-      }
-    ],
-    "@devtools/shared": [
-      {
-        "source": "@devtools/shared",
-        "target": "npm:solid-js",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@nothing-but/utils",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/event-listener",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/media",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/refs",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/rootless",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/scheduled",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/static-store",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/styles",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
-        "target": "npm:@solid-primitives/utils@6.3.1",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/shared",
         "target": "npm:vite-plugin-dts",
         "type": "static"
       }
     ],
-    "devtools": [
+    "@devtoolsoverlay/logger": [
       {
-        "source": "devtools",
+        "source": "@devtoolsoverlay/logger",
         "target": "npm:solid-js",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "@devtoolsoverlay/logger",
+        "target": "npm:@nothing-but/utils",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/logger",
+        "target": "@devtoolsoverlay/debugger",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/logger",
+        "target": "@devtoolsoverlay/shared",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/logger",
+        "target": "npm:@solid-primitives/utils@6.3.1",
+        "type": "static"
+      }
+    ],
+    "@devtoolsoverlay/shared": [
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:solid-js",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@nothing-but/utils",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/event-listener",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/media",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/refs",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/rootless",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/scheduled",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/static-store",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/styles",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:@solid-primitives/utils@6.3.1",
+        "type": "static"
+      },
+      {
+        "source": "@devtoolsoverlay/shared",
+        "target": "npm:vite-plugin-dts",
+        "type": "static"
+      }
+    ],
+    "devtools-overlay": [
+      {
+        "source": "devtools-overlay",
+        "target": "npm:solid-js",
+        "type": "static"
+      },
+      {
+        "source": "devtools-overlay",
         "target": "npm:vite",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@babel/core",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@babel/generator@7.27.5",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@babel/parser@7.27.5",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@babel/plugin-syntax-jsx",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@types/babel__core",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@types/babel__generator",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@babel/plugin-syntax-typescript",
         "type": "static"
       },
       {
-        "source": "devtools",
+        "source": "devtools-overlay",
         "target": "npm:@babel/types@7.27.6",
         "type": "static"
       },
       {
-        "source": "devtools",
-        "target": "@devtools/debugger",
+        "source": "devtools-overlay",
+        "target": "@devtoolsoverlay/debugger",
         "type": "static"
       },
       {
-        "source": "devtools",
-        "target": "@devtools/shared",
+        "source": "devtools-overlay",
+        "target": "@devtoolsoverlay/shared",
         "type": "static"
       }
     ],
-    "@devtools/extension": [
+    "@devtoolsoverlay/extension": [
       {
-        "source": "@devtools/extension",
+        "source": "@devtoolsoverlay/extension",
         "target": "npm:@crxjs/vite-plugin",
         "type": "static"
       },
       {
-        "source": "@devtools/extension",
+        "source": "@devtoolsoverlay/extension",
         "target": "npm:@types/chrome",
         "type": "static"
       },
       {
-        "source": "@devtools/extension",
-        "target": "@devtools/debugger",
+        "source": "@devtoolsoverlay/extension",
+        "target": "@devtoolsoverlay/debugger",
         "type": "static"
       },
       {
-        "source": "@devtools/extension",
-        "target": "@devtools/frontend",
+        "source": "@devtoolsoverlay/extension",
+        "target": "@devtoolsoverlay/frontend",
         "type": "static"
       },
       {
-        "source": "@devtools/extension",
-        "target": "@devtools/shared",
-        "type": "static"
-      },
-      {
-        "source": "@devtools/extension",
-        "target": "devtools",
+        "source": "@devtoolsoverlay/extension",
+        "target": "@devtoolsoverlay/shared",
         "type": "static"
       }
     ],
@@ -8464,6 +8517,18 @@
         "type": "static"
       }
     ],
+    "npm:@corvu/utils": [
+      {
+        "source": "npm:@corvu/utils",
+        "target": "npm:@floating-ui/dom",
+        "type": "static"
+      },
+      {
+        "source": "npm:@corvu/utils",
+        "target": "npm:solid-js",
+        "type": "static"
+      }
+    ],
     "npm:@crxjs/vite-plugin": [
       {
         "source": "npm:@crxjs/vite-plugin",
@@ -8732,6 +8797,25 @@
         "type": "static"
       }
     ],
+    "npm:@floating-ui/core": [
+      {
+        "source": "npm:@floating-ui/core",
+        "target": "npm:@floating-ui/utils",
+        "type": "static"
+      }
+    ],
+    "npm:@floating-ui/dom": [
+      {
+        "source": "npm:@floating-ui/dom",
+        "target": "npm:@floating-ui/core",
+        "type": "static"
+      },
+      {
+        "source": "npm:@floating-ui/dom",
+        "target": "npm:@floating-ui/utils",
+        "type": "static"
+      }
+    ],
     "npm:@humanfs/node": [
       {
         "source": "npm:@humanfs/node",
@@ -8783,6 +8867,20 @@
       {
         "source": "npm:@iconify/utils",
         "target": "npm:mlly",
+        "type": "static"
+      }
+    ],
+    "npm:@internationalized/date": [
+      {
+        "source": "npm:@internationalized/date",
+        "target": "npm:@swc/helpers",
+        "type": "static"
+      }
+    ],
+    "npm:@internationalized/number": [
+      {
+        "source": "npm:@internationalized/number",
+        "target": "npm:@swc/helpers",
         "type": "static"
       }
     ],
@@ -8850,6 +8948,95 @@
       {
         "source": "npm:@jridgewell/trace-mapping@0.3.29",
         "target": "npm:@jridgewell/sourcemap-codec",
+        "type": "static"
+      }
+    ],
+    "npm:@kobalte/core": [
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:@floating-ui/dom",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:@internationalized/date",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:@internationalized/number",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:@kobalte/utils",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:@solid-primitives/props",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:@solid-primitives/resize-observer",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:solid-js",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:solid-presence",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/core",
+        "target": "npm:solid-prevent-scroll",
+        "type": "static"
+      }
+    ],
+    "npm:@kobalte/utils": [
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/event-listener",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/keyed",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/map",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/media",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/props",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/refs",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:@solid-primitives/utils@6.3.2",
+        "type": "static"
+      },
+      {
+        "source": "npm:@kobalte/utils",
+        "target": "npm:solid-js",
         "type": "static"
       }
     ],
@@ -9343,6 +9530,18 @@
         "type": "static"
       }
     ],
+    "npm:@solid-primitives/map": [
+      {
+        "source": "npm:@solid-primitives/map",
+        "target": "npm:@solid-primitives/trigger",
+        "type": "static"
+      },
+      {
+        "source": "npm:@solid-primitives/map",
+        "target": "npm:solid-js",
+        "type": "static"
+      }
+    ],
     "npm:@solid-primitives/media": [
       {
         "source": "npm:@solid-primitives/media",
@@ -9544,6 +9743,18 @@
         "type": "static"
       }
     ],
+    "npm:@solid-primitives/trigger": [
+      {
+        "source": "npm:@solid-primitives/trigger",
+        "target": "npm:@solid-primitives/utils@6.3.2",
+        "type": "static"
+      },
+      {
+        "source": "npm:@solid-primitives/trigger",
+        "target": "npm:solid-js",
+        "type": "static"
+      }
+    ],
     "npm:@solid-primitives/utils@6.3.1": [
       {
         "source": "npm:@solid-primitives/utils@6.3.1",
@@ -9558,199 +9769,10 @@
         "type": "static"
       }
     ],
-    "npm:@suid/base": [
+    "npm:@swc/helpers": [
       {
-        "source": "npm:@suid/base",
-        "target": "npm:@popperjs/core",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/base",
-        "target": "npm:@suid/css",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/base",
-        "target": "npm:@suid/system",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/base",
-        "target": "npm:@suid/types",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/base",
-        "target": "npm:@suid/utils",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/base",
-        "target": "npm:clsx",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/base",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/icons-material": [
-      {
-        "source": "npm:@suid/icons-material",
-        "target": "npm:@suid/material",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/icons-material",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/material": [
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:@suid/base",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:@suid/css",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:@suid/system",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:@suid/types",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:@suid/utils",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:clsx",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/material",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/styled-engine": [
-      {
-        "source": "npm:@suid/styled-engine",
-        "target": "npm:@suid/css",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/styled-engine",
-        "target": "npm:@suid/utils",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/styled-engine",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/system": [
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:@suid/css",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:@suid/styled-engine",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:@suid/types",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:@suid/utils",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:clsx",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:csstype",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/system",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/types": [
-      {
-        "source": "npm:@suid/types",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/utils": [
-      {
-        "source": "npm:@suid/utils",
-        "target": "npm:@suid/types",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/utils",
-        "target": "npm:solid-js",
-        "type": "static"
-      }
-    ],
-    "npm:@suid/vite-plugin": [
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:@babel/generator@7.28.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:@babel/parser@7.28.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:@babel/traverse@7.28.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:@babel/types@7.28.2",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:@types/babel__generator",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:@types/babel__traverse",
-        "type": "static"
-      },
-      {
-        "source": "npm:@suid/vite-plugin",
-        "target": "npm:vite",
+        "source": "npm:@swc/helpers",
+        "target": "npm:tslib",
         "type": "static"
       }
     ],
@@ -11318,6 +11340,13 @@
       {
         "source": "npm:chokidar",
         "target": "npm:fsevents",
+        "type": "static"
+      }
+    ],
+    "npm:class-variance-authority": [
+      {
+        "source": "npm:class-variance-authority",
+        "target": "npm:clsx",
         "type": "static"
       }
     ],
@@ -13537,6 +13566,30 @@
         "type": "static"
       }
     ],
+    "npm:solid-presence": [
+      {
+        "source": "npm:solid-presence",
+        "target": "npm:@corvu/utils",
+        "type": "static"
+      },
+      {
+        "source": "npm:solid-presence",
+        "target": "npm:solid-js",
+        "type": "static"
+      }
+    ],
+    "npm:solid-prevent-scroll": [
+      {
+        "source": "npm:solid-prevent-scroll",
+        "target": "npm:@corvu/utils",
+        "type": "static"
+      },
+      {
+        "source": "npm:solid-prevent-scroll",
+        "target": "npm:solid-js",
+        "type": "static"
+      }
+    ],
     "npm:solid-refresh": [
       {
         "source": "npm:solid-refresh",
@@ -13747,6 +13800,25 @@
       {
         "source": "npm:unconfig",
         "target": "npm:quansync",
+        "type": "static"
+      }
+    ],
+    "npm:unocss-preset-animations": [
+      {
+        "source": "npm:unocss-preset-animations",
+        "target": "npm:unocss",
+        "type": "static"
+      },
+      {
+        "source": "npm:unocss-preset-animations",
+        "target": "npm:@unocss/preset-wind3",
+        "type": "static"
+      }
+    ],
+    "npm:unocss-preset-primitives": [
+      {
+        "source": "npm:unocss-preset-primitives",
+        "target": "npm:@unocss/core@66.4.2",
         "type": "static"
       }
     ],
@@ -14309,5 +14381,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1758458298260
+  "computedAt": 1762204253802
 }

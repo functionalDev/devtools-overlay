@@ -1,6 +1,6 @@
 {
-    "name": "@devtools/shared",
-    "version": "0.20.1",
+    "name": "@devtoolsoverlay/shared",
+    "version": "0.0.1",
     "license": "MIT",
     "author": "Damian Tarnawski <gthetarnav@gmail.com>",
     "contributors": [],
@@ -25,14 +25,14 @@
     "exports": {
         ".": {
             "import": {
-                "@devtools/source": "./src/index.ts",
+                "@devtoolsoverlay/source": "./src/index.ts",
                 "types": "./dist/index.d.ts",
                 "default": "./dist/index.js"
             }
         },
         "./*": {
             "import": {
-                "@devtools/source": "./src/*.ts",
+                "@devtoolsoverlay/source": "./src/*.ts",
                 "types": "./dist/*.d.ts",
                 "default": "./dist/*.js"
             }

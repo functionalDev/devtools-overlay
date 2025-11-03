@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import {type ParentComponent} from 'solid-js'
-import * as theme from '@devtools/shared'
+import * as theme from '@devtoolsoverlay/shared'
 
 export const highlight_color_var = '--highlight_color_var'
 export const highlight_opacity_var = '--highlight_opacity_var'

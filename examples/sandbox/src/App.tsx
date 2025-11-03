@@ -5,11 +5,6 @@ import Recursive from './Recursive.tsx'
 import {ThemeExample} from './Theme.tsx'
 
 import Todos from './Todos.tsx'
-// const Todos = s.lazy(() => import('./Todos.tsx'))
-
-const doMediumCalc = () => {
-    Array.from({length: 1000000}, (_, i) => i).sort(() => Math.random() - 5)
-}
 
 let setRootCount: s.Setter<number>
 let disposeOuterRoot: VoidFunction
@@ -119,17 +114,12 @@ const createComponent = (content: () => s.JSX.Element) => {
     return Content
 }
 
-const [someUnusedTopLevelSignal, setSomeUnusedTopLevelSignal] = s.createSignal(123)
-
 const App: s.Component = () => {
 
     s.DEV?.registerGraph({value: {foo: 123}, name: 'my_custom_value'})
 
     const [count, setCount] = s.createSignal(0)
     const [showEven, setShowEven] = s.createSignal(false)
-    const fnSig = s.createSignal({fn: () => {}}, {equals: (a, b) => a.fn === b.fn})
-    const nullSig = s.createSignal(null)
-    const symbolSig = s.createSignal(Symbol('hello-symbol'))
     const [header, setHeader] = s.createSignal(
         <h1 onClick={() => setHeader(<h1>Call that an easter egg</h1>)}>Welcome to the Sandbox</h1>,
     )
@@ -149,7 +139,6 @@ const App: s.Component = () => {
     })
 
     s.createComputed(_ => {
-        const hello = s.createSignal('hello')
         setShowEven(count() % 3 === 0)
         return count()
     },  undefined, {name: 'very-long-name-that-will-definitely-not-have-enough-space-to-render'})
@@ -167,6 +156,12 @@ const App: s.Component = () => {
         {header()}
         {objmemo().subheader}
         <div>
+            <section id="123" data-tracking-name="section-my">
+                Some text
+            </section>
+            <section id="234" data-tracking-name="section-my-2" data-tracking-viewed="true">
+                visible
+            </section>
             <header>
                 <Button onClick={() => setCount(p => ++p)} text={`Count: ${count()}`} />
                 <Button onClick={() => setCount(p => ++p)} text={`Count: ${count()}`} />
@@ -227,7 +222,7 @@ const App: s.Component = () => {
 }
 
 const CountingComponent = () => {
-    const [count, setCount] = s.createSignal(0)
+    const [count] = s.createSignal(0)
     // const interval = setInterval(() => setCount(c => c + 1), 1000)
     // onCleanup(() => clearInterval(interval))
     return <div>Count value is {count()}</div>

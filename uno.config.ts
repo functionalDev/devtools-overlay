@@ -4,7 +4,9 @@ import presetUno   from '@unocss/preset-uno'
 
 const uno_config: unocss.UserConfig = {
     
-    presets: [presetUno({ dark: 'media' })],
+    presets: [presetUno({ dark: {
+        dark: '.dark'
+    } })],
     theme: {
         colors: theme.colors,
 
@@ -34,6 +36,11 @@ const uno_config: unocss.UserConfig = {
     shortcuts: {
         'center-child': 'flex items-center justify-center',
     },
+    content: {
+        filesystem: [
+            'src/**/*.{ts,tsx,html}'
+        ]
+    }
 }
 
 export default uno_config

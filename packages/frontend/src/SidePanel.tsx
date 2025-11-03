@@ -1,8 +1,7 @@
 import clsx from 'clsx'
 import * as s from 'solid-js'
-import * as theme from '@devtools/shared'
+import * as theme from '@devtoolsoverlay/shared'
 import { getCurrentModule, openSidePanel } from './UIContext.tsx'
-import { Close } from "@suid/icons-material";
 import type { SidePanelProps } from './ModuleFactory/ModuleFactory.tsx';
 
 export const panel_header_el_border =
@@ -55,7 +54,7 @@ export const SidePanel: s.Component<SidePanelProps> = (props) => {
                             class={action_button}
                             onClick={() => openSidePanel(false)}
                         >
-                            <Close/>
+                            X
                         </button>
                     </div>
                 </header>

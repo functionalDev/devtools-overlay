@@ -1,5 +1,5 @@
 import * as s from 'solid-js'
-import * as theme from '@devtools/shared'
+import * as theme from '@devtoolsoverlay/shared'
 import {toggle_button_styles} from './toggle-button.tsx'
 import { tag_brackets } from './commonConsts.ts'
 

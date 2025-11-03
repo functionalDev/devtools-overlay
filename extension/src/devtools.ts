@@ -36,7 +36,7 @@ port_on_message(port, e => {
         place_log(Place_Name.Devtools, 'Debugger connected -> Creating Devtools_Panel...')
 
         chrome.devtools.panels.create(
-            'Solid',
+            'NEST',
             PATH_PREFIX + ICON_OUTLINE_32,
             PATH_PREFIX + 'src/panel.html',
             _panel => {

@@ -1,9 +1,9 @@
-# @devtools-overlay/frontend
+# @devtoolsoverlay/frontend
 
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
-[![version](https://img.shields.io/npm/v/@devtools-overlay/frontend?style=for-the-badge)](https://www.npmjs.com/package/@devtools-overlay/frontend)
-[![npm](https://img.shields.io/npm/dw/@devtools-overlay/frontend?style=for-the-badge)](https://www.npmjs.com/package/@devtools-overlay/frontend)
+[![version](https://img.shields.io/npm/v/@devtoolsoverlay/frontend?style=for-the-badge)](https://www.npmjs.com/package/@devtoolsoverlay/frontend)
+[![npm](https://img.shields.io/npm/dw/@devtoolsoverlay/frontend?style=for-the-badge)](https://www.npmjs.com/package/@devtoolsoverlay/frontend)
 
 The frontend of the devtools extension & overlay as a npm package, so it can be embedded in different projects.
 
@@ -19,11 +19,11 @@ A couple of deployed demo websites where you can see the Overlay in action:
 ### Installation
 
 ```bash
-npm i @devtools-overlay/frontend
+npm i @devtoolsoverlay/frontend
 # or
-yarn add @devtools-overlay/frontend
+yarn add @devtoolsoverlay/frontend
 # or
-pnpm add @devtools-overlay/frontend
+pnpm add @devtoolsoverlay/frontend
 ```
 
 

@@ -3,9 +3,9 @@ import * as web from 'solid-js/web'
 import {createBodyCursor} from '@solid-primitives/cursor'
 import {makeEventListener} from '@solid-primitives/event-listener'
 import * as num from '@nothing-but/utils/num'
-import {Icon, Devtools} from '@devtools/frontend'
+import {Icon, Devtools} from '@devtoolsoverlay/frontend'
 
-import frontendStyles from '@devtools/frontend/dist/index.css?inline'
+import frontendStyles from '@devtoolsoverlay/frontend/dist/index.css?inline'
 import overlayStyles from './styles.css?inline'
 import { makePersisted } from '@solid-primitives/storage'
 import type { Module } from '../../frontend/src/ModuleFactory/ModuleFactory'
@@ -16,7 +16,7 @@ export type OverlayOptions = {
     defaultOpen?: boolean
     alwaysOpen?:  boolean
     noPadding?:   boolean
-    modules: Module[]
+    modules?: Module[]
 }
 
 const defaultOptions = {
@@ -29,7 +29,7 @@ const [ isOpen, setIsOpen ] = makePersisted(s.createSignal(), {
 })
 
 
-export function attachDevtoolsOverlay(props: OverlayOptions): (() => void) {
+export function attachDevtoolsOverlay(props?: OverlayOptions): (() => void) {
 
     /*
      Only load the overlay after the page is loaded
@@ -38,7 +38,8 @@ export function attachDevtoolsOverlay(props: OverlayOptions): (() => void) {
     setTimeout(() => {
         setShow(() => true)
     })
-    const modules = [ ...defaultOptions.modules, ...props.modules];
+    const addedModules = props?.modules || [];
+    const modules = [ ...defaultOptions.modules, ...addedModules];
 
     return s.createRoot(dispose => {
         s.createEffect(() => {
@@ -92,7 +93,7 @@ const Overlay: s.Component<OverlayOptions> = props => {
     
 
     return (
-        <web.Portal mount={document.body}>
+        <web.Portal useShadow={true}  mount={document.body}>
             <div
                 data-darkreader-ignore
                 class="overlay__container"

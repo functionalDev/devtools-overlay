@@ -45,26 +45,26 @@ const gray = {
 } as const
 
 export const fontSize = {
-    xs: '0.5rem',
-    sm: '0.625rem',
-    base: '0.75rem',
-    lg: '0.875rem',
-    xl: '1rem',
-    '2xl': '1.125rem',
-    '3xl': '1.25rem',
+    xs: '0.5em',
+    sm: '0.625em',
+    base: '0.75em',
+    lg: '0.875em',
+    xl: '1em',
+    '2xl': '1.125em',
+    '3xl': '1.25em',
 } as const
 
 export const lineHeight = {
-    '3xs': '1rem',
-    '2xs': '1rem',
-    xs: '1rem',
-    sm: '1.25rem',
-    base: '1.5rem',
-    lg: '1.75rem',
-    xl: '1.75rem',
-    '2xl': '2rem',
-    '3xl': '2.25rem',
-    '4xl': '2.5rem',
+    '3xs': '1em',
+    '2xs': '1em',
+    xs: '1em',
+    sm: '1.25em',
+    base: '1.5em',
+    lg: '1.75em',
+    xl: '1.75em',
+    '2xl': '2em',
+    '3xl': '2.25em',
+    '4xl': '2.5em',
     '5xl': '1',
     '6xl': '1',
 } as const

@@ -1,6 +1,6 @@
 {
-    "name": "@devtools/overlay",
-    "version": "0.0.2",
+    "name": "@devtoolsoverlay/overlay",
+    "version": "0.0.9",
     "description": "On-page Devtools Overlay for applications.",
     "license": "MIT",
     "author": "Paul Stolz <functionalgamer2s@gmail.com>",
@@ -31,7 +31,7 @@
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "@devtools/source": "./src/index.tsx",
+            "@devtoolsoverlay/source": "./src/index.tsx",
             "import": {
                 "types": "./dist/index.d.ts",
                 "default": "./dist/index.js"
@@ -43,13 +43,15 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@devtools/frontend": "workspace:^",
-        "@devtools/shared": "workspace:^",
+        "@devtoolsoverlay/frontend": "workspace:^",
+        "@devtoolsoverlay/shared": "workspace:^",
         "@nothing-but/utils": "~0.17.0",
         "@solid-primitives/cursor": "^0.1.1",
         "@solid-primitives/event-listener": "^2.4.1",
         "@solid-primitives/storage": "^4.3.3",
-        "solid-js": "^1.9.0",
+        "solid-js": "^1.9.0"
+    },
+    "devDependencies": {
         "vite-plugin-dts": "^4.5.4"
     }
 }

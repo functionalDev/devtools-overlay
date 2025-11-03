@@ -8,7 +8,7 @@ It also starts listening to Solid DEV events and stores them to be sent to the d
 
 import * as s     from 'solid-js'
 import * as store from 'solid-js/store'
-import {assert, error} from '@devtools/shared/utils'
+import {assert, error} from '@devtoolsoverlay/shared/utils'
 import * as debug from './types.ts'
 
 /** @deprecated use `setLocatorOptions` */

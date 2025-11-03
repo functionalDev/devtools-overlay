@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import { createDataTableModuleFactory } from "./DataTableModule.tsx";
 import { render } from "solid-js/web";
+import { DataClick } from "../icons/DataClick.jsx";
 
 type Event = {
     action: "sendEvent",
@@ -129,6 +130,7 @@ export const TrackingModule = () => {
     ],
     fieldFilter: 'eventName',
 }, {
+    Icon: <DataClick/>,
     title: 'Tracking',
     render,
 })()

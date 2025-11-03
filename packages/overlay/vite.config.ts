@@ -1,5 +1,4 @@
-
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
@@ -7,8 +6,8 @@ import dts from 'vite-plugin-dts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig(() => {
-
+// @ts-ignore I don't know why there is an error here. Seems like it has a problem with the solid plugin
+export default defineConfig((env) => {
     return {
         build: {
             lib: {
@@ -19,12 +18,12 @@ export default defineConfig(() => {
         },
         server: {port: 3006},
         plugins: [
-            solid({ hot: true, dev: true }),
+            solid({ hot: true, dev: env.command !== 'build' }),
             dts(),
         ],
         
         optimizeDeps: {
-            exclude: ['devtools', '@devtools/*']
+            exclude: ['devtools', '@devtoolsoverlay/*']
         },
     }
 })

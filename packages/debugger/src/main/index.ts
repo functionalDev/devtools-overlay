@@ -1,7 +1,7 @@
 import * as s from 'solid-js'
 import {createStaticStore} from '@solid-primitives/static-store'
 import {defer} from '@solid-primitives/utils'
-import {assert, log_message, msg, mutate_remove, type Timeout} from '@devtools/shared/utils'
+import {assert, log_message, msg, mutate_remove, type Timeout} from '@devtoolsoverlay/shared/utils'
 import {createDependencyGraph} from '../dependency/index.ts'
 import {createInspector} from '../inspector/index.ts'
 import {createLocator} from '../locator/index.ts'

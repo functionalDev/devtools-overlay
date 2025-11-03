@@ -1,24 +1,16 @@
-import devtools from 'devtools/vite'
+
 import {defineConfig} from 'vite'
 import solid from 'vite-plugin-solid'
 import dts from 'vite-plugin-dts';
 
 const is_ext = process.argv.includes('--ext')
 
-export default defineConfig(mode => {
-    const is_build = mode.command === 'build'
+// @ts-ignore I don't know why there is an error here. Seems like it has a problem with the solid plugin
+export default defineConfig(() => {
 
     return {
         server: {port: 3005},
         plugins: [
-            devtools({
-                autoname: true,
-                locator: {
-                    targetIDE: 'vscode',
-                    jsxLocation: true,
-                    componentLocation: true,
-                },
-            }),
             solid({hot: true, dev: true}),
             dts(),
         ],
@@ -36,7 +28,7 @@ export default defineConfig(mode => {
             sourcemap: true,
         },
         optimizeDeps: {
-            exclude: ['devtools', '@devtools/*']
+            exclude: ['devtools', '@devtoolsoverlay/*']
         },
     }
 })

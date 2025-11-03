@@ -5,7 +5,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @devtools/shared@0.20.1
+  - @devtoolsoverlay/shared@0.20.1
 
 ## 0.28.1
 

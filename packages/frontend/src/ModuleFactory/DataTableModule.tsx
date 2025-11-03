@@ -1,8 +1,8 @@
-import { Alert, Table, TableBody, TableCell, TableHead, TableRow, ToggleButton, ToggleButtonGroup } from "@suid/material";
 import type { Module, ModuleFactory } from "./ModuleFactory.tsx";
 import { createEffect, createSignal, For, Show } from "solid-js";
 import "@andypf/json-viewer"
 import { render } from "solid-js/web";
+import { Button } from "../ui/Button.tsx";
 
 type Filter<T> = {
     label: T[keyof T],
@@ -36,6 +36,7 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
         
             
             createEffect(() => {
+                console.log('f', currentFilters());
                 if(!isSidePanelOpen()){
                     setSelectedRow(null);
                 }
@@ -49,55 +50,66 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
                     openSidePanel(() => false);
                 }                
             }
+            const toggleFilter = (filter: Filter<T>) => {
+                const hasFilter = currentFilters().map(f => f.label).includes(filter.label);
+                !hasFilter
+                    ? setFilters(list => [...list, filter])
+                    : setFilters(list => list.filter(entry => entry.label !== filter.label))
+            }
             return (
-                <Show when={getDataList().length > 0} fallback={<Alert severity="error">No tracking data found!</Alert>}>
+                <Show when={getDataList().length > 0} fallback={<div style={{ background: '#fdeeee', padding: "12px 18px", margin: '5px', "border-radius": '5px', color: 'black' }}><div style={{ display: 'inline-block',color: 'red', border: '1px solid red', "width": '1em', "text-align": "center", "border-radius": '50%' }}>! </div> No tracking data found!</div>}>
                         <div style={{
                     'margin-top': '20px',
                 }} >
-                    <ToggleButtonGroup
-                        sx={{
-                            paddingLeft: '16px',
-                        }}
-                        value={showAll() ? getFilters().map(f => f.label) : currentFilters().map(f => f.label)}
-                        onChange={(event, newfilters) => {
-                            if(newfilters.length === getFilters().length){
-                                return setShowAll(true);
-                            }
-                            setShowAll(false);
-                            setFilters(getFilters().filter(f => newfilters.includes(f.label)));
-                        }}>
-                        <For each={getFilters().map(f => f.label)}>{
-                            filterlabel =>  <ToggleButton style={{
-                                color: 'var(--text-default)', 
-                                'border-color': 'var(--panel__border)',
-                                'background': currentFilters().map(f => f.label).includes(filterlabel) || showAll() ? '' : 'var(--gray_highlight__color)',
-                            }} 
-                            size="small" 
-                            value={filterlabel}
-                        >
-                            {filterlabel as string}
-                        </ToggleButton> 
-                        }</For>
-                    </ToggleButtonGroup>
-                    <Table size="small" style={{ 'margin-block': '25px' }}>
-                        <TableHead>
-                            <TableRow>
+                    <For each={getFilters()}>{
+                        filter =>  (
+                            <Button 
+                                variant={currentFilters().map(f => f.label).includes(filter.label) ? 'primary' :'secondary'}
+                                onClick={() => {
+                                    toggleFilter(filter);
+                                    if(currentFilters().length === getFilters().length || currentFilters().length === 0){
+                                        return setShowAll(true);
+                                    }
+                                    setShowAll(false);
+                                }}
+                            >
+                                {filter.label as string}
+                            </Button> 
+                    )}</For>
+                    <table style={{ 
+                        'margin-block': '25px',
+                        display: 'table',
+                        width: '100%',
+                        'border-collapse': 'collapse',
+                        'border-spacing': '0px',
+                     }}>
+                        <thead>
+                            <tr 
+                                        style={{ 
+                                            'border-bottom': '1px solid currentColor',
+                                        }}>
                                 <For each={columnNames}>{
-                                    columnName => <TableCell sx={{color: 'var(--text-default)'}}>{columnName}</TableCell>
+                                    columnName => <td style={{color: 'var(--text-default)', padding: "6px 16px"}}>{columnName}</td>
                                 }</For>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <For each={getDataList().filter(entry => showAll() || currentFilters().some(({ fn }) => fn(entry)))}>{
                                 row => (
-                                    <TableRow selected={getSelectedRow() === row} onClick={() => handleRowClick(row)}>
+                                    <tr 
+                                        // selected={getSelectedRow() === row} 
+                                        onClick={() => handleRowClick(row)}
+                                        style={{ 
+                                            'border-bottom': '1px solid currentColor',
+                                        }}
+                                    >
                                         <For each={columnDataFns}>{
-                                            columnDataFn => <TableCell sx={{color: 'var(--text-default)'}}>{columnDataFn(row) as string}</TableCell>
+                                            columnDataFn => <td style={{color: 'var(--text-default)', padding: "6px 16px"}}>{columnDataFn(row) as string}</td>
                                         }</For>
-                                    </TableRow>
+                                    </tr>
                             )}</For>
-                        </TableBody>
-                    </Table>
+                        </tbody>
+                    </table>
                 </div>
                 </Show>
                 

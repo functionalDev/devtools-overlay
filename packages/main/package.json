@@ -1,5 +1,5 @@
 {
-    "name": "devtools",
+    "name": "devtools-overlay",
     "version": "0.34.4",
     "description": "Runtime library for hooking up application with Devtools Extension",
     "license": "MIT",
@@ -27,7 +27,7 @@
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "@devtools/source": "./src/index.ts",
+            "@devtoolsoverlay/source": "./src/index.ts",
             "browser": {
                 "development": {
                     "import": {
@@ -46,7 +46,7 @@
             }
         },
         "./setup": {
-            "@devtools/source": "./src/setup.ts",
+            "@devtoolsoverlay/source": "./src/setup.ts",
             "browser": {
                 "development": {
                     "import": {
@@ -65,14 +65,14 @@
             }
         },
         "./vite": {
-            "@devtools/source": "./src/vite.ts",
+            "@devtoolsoverlay/source": "./src/vite.ts",
             "import": {
                 "types": "./dist/vite.d.ts",
                 "default": "./dist/vite.js"
             }
         },
         "./babel": {
-            "@devtools/source": "./src/babel.ts",
+            "@devtoolsoverlay/source": "./src/babel.ts",
             "import": {
                 "types": "./dist/babel.d.ts",
                 "default": "./dist/babel.js"
@@ -105,8 +105,8 @@
         "@babel/core": "^7.27.4",
         "@babel/plugin-syntax-typescript": "^7.27.1",
         "@babel/types": "^7.27.6",
-        "@devtools/debugger": "workspace:^",
-        "@devtools/shared": "workspace:^"
+        "@devtoolsoverlay/debugger": "workspace:^",
+        "@devtoolsoverlay/shared": "workspace:^"
     },
     "peerDependencies": {
         "solid-js": "^1.9.0",

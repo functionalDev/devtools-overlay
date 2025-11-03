@@ -4,8 +4,8 @@ File for utilities, constants and types related to the communication between the
 
 */
 
-import * as debug from '@devtools/debugger/types'
-import * as utils from '@devtools/shared/utils'
+import * as debug from '@devtoolsoverlay/debugger/types'
+import * as utils from '@devtoolsoverlay/shared/utils'
 
 
 export const ICON_SOLID_BLUE_16  = 'solid-normal-16.png'

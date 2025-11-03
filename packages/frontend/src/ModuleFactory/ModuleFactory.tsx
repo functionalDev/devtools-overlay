@@ -14,6 +14,7 @@ export type SidePanelProps = {
 }
 
 export type Module<ModuleContext = object> = {
+    Icon?: string | JSXElement,
     title: string,
     connector?: ModuleConnector<ModuleContext>,
     MainView: (props: MainViewProps) => JSXElement,

@@ -1,6 +1,6 @@
 import * as babel from '@babel/core'
 import * as t     from '@babel/types'
-import * as debug from '@devtools/debugger/types'
+import * as debug from '@devtoolsoverlay/debugger/types'
 import * as path  from 'node:path'
 
 
@@ -113,7 +113,7 @@ let Sources: Record<Source, Comparable[]>
 let FileWithImports: boolean = false
 
 export const namePlugin: babel.PluginObj<any> = {
-    name: '@devtools/autoname',
+    name: '@devtoolsoverlay/autoname',
     visitor: {
         Program() {
             Sources = {
@@ -300,7 +300,7 @@ export function jsxLocationPlugin(config: JsxLocationPluginConfig): babel.Plugin
     }
 
     return {
-        name: '@devtools/location',
+        name: '@devtoolsoverlay/location',
         visitor: {
             Program(path, state) {
 

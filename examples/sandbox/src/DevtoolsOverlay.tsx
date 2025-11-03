@@ -1,4 +1,4 @@
-import {attachDevtoolsOverlay} from '@devtools/overlay'
+import {attachDevtoolsOverlay} from '@devtoolsoverlay/overlay'
 
 declare global {
     interface Window {

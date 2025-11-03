@@ -4,8 +4,8 @@
 
 import * as s        from 'solid-js'
 import * as web      from 'solid-js/web'
-import * as frontend from '@devtools/frontend'
-import * as debug    from '@devtools/debugger/types'
+import * as frontend from '@devtoolsoverlay/frontend'
+import * as debug    from '@devtoolsoverlay/debugger/types'
 
 import {
     Connection_Name, Place_Name, port_on_message, port_post_message_obj,
@@ -13,7 +13,7 @@ import {
     type Message, type Versions,
 } from './shared.ts'
 
-import '@devtools/frontend/dist/styles.css'
+import '@devtoolsoverlay/frontend/dist/styles.css'
 
 place_log(Place_Name.Panel, 'loaded.')
 

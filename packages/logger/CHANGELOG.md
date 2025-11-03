@@ -5,8 +5,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @devtools/shared@0.20.1
-  - @devtools/debugger@0.28.2
+  - @devtoolsoverlay/shared@0.20.1
+  - @devtoolsoverlay/debugger@0.28.2
 
 ## 0.9.11
 

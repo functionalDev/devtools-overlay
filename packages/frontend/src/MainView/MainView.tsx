@@ -1,6 +1,5 @@
 
 import { createEffect, createSignal } from "solid-js";
-import { Tabbar } from "./Tabbar.tsx";
 import { getCurrentModule } from "../UIContext.tsx";
 import type { MainViewProps } from "../ModuleFactory/ModuleFactory.tsx";
 
@@ -15,8 +14,7 @@ export const MainView = (props: MainViewProps) => {
         }
     })
     return (
-        <div style={{ 'display': 'grid', height: '100%', 'grid-template-rows': 'min-content 1fr'}}>
-            <Tabbar />
-            <div ref={setRefMainView} style={{ 'overflow-y': 'auto', }} id="devtools-overlay-mainview"></div>
+        <div style={{ 'display': 'grid', height: '100%'}}>
+            <div ref={setRefMainView} style={{ 'overflow-y': 'auto', height: '100%' }} id="devtools-overlay-mainview"></div>
         </div>
 )}

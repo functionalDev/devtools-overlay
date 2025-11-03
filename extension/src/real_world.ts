@@ -9,7 +9,7 @@
 
 */
 
-import * as detect from '@devtools/shared/detect'
+import * as detect from '@devtoolsoverlay/shared/detect'
 
 import {
     Place_Name, type Detection_State,
@@ -74,7 +74,7 @@ function main() {
 
 async function attach_debugger() {
 
-    let debug = await import('@devtools/debugger')
+    let debug = await import('@devtoolsoverlay/debugger')
 
     const instance = debug.useDebugger()
 

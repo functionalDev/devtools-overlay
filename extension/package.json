@@ -1,5 +1,5 @@
 {
-    "name": "@devtools/extension",
+    "name": "@devtoolsoverlay/extension",
     "version": "0.33.6",
     "private": true,
     "license": "MIT",
@@ -19,10 +19,9 @@
         "@types/chrome": "^0.0.326"
     },
     "dependencies": {
-        "@devtools/debugger": "workspace:^",
-        "@devtools/frontend": "workspace:^",
-        "@devtools/shared": "workspace:^",
-        "devtools": "workspace:^"
+        "@devtoolsoverlay/debugger": "workspace:^",
+        "@devtoolsoverlay/frontend": "workspace:^",
+        "@devtoolsoverlay/shared": "workspace:^"
     },
     "overrides": {
         "@crxjs/vite-plugin": {

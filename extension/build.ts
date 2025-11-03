@@ -163,7 +163,7 @@ for (let browser of browsers) {
             dropLabels: [is_dev ? 'PROD' : 'DEV'],
         },
         optimizeDeps: {
-            exclude: ['@devtools/debugger'],
+            exclude: ['@devtoolsoverlay/debugger'],
         },
     }
 

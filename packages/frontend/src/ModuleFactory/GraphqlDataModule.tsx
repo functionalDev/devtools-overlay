@@ -17,7 +17,7 @@ export const GraphqlDataModule: ModuleFactory = () => {
             <andypf-json-viewer data={JSON.stringify({ a: 'asdfe'})}></andypf-json-viewer>
             </div>
         ),
-        title: 'Graphql data',
+        title: 'Network',
         render
 }
 }

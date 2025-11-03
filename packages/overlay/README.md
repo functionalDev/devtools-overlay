@@ -2,11 +2,11 @@
    For now this is the package to add NEST developer tools to the page
 </p>
 
-# @devtools-overlay/overlay
+# @devtoolsoverlay/overlay
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
-[![version](https://img.shields.io/npm/v/@devtools-overlay/overlay?style=for-the-badge)](https://www.npmjs.com/package/@devtools-overlay/overlay)
-[![npm](https://img.shields.io/npm/dw/@devtools-overlay/overlay?style=for-the-badge)](https://www.npmjs.com/package/@devtools-overlay/overlay)
+[![version](https://img.shields.io/npm/v/@devtoolsoverlay/overlay?style=for-the-badge)](https://www.npmjs.com/package/@devtoolsoverlay/overlay)
+[![npm](https://img.shields.io/npm/dw/@devtoolsoverlay/overlay?style=for-the-badge)](https://www.npmjs.com/package/@devtoolsoverlay/overlay)
 
 An on-page devtools overlay for debugging NEST webapp without a chrome extension.
 
@@ -25,11 +25,11 @@ A couple of deployed demo websites where you can see the Overlay in action:
 ### Installation
 
 ```bash
-npm i @devtools-overlay/overlay
+npm i @devtoolsoverlay/overlay
 # or
-yarn add @devtools-overlay/overlay
+yarn add @devtoolsoverlay/overlay
 # or
-pnpm add @devtools-overlay/overlay
+pnpm add @devtoolsoverlay/overlay
 ```
 
 ### Attach the overlay
@@ -37,7 +37,7 @@ pnpm add @devtools-overlay/overlay
 Simply call the overlay component in the client entry file.
 
 ```tsx
-import { attachDevtoolsOverlay } from '@devtools-overlay/overlay'
+import { attachDevtoolsOverlay } from '@devtoolsoverlay/overlay'
 
 attachDevtoolsOverlay()
 
@@ -58,7 +58,7 @@ Custom tabs can be added to the devtools by passing the parameter `modules` to t
 
 #### With react
 ```ts
-import { attachDevtoolsOverlay } from '@devtools-overlay/overlay'
+import { attachDevtoolsOverlay } from '@devtoolsoverlay/overlay'
 import { render, hydrate } from 'react';
 
 attachDevtoolsOverlay({
@@ -88,7 +88,7 @@ attachDevtoolsOverlay({
 
 #### With solidjs
 ```ts
-import { attachDevtoolsOverlay } from '@devtools-overlay/overlay'
+import { attachDevtoolsOverlay } from '@devtoolsoverlay/overlay'
 import { render } from "solid-js/web";
 
 attachDevtoolsOverlay({

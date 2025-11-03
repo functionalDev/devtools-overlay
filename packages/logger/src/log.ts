@@ -3,8 +3,8 @@
 // to gen a overview of how to style console messages
 
 import {array} from '@nothing-but/utils'
-import {getNodeName, getNodeType, getOwnerType, isSolidMemo} from '@devtools/debugger'
-import {NODE_TYPE_NAMES, NodeType, type Solid, UNKNOWN} from '@devtools/debugger/types'
+import {getNodeName, getNodeType, getOwnerType, isSolidMemo} from '@devtoolsoverlay/debugger'
+import {NODE_TYPE_NAMES, NodeType, type Solid, UNKNOWN} from '@devtoolsoverlay/debugger/types'
 import {getDiffMap, getStackDiffMap} from './utils.ts'
 
 export type NodeState = {

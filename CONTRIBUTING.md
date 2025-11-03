@@ -1,8 +1,8 @@
-# Contributing to Solid Developer Tools
+# Contributing to Developer Tools
 
 :+1::tada: Thank you for checking out the project and wanting to contribute! :tada::+1:
 
-The following document is a _(work in progress)_ guide for contributing to Solid Developer Tools. It is a work in progress, so please feel free to suggest changes and improvements. If you have any questions, please feel free to ask on the [Solid Discord](https://discord.com/invite/solidjs). (We have a #devtools channel there)
+The following document is a _(work in progress)_ guide for contributing to Developer Tools. It is a work in progress, so please feel free to suggest changes and improvements.
 
 ## Tooling
 
@@ -18,7 +18,7 @@ The code is formatted with prettier. You can use it if you want, or not, it's up
 
 ## Operating System
 
-I'm working on a linux machine right now, but everything should be wokking the same way regardless of OS. Please make an issue if it's not.
+I'm working on a windows  machine right now, but everything should be wokking the same way regardless of OS. Please make an issue if it's not.
 
 Alternatively, if something is off, I recommend using [Gitpod](https://gitpod.io) or [Codeflow](https://stackblitz.com/codeflow) for development. Both of them are free for oss projects like this one and will give you a stable development environment.
 

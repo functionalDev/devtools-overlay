@@ -5,10 +5,10 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "@devtools/debugger": [
+      "@devtoolsoverlay/debugger": [
         {
           "file": "packages/debugger/CHANGELOG.md",
-          "hash": "10891806492865147378"
+          "hash": "740428261270252509"
         },
         {
           "file": "packages/debugger/LICENSE",
@@ -24,11 +24,11 @@
         },
         {
           "file": "packages/debugger/package.json",
-          "hash": "7133562888867903969",
+          "hash": "14097515320187724525",
           "deps": [
             "npm:solid-js",
             "npm:@nothing-but/utils",
-            "@devtools/shared",
+            "@devtoolsoverlay/shared",
             "npm:@solid-primitives/bounds",
             "npm:@solid-primitives/event-listener",
             "npm:@solid-primitives/keyboard",
@@ -48,7 +48,7 @@
         },
         {
           "file": "packages/debugger/src/dependency/index.ts",
-          "hash": "6314102579936719727"
+          "hash": "10816356569661703068"
         },
         {
           "file": "packages/debugger/src/index.ts",
@@ -56,7 +56,7 @@
         },
         {
           "file": "packages/debugger/src/inspector/index.ts",
-          "hash": "7547761141193275352"
+          "hash": "17048193487101903310"
         },
         {
           "file": "packages/debugger/src/inspector/inspector.test.tsx",
@@ -96,11 +96,11 @@
         },
         {
           "file": "packages/debugger/src/locator/index.ts",
-          "hash": "5490212359652158156"
+          "hash": "13210318138974827726"
         },
         {
           "file": "packages/debugger/src/locator/locator.ts",
-          "hash": "12164578677741632388"
+          "hash": "15206637077879367232"
         },
         {
           "file": "packages/debugger/src/main/id.ts",
@@ -108,7 +108,7 @@
         },
         {
           "file": "packages/debugger/src/main/index.ts",
-          "hash": "16940176337707876933"
+          "hash": "8758375296212408880"
         },
         {
           "file": "packages/debugger/src/main/observe.ts",
@@ -116,7 +116,7 @@
         },
         {
           "file": "packages/debugger/src/main/roots.ts",
-          "hash": "14996639187909446072"
+          "hash": "3319772194599904434"
         },
         {
           "file": "packages/debugger/src/main/setup.ts",
@@ -124,7 +124,7 @@
         },
         {
           "file": "packages/debugger/src/main/types.ts",
-          "hash": "11002689442552565126"
+          "hash": "3672489186424145040"
         },
         {
           "file": "packages/debugger/src/main/update.test.ts",
@@ -136,11 +136,11 @@
         },
         {
           "file": "packages/debugger/src/main/utils.ts",
-          "hash": "17472004933079697427"
+          "hash": "16333084032524914490"
         },
         {
           "file": "packages/debugger/src/setup.ts",
-          "hash": "8239929557659948978"
+          "hash": "16756795790462315909"
         },
         {
           "file": "packages/debugger/src/structure/index.ts",
@@ -152,7 +152,7 @@
         },
         {
           "file": "packages/debugger/src/structure/walker.ts",
-          "hash": "9491476877495408386"
+          "hash": "4798897163875831882"
         },
         {
           "file": "packages/debugger/src/types.ts",
@@ -163,14 +163,62 @@
           "hash": "5192156222866121161"
         }
       ],
-      "@devtools/shared": [
+      "@devtoolsoverlay/overlay": [
+        {
+          "file": "packages/overlay/CHANGELOG.md",
+          "hash": "14183169070356003836"
+        },
+        {
+          "file": "packages/overlay/README.md",
+          "hash": "7481074942740770241"
+        },
+        {
+          "file": "packages/overlay/package.json",
+          "hash": "1585447754216561228",
+          "deps": [
+            "npm:vite-plugin-dts",
+            "@devtoolsoverlay/frontend",
+            "@devtoolsoverlay/shared",
+            "npm:@nothing-but/utils",
+            "npm:@solid-primitives/cursor",
+            "npm:@solid-primitives/event-listener",
+            "npm:@solid-primitives/storage",
+            "npm:solid-js"
+          ]
+        },
+        {
+          "file": "packages/overlay/src/env.d.ts",
+          "hash": "11496118704256245218"
+        },
+        {
+          "file": "packages/overlay/src/index.tsx",
+          "hash": "310642578010996446"
+        },
+        {
+          "file": "packages/overlay/src/index_noop.ts",
+          "hash": "2054715139045538676"
+        },
+        {
+          "file": "packages/overlay/src/styles.css",
+          "hash": "15661119857388871471"
+        },
+        {
+          "file": "packages/overlay/tsconfig.json",
+          "hash": "10127306303641925446"
+        },
+        {
+          "file": "packages/overlay/vite.config.ts",
+          "hash": "12985339568174837354"
+        }
+      ],
+      "@devtoolsoverlay/shared": [
         {
           "file": "packages/shared/CHANGELOG.md",
           "hash": "5323066845852208454"
         },
         {
           "file": "packages/shared/package.json",
-          "hash": "7050304763444433008",
+          "hash": "8486947165356453302",
           "deps": [
             "npm:solid-js",
             "npm:@nothing-but/utils",
@@ -199,7 +247,7 @@
         },
         {
           "file": "packages/shared/src/theme.ts",
-          "hash": "9447446705343908171"
+          "hash": "7007036032410231989"
         },
         {
           "file": "packages/shared/src/utils.ts",
@@ -211,276 +259,10 @@
         },
         {
           "file": "packages/shared/vite.config.ts",
-          "hash": "17596404099341925782"
+          "hash": "15128157516447424208"
         }
       ],
-      "@devtools/frontend": [
-        {
-          "file": "packages/frontend/CHANGELOG.md",
-          "hash": "2563477444832092514"
-        },
-        {
-          "file": "packages/frontend/README.md",
-          "hash": "13487235556383882094"
-        },
-        {
-          "file": "packages/frontend/index.html",
-          "hash": "1146803761261878991"
-        },
-        {
-          "file": "packages/frontend/package.json",
-          "hash": "2124080034973585047",
-          "deps": [
-            "npm:vite",
-            "npm:@andypf/json-viewer",
-            "@devtools/shared",
-            "npm:@nothing-but/utils",
-            "npm:@solid-primitives/context",
-            "npm:@solid-primitives/cursor",
-            "npm:@solid-primitives/date",
-            "npm:@solid-primitives/event-bus",
-            "npm:@solid-primitives/event-listener",
-            "npm:@solid-primitives/jsx-tokenizer",
-            "npm:@solid-primitives/keyboard",
-            "npm:@solid-primitives/keyed",
-            "npm:@solid-primitives/media",
-            "npm:@solid-primitives/mouse",
-            "npm:@solid-primitives/props",
-            "npm:@solid-primitives/range",
-            "npm:@solid-primitives/resize-observer",
-            "npm:@solid-primitives/scheduled",
-            "npm:@solid-primitives/static-store",
-            "npm:@solid-primitives/storage",
-            "npm:@solid-primitives/styles",
-            "npm:@solid-primitives/timer",
-            "npm:@solid-primitives/utils@6.3.1",
-            "npm:@suid/icons-material",
-            "npm:@suid/material",
-            "npm:@suid/vite-plugin",
-            "npm:clsx",
-            "npm:solid-js",
-            "npm:unocss",
-            "npm:vite-plugin-dts"
-          ]
-        },
-        {
-          "file": "packages/frontend/src/App.tsx",
-          "hash": "3607737162644811275"
-        },
-        {
-          "file": "packages/frontend/src/MainView/MainView.tsx",
-          "hash": "4314470013822651754"
-        },
-        {
-          "file": "packages/frontend/src/MainView/Tabbar.tsx",
-          "hash": "11275611716788289573"
-        },
-        {
-          "file": "packages/frontend/src/ModuleFactory/DataTableModule.tsx",
-          "hash": "17965501116574618212"
-        },
-        {
-          "file": "packages/frontend/src/ModuleFactory/GraphqlDataModule.tsx",
-          "hash": "4425951805981885066"
-        },
-        {
-          "file": "packages/frontend/src/ModuleFactory/ModesModule.tsx",
-          "hash": "10032555982736864751"
-        },
-        {
-          "file": "packages/frontend/src/ModuleFactory/ModuleFactory.tsx",
-          "hash": "6058273571549831000"
-        },
-        {
-          "file": "packages/frontend/src/ModuleFactory/TrackingModule.tsx",
-          "hash": "12082444698705688663"
-        },
-        {
-          "file": "packages/frontend/src/ModuleFactory/exampleModules.tsx",
-          "hash": "2455822784803896479"
-        },
-        {
-          "file": "packages/frontend/src/SidePanel.tsx",
-          "hash": "8792644499194689902"
-        },
-        {
-          "file": "packages/frontend/src/UIContext.tsx",
-          "hash": "6076954584299516176"
-        },
-        {
-          "file": "packages/frontend/src/controller.tsx",
-          "hash": "12873774294903192037"
-        },
-        {
-          "file": "packages/frontend/src/demo.tsx",
-          "hash": "8583698631155522248"
-        },
-        {
-          "file": "packages/frontend/src/env.d.ts",
-          "hash": "15269753178307570465"
-        },
-        {
-          "file": "packages/frontend/src/index.tsx",
-          "hash": "2214569892834882085"
-        },
-        {
-          "file": "packages/frontend/src/ui/color.ts",
-          "hash": "13264278287188707899"
-        },
-        {
-          "file": "packages/frontend/src/ui/commonConsts.ts",
-          "hash": "6554215249001592279"
-        },
-        {
-          "file": "packages/frontend/src/ui/highlight.tsx",
-          "hash": "15505909654810451746"
-        },
-        {
-          "file": "packages/frontend/src/ui/icons.tsx",
-          "hash": "9906180239239130486"
-        },
-        {
-          "file": "packages/frontend/src/ui/index.ts",
-          "hash": "14848561064502087229"
-        },
-        {
-          "file": "packages/frontend/src/ui/splitter.tsx",
-          "hash": "2747921499842208726"
-        },
-        {
-          "file": "packages/frontend/src/ui/styles.tsx",
-          "hash": "7077817400538789056"
-        },
-        {
-          "file": "packages/frontend/src/ui/toggle-button.tsx",
-          "hash": "3839474490768729282"
-        },
-        {
-          "file": "packages/frontend/src/ui/toggle-tabs.tsx",
-          "hash": "8643069229172961033"
-        },
-        {
-          "file": "packages/frontend/tsconfig.json",
-          "hash": "14476265195288368167"
-        },
-        {
-          "file": "packages/frontend/vite.config.ts",
-          "hash": "8981774768804327543"
-        }
-      ],
-      "devtools-example-sandbox": [
-        {
-          "file": "examples/sandbox/index.html",
-          "hash": "559629996795914113"
-        },
-        {
-          "file": "examples/sandbox/package.json",
-          "hash": "6196539049586873296",
-          "deps": [
-            "devtools",
-            "@devtools/debugger",
-            "@devtools/logger",
-            "@devtools/overlay"
-          ]
-        },
-        {
-          "file": "examples/sandbox/src/App.tsx",
-          "hash": "17500606810191056477"
-        },
-        {
-          "file": "examples/sandbox/src/DevtoolsOverlay.tsx",
-          "hash": "5051457074971931125"
-        },
-        {
-          "file": "examples/sandbox/src/Overlay.tsx",
-          "hash": "13431737940416949467"
-        },
-        {
-          "file": "examples/sandbox/src/Recursive.tsx",
-          "hash": "16208122200097313191"
-        },
-        {
-          "file": "examples/sandbox/src/Theme.tsx",
-          "hash": "1240610127813920526"
-        },
-        {
-          "file": "examples/sandbox/src/Todos.tsx",
-          "hash": "12445478619634365343"
-        },
-        {
-          "file": "examples/sandbox/src/env.d.ts",
-          "hash": "397148801917050870"
-        },
-        {
-          "file": "examples/sandbox/src/index.tsx",
-          "hash": "3280034787285580407"
-        },
-        {
-          "file": "examples/sandbox/src/main.tsx",
-          "hash": "13665333636387054446"
-        },
-        {
-          "file": "examples/sandbox/src/styles.css",
-          "hash": "10325196005214193709"
-        },
-        {
-          "file": "examples/sandbox/tsconfig.json",
-          "hash": "9420938271283306205"
-        },
-        {
-          "file": "examples/sandbox/vite.config.ts",
-          "hash": "252572893611569389"
-        }
-      ],
-      "@devtools/overlay": [
-        {
-          "file": "packages/overlay/CHANGELOG.md",
-          "hash": "10660350173243701109"
-        },
-        {
-          "file": "packages/overlay/README.md",
-          "hash": "1870307014675722491"
-        },
-        {
-          "file": "packages/overlay/package.json",
-          "hash": "1777132406829693114",
-          "deps": [
-            "@devtools/frontend",
-            "@devtools/shared",
-            "npm:@nothing-but/utils",
-            "npm:@solid-primitives/cursor",
-            "npm:@solid-primitives/event-listener",
-            "npm:@solid-primitives/storage",
-            "npm:solid-js",
-            "npm:vite-plugin-dts"
-          ]
-        },
-        {
-          "file": "packages/overlay/src/env.d.ts",
-          "hash": "11496118704256245218"
-        },
-        {
-          "file": "packages/overlay/src/index.tsx",
-          "hash": "12157561241295159376"
-        },
-        {
-          "file": "packages/overlay/src/index_noop.ts",
-          "hash": "2054715139045538676"
-        },
-        {
-          "file": "packages/overlay/src/styles.css",
-          "hash": "15661119857388871471"
-        },
-        {
-          "file": "packages/overlay/tsconfig.json",
-          "hash": "10127306303641925446"
-        },
-        {
-          "file": "packages/overlay/vite.config.ts",
-          "hash": "1258082999568890684"
-        }
-      ],
-      "@devtools/extension": [
+      "@devtoolsoverlay/extension": [
         {
           "file": "extension/CHANGELOG.md",
           "hash": "3272376199287414905"
@@ -495,18 +277,17 @@
         },
         {
           "file": "extension/build.ts",
-          "hash": "4509883580865108241"
+          "hash": "4550993216136316108"
         },
         {
           "file": "extension/package.json",
-          "hash": "13707845598737777581",
+          "hash": "11915839943526305981",
           "deps": [
             "npm:@crxjs/vite-plugin",
             "npm:@types/chrome",
-            "@devtools/debugger",
-            "@devtools/frontend",
-            "@devtools/shared",
-            "devtools"
+            "@devtoolsoverlay/debugger",
+            "@devtoolsoverlay/frontend",
+            "@devtoolsoverlay/shared"
           ]
         },
         {
@@ -547,7 +328,7 @@
         },
         {
           "file": "extension/src/background.ts",
-          "hash": "8928256688755071886"
+          "hash": "3344050109336917741"
         },
         {
           "file": "extension/src/content.ts",
@@ -559,7 +340,7 @@
         },
         {
           "file": "extension/src/devtools.ts",
-          "hash": "944889248954408927"
+          "hash": "13318654447870231431"
         },
         {
           "file": "extension/src/env.d.ts",
@@ -571,7 +352,7 @@
         },
         {
           "file": "extension/src/panel.tsx",
-          "hash": "9377316285264003718"
+          "hash": "1535462173542889039"
         },
         {
           "file": "extension/src/popup.css",
@@ -587,70 +368,238 @@
         },
         {
           "file": "extension/src/real_world.ts",
-          "hash": "8946729481555270259"
+          "hash": "9168693353897607055"
         },
         {
           "file": "extension/src/shared.ts",
-          "hash": "612344096200116321"
+          "hash": "6776700391881483522"
         },
         {
           "file": "extension/tsconfig.json",
           "hash": "16041319801298986390"
         }
       ],
-      "@devtools/logger": [
+      "@devtoolsoverlay/frontend": [
         {
-          "file": "packages/logger/CHANGELOG.md",
-          "hash": "10953353773856852714"
+          "file": "packages/frontend/CHANGELOG.md",
+          "hash": "10922397326498072626"
         },
         {
-          "file": "packages/logger/LICENSE",
-          "hash": "1802854395345595359"
+          "file": "packages/frontend/README.md",
+          "hash": "6323836829990938297"
         },
         {
-          "file": "packages/logger/README.md",
-          "hash": "6685993110318816363"
+          "file": "packages/frontend/index.html",
+          "hash": "318766410964379512"
         },
         {
-          "file": "packages/logger/build.ts",
-          "hash": "10023497941694356955"
-        },
-        {
-          "file": "packages/logger/package.json",
-          "hash": "18095503058206232590",
+          "file": "packages/frontend/package.json",
+          "hash": "6191902828622006761",
           "deps": [
-            "npm:solid-js",
+            "npm:vite",
+            "npm:@andypf/json-viewer",
+            "@devtoolsoverlay/shared",
+            "npm:@kobalte/core",
             "npm:@nothing-but/utils",
-            "@devtools/debugger",
-            "@devtools/shared",
-            "npm:@solid-primitives/utils@6.3.1"
+            "npm:@solid-primitives/context",
+            "npm:@solid-primitives/cursor",
+            "npm:@solid-primitives/date",
+            "npm:@solid-primitives/event-bus",
+            "npm:@solid-primitives/event-listener",
+            "npm:@solid-primitives/jsx-tokenizer",
+            "npm:@solid-primitives/keyboard",
+            "npm:@solid-primitives/keyed",
+            "npm:@solid-primitives/media",
+            "npm:@solid-primitives/mouse",
+            "npm:@solid-primitives/props",
+            "npm:@solid-primitives/range",
+            "npm:@solid-primitives/resize-observer",
+            "npm:@solid-primitives/scheduled",
+            "npm:@solid-primitives/static-store",
+            "npm:@solid-primitives/storage",
+            "npm:@solid-primitives/styles",
+            "npm:@solid-primitives/timer",
+            "npm:@solid-primitives/utils@6.3.1",
+            "npm:clsx",
+            "npm:solid-js",
+            "npm:unocss",
+            "npm:unocss-preset-primitives",
+            "npm:vite-plugin-dts"
           ]
         },
         {
-          "file": "packages/logger/src/index.ts",
-          "hash": "17856091400129984236"
+          "file": "packages/frontend/src/App.tsx",
+          "hash": "14892667919094864109"
         },
         {
-          "file": "packages/logger/src/log.ts",
-          "hash": "5833582384474751682"
+          "file": "packages/frontend/src/MainView/MainView.tsx",
+          "hash": "3695327522381513171"
         },
         {
-          "file": "packages/logger/src/server.ts",
-          "hash": "10924092182225957207"
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/CopyTemplateContext.ts",
+          "hash": "9751402297565427837"
         },
         {
-          "file": "packages/logger/src/utils.ts",
-          "hash": "2105484909359123802"
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/DataMappingView.tsx",
+          "hash": "16292263110220436407"
         },
         {
-          "file": "packages/logger/tsconfig.json",
-          "hash": "13736880643219296448"
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/DataSourceView.tsx",
+          "hash": "16383882701112501046"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/OverlayOnElement.tsx",
+          "hash": "3352818173119509047"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/TemplateInsertionView.tsx",
+          "hash": "8144501005548170750"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/TemplateSelectionView.tsx",
+          "hash": "15470549947873123157"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/CopyTemplateModule/index.tsx",
+          "hash": "11355574300026325286"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/DataTableModule.tsx",
+          "hash": "11267924475822579256"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/GraphqlDataModule.tsx",
+          "hash": "11595248485288389689"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/ModesModule.tsx",
+          "hash": "11795951882653489926"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/ModuleFactory.tsx",
+          "hash": "3216013880246149293"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/TrackingModule.tsx",
+          "hash": "1108179137770505227"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/VisibilityModule.tsx",
+          "hash": "3778539018375476460"
+        },
+        {
+          "file": "packages/frontend/src/ModuleFactory/exampleModules.tsx",
+          "hash": "17328169152932288897"
+        },
+        {
+          "file": "packages/frontend/src/SidePanel.tsx",
+          "hash": "17165280850928581397"
+        },
+        {
+          "file": "packages/frontend/src/UIContext.tsx",
+          "hash": "6076954584299516176"
+        },
+        {
+          "file": "packages/frontend/src/commonUtils.ts",
+          "hash": "8251196450891966723"
+        },
+        {
+          "file": "packages/frontend/src/controller.tsx",
+          "hash": "15403613664362914663"
+        },
+        {
+          "file": "packages/frontend/src/demo.tsx",
+          "hash": "8583698631155522248"
+        },
+        {
+          "file": "packages/frontend/src/env.d.ts",
+          "hash": "15269753178307570465"
+        },
+        {
+          "file": "packages/frontend/src/icons/DataClick.jsx",
+          "hash": "2124459613820401780"
+        },
+        {
+          "file": "packages/frontend/src/icons/ModesIcon.jsx",
+          "hash": "13573107392769217128"
+        },
+        {
+          "file": "packages/frontend/src/icons/PlaceholderIcon.jsx",
+          "hash": "15463697715318895520"
+        },
+        {
+          "file": "packages/frontend/src/icons/TemplateIcon.jsx",
+          "hash": "9943250187237006300"
+        },
+        {
+          "file": "packages/frontend/src/icons/VisibilityIcon.jsx",
+          "hash": "11565394042185313007"
+        },
+        {
+          "file": "packages/frontend/src/index.tsx",
+          "hash": "2214569892834882085"
+        },
+        {
+          "file": "packages/frontend/src/ui/Button.tsx",
+          "hash": "17712902264306513161"
+        },
+        {
+          "file": "packages/frontend/src/ui/Switch.tsx",
+          "hash": "8852719163548942279"
+        },
+        {
+          "file": "packages/frontend/src/ui/Tabbar.tsx",
+          "hash": "1832489884993543779"
+        },
+        {
+          "file": "packages/frontend/src/ui/color.ts",
+          "hash": "13264278287188707899"
+        },
+        {
+          "file": "packages/frontend/src/ui/commonConsts.ts",
+          "hash": "6554215249001592279"
+        },
+        {
+          "file": "packages/frontend/src/ui/highlight.tsx",
+          "hash": "7134140398048861145"
+        },
+        {
+          "file": "packages/frontend/src/ui/icons.tsx",
+          "hash": "9906180239239130486"
+        },
+        {
+          "file": "packages/frontend/src/ui/index.ts",
+          "hash": "14848561064502087229"
+        },
+        {
+          "file": "packages/frontend/src/ui/splitter.tsx",
+          "hash": "2747921499842208726"
+        },
+        {
+          "file": "packages/frontend/src/ui/styles.tsx",
+          "hash": "10980778750825514389"
+        },
+        {
+          "file": "packages/frontend/src/ui/toggle-button.tsx",
+          "hash": "18199170409956596497"
+        },
+        {
+          "file": "packages/frontend/src/ui/toggle-tabs.tsx",
+          "hash": "1608982465999613297"
+        },
+        {
+          "file": "packages/frontend/tsconfig.json",
+          "hash": "5192156222866121161"
+        },
+        {
+          "file": "packages/frontend/vite.config.ts",
+          "hash": "18330688122879888699"
         }
       ],
-      "devtools": [
+      "devtools-overlay": [
         {
           "file": "packages/main/CHANGELOG.md",
-          "hash": "989753006440693034"
+          "hash": "3043806851760969657"
         },
         {
           "file": "packages/main/LICENSE",
@@ -666,7 +615,7 @@
         },
         {
           "file": "packages/main/package.json",
-          "hash": "7915540097776802458",
+          "hash": "11015721693547595560",
           "deps": [
             "npm:solid-js",
             "npm:vite",
@@ -678,8 +627,8 @@
             "npm:@types/babel__generator",
             "npm:@babel/plugin-syntax-typescript",
             "npm:@babel/types@7.27.6",
-            "@devtools/debugger",
-            "@devtools/shared"
+            "@devtoolsoverlay/debugger",
+            "@devtoolsoverlay/shared"
           ]
         },
         {
@@ -688,11 +637,11 @@
         },
         {
           "file": "packages/main/src/babel/babel.test.ts",
-          "hash": "1770326823196861392"
+          "hash": "13517834868625477614"
         },
         {
           "file": "packages/main/src/babel/babel.ts",
-          "hash": "15467849306478859135"
+          "hash": "14296457582233983740"
         },
         {
           "file": "packages/main/src/env.d.ts",
@@ -700,7 +649,7 @@
         },
         {
           "file": "packages/main/src/index.ts",
-          "hash": "3107793171039159036"
+          "hash": "3455978877406116534"
         },
         {
           "file": "packages/main/src/index_noop.ts",
@@ -708,7 +657,7 @@
         },
         {
           "file": "packages/main/src/setup.ts",
-          "hash": "15705108828334702301"
+          "hash": "13227433014113139128"
         },
         {
           "file": "packages/main/src/setup_noop.ts",
@@ -720,10 +669,123 @@
         },
         {
           "file": "packages/main/src/vite/vite.ts",
-          "hash": "13193707817878347613"
+          "hash": "16735345239571299610"
         },
         {
           "file": "packages/main/tsconfig.json",
+          "hash": "13736880643219296448"
+        }
+      ],
+      "devtools-example-sandbox": [
+        {
+          "file": "examples/sandbox/index.html",
+          "hash": "559629996795914113"
+        },
+        {
+          "file": "examples/sandbox/package.json",
+          "hash": "6939342762949819080",
+          "deps": [
+            "@devtoolsoverlay/debugger",
+            "@devtoolsoverlay/logger",
+            "@devtoolsoverlay/overlay",
+            "npm:vite-plugin-dts"
+          ]
+        },
+        {
+          "file": "examples/sandbox/src/App.tsx",
+          "hash": "14034984287319367493"
+        },
+        {
+          "file": "examples/sandbox/src/DevtoolsOverlay.tsx",
+          "hash": "15547313836199322967"
+        },
+        {
+          "file": "examples/sandbox/src/Overlay.tsx",
+          "hash": "13431737940416949467"
+        },
+        {
+          "file": "examples/sandbox/src/Recursive.tsx",
+          "hash": "16208122200097313191"
+        },
+        {
+          "file": "examples/sandbox/src/Theme.tsx",
+          "hash": "1240610127813920526"
+        },
+        {
+          "file": "examples/sandbox/src/Todos.tsx",
+          "hash": "12445478619634365343"
+        },
+        {
+          "file": "examples/sandbox/src/env.d.ts",
+          "hash": "397148801917050870"
+        },
+        {
+          "file": "examples/sandbox/src/index.tsx",
+          "hash": "13428154959445392382"
+        },
+        {
+          "file": "examples/sandbox/src/main.tsx",
+          "hash": "13665333636387054446"
+        },
+        {
+          "file": "examples/sandbox/src/styles.css",
+          "hash": "10325196005214193709"
+        },
+        {
+          "file": "examples/sandbox/tsconfig.json",
+          "hash": "9420938271283306205"
+        },
+        {
+          "file": "examples/sandbox/vite.config.ts",
+          "hash": "12830137695672941880"
+        }
+      ],
+      "@devtoolsoverlay/logger": [
+        {
+          "file": "packages/logger/CHANGELOG.md",
+          "hash": "17129854530880169946"
+        },
+        {
+          "file": "packages/logger/LICENSE",
+          "hash": "1802854395345595359"
+        },
+        {
+          "file": "packages/logger/README.md",
+          "hash": "6685993110318816363"
+        },
+        {
+          "file": "packages/logger/build.ts",
+          "hash": "10023497941694356955"
+        },
+        {
+          "file": "packages/logger/package.json",
+          "hash": "15086347278593203934",
+          "deps": [
+            "npm:solid-js",
+            "npm:@nothing-but/utils",
+            "@devtoolsoverlay/debugger",
+            "@devtoolsoverlay/shared",
+            "npm:@solid-primitives/utils@6.3.1"
+          ]
+        },
+        {
+          "file": "packages/logger/src/index.ts",
+          "hash": "5172406437809473143"
+        },
+        {
+          "file": "packages/logger/src/log.ts",
+          "hash": "10530476301394111851"
+        },
+        {
+          "file": "packages/logger/src/server.ts",
+          "hash": "10924092182225957207"
+        },
+        {
+          "file": "packages/logger/src/utils.ts",
+          "hash": "3779269486622380885"
+        },
+        {
+          "file": "packages/logger/tsconfig.json",
           "hash": "13736880643219296448"
         }
       ]
@@ -755,7 +817,7 @@
       },
       {
         "file": ".gitignore",
-        "hash": "15854103276062151805"
+        "hash": "10214141540165200695"
       },
       {
         "file": ".vscode/extensions.json",
@@ -775,7 +837,7 @@
       },
       {
         "file": "CONTRIBUTING.md",
-        "hash": "15808837509644768589"
+        "hash": "8761047817881489475"
       },
       {
         "file": "LICENSE",
@@ -791,11 +853,11 @@
       },
       {
         "file": "package.json",
-        "hash": "10124800931171112707"
+        "hash": "2525741051492293800"
       },
       {
         "file": "pnpm-lock.yaml",
-        "hash": "5707893650619739340"
+        "hash": "11397589285668339260"
       },
       {
         "file": "pnpm-workspace.yaml",
@@ -803,11 +865,11 @@
       },
       {
         "file": "tsconfig.json",
-        "hash": "5108938482277111657"
+        "hash": "18134185742846930633"
       },
       {
         "file": "uno.config.ts",
-        "hash": "7139854382906239435"
+        "hash": "5446136649190583091"
       },
       {
         "file": "vitest.config.ts",
@@ -815,5 +877,5 @@
       }
     ]
   },
-  "externalNodesHash": "16753368141407734287"
+  "externalNodesHash": "8179283813065193484"
 }
