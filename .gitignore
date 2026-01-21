@@ -1,6 +1,5 @@
 node_modules
 dist
-.nx
 
 # tsc build artifacts
 tsconfig.tsbuildinfo
