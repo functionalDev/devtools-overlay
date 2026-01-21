@@ -36,7 +36,6 @@ export function createDataTableModuleFactory<T extends Record<string, string | n
         
             
             createEffect(() => {
-                console.log('f', currentFilters());
                 if(!isSidePanelOpen()){
                     setSelectedRow(null);
                 }

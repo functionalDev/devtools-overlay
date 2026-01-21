@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  overlay: link:../../Users/stolzp/AppData/Local/pnpm/global/5/node_modules/overlay
+
 importers:
 
   .:
@@ -14,6 +17,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      overlay:
+        specifier: link:../../Users/stolzp/AppData/Local/pnpm/global/5/node_modules/overlay
+        version: link:../../Users/stolzp/AppData/Local/pnpm/global/5/node_modules/overlay
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1

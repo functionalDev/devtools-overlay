@@ -22,10 +22,14 @@ export const Tabbar: Component = () => {
                             'grid-template-rows': '1fr min-content',
                             "place-items": 'center',
                             "aspect-ratio": 1,
-                            "max-width": '9ch',
+                            "width": '9ch',
                         }}
                     >
-                        {module.Icon || <PlaceholderIcon  />}
+                        <div style={{
+                            width: `${25/getModules().length}cqh`
+                        }}>
+                            {module.Icon || <PlaceholderIcon  />}
+                        </div>
                         <div style={{ "font-size": '0.8em'}}>
                             {module.title}
                         </div>

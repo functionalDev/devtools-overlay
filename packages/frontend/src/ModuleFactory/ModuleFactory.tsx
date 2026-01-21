@@ -14,12 +14,12 @@ export type SidePanelProps = {
 }
 
 export type Module<ModuleContext = object> = {
-    Icon?: string | JSXElement,
     title: string,
-    connector?: ModuleConnector<ModuleContext>,
-    MainView: (props: MainViewProps) => JSXElement,
-    SidePanel?: (props: SidePanelProps) => JSXElement,
+    MainView: (props: MainViewProps & ModuleContext) => JSXElement,
     render: (component: any,element: HTMLElement) => any,
+    SidePanel?: (props: SidePanelProps) => JSXElement,
+    Icon?: string | JSXElement,
+    connector?: ModuleConnector<ModuleContext>,
 }
 
 export type ModuleFactory<T = object> = () => Module<T>

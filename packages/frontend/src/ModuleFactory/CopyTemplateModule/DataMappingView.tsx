@@ -4,6 +4,11 @@ import { flattenObject } from "../../commonUtils";
 import { Button } from "../../ui/Button";
 import { makePersisted } from "@solid-primitives/storage";
 import { createStore } from "solid-js/store";
+import { workflowStepToColor } from "./OverlayOnElement";
+import { ErrorMessage } from "@kobalte/core/switch";
+import { Divider } from "../../ui/Divider";
+import { FieldLabel } from "../../ui/FieldLabel";
+import { Input } from "../../ui/Input";
 
 
 const { dataSource, template, overlays } = getCopyTemplateContext();
@@ -65,13 +70,13 @@ export const DataMappingView: Component = () => {
             typeSetter,
         };
     }));
-    const changeTextContentForSelector = (selector: string, label: string, type?: 'text' | 'image') => {
+    const changeTextContentForSelector = (selector: string, label: string, type?: 'text' | 'image', dataIn?: string) => {
         try{
             if(type === 'text'){
                 const elements = template.getCopy()?.querySelectorAll(selector) as HTMLElement[] | undefined;
                 if(!elements?.length) return;
                 elements.forEach((element, index) => {
-                    const text = customfields[label]?.value || flattenObject(data()?.data.peachExperimentContents[index])[label]
+                    const text = customfields[label]?.value || flattenObject(data()?.data.peachExperimentContents[index])[label] || dataIn
                     element.textContent = text;
                 })
             }
@@ -81,8 +86,10 @@ export const DataMappingView: Component = () => {
                 if(!elements?.length) return;
                 elements.forEach((element, index) => {
                     const flatData = flattenObject(data()?.data.peachExperimentContents[index]);
-                    const newSrc = flatData[label].replace('${formatId}', '604');
-                    element.src = newSrc;
+                    const newSrc = flatData[label]?.replace('${formatId}', '604');
+                    element.src &&= newSrc;
+                    element.removeAttribute('srcset');
+                    element.parentElement?.querySelectorAll('source').forEach(source => source.remove())
                 })
             }
         } catch{
@@ -98,70 +105,63 @@ export const DataMappingView: Component = () => {
         </Show>
         <Switch>
             <Match when={data.error}>
-                {data.error}
+                <ErrorMessage>
+                    {data.error}    
+                </ErrorMessage>
             </Match>
             <Match when={!data.loading && !data()?.data.peachExperimentContents.length}>
-                <span> Empty list returned </span>
+                <ErrorMessage>
+                     Empty list returned  
+                </ErrorMessage>
             </Match>
             <Match when={data()?.data.peachExperimentContents.length}>
-                    <div style={{
-                        display: 'grid',
-                        'grid-template-columns': "min-content max-content 1fr max-content max-content max-content",
-                        gap: '10px',
-                        "margin-bottom": '10px',
-                    }}
+                    <div 
+                        class="
+                            grid 
+                            grid-cols-[min-content_max-content_1fr_max-content_max-content_max-content]
+                            gap-[5px]
+                            mb-[10px]" 
                     >
-                    <div
-                        style={{ display: 'grid', 'grid-template-columns': 'subgrid', 'grid-column': '1 / -1'}}
-                    >
+                    <div class="grid grid-cols-[subgrid] grid-col-[1/-1]">
                         <label></label>
                         <div></div>
                         <div></div>
-                        <Button size="xs" onClick={() => signalEntries().filter(({ label }) => !deletedFields().includes(label)).forEach(entry => changeTextContentForSelector(entry.getter(), entry.label, entry.typeGetter()))}>&#9658; ALL</Button>
-                        <Button size="xs" onClick={() => setDeletedFields([])}>++</Button>
+                        <Button variant="neutral" title="apply all" class={`bg-[${workflowStepToColor[3]}]`}  size="xs" onClick={() => signalEntries().filter(({ label }) => !deletedFields().includes(label)).forEach(entry => changeTextContentForSelector(entry.getter(), entry.label, entry.typeGetter()))}>&#9658; ALL</Button>
+                        <Button variant="neutral" title="restore fields" class={`bg-[${workflowStepToColor[3]}]`}  size="xs" onClick={() => setDeletedFields([])}>++</Button>
                         {/* @ts-ignore */}
                         <div></div>
                     </div>
-                <hr style={{ 'grid-column': '1 / -1', width: '96%', margin: '5px', 'margin-left': '2%', 'border-color': 'rgba(from currentColor r g b / 0.5)'}}/>
+                <Divider/>
                 <For each={signalEntries().filter(({ label }) => !deletedFields().includes(label))}>
                     {
                         ({label, getter, setter, typeGetter, typeSetter }) => (
-                            <div
-                                onMouseEnter={event => {
-                                    // @ts-ignore
-                                    event.target.style.background = 'rgba(from currentColor r g b / 0.1)';
-                                    setOverlayForSelector(getter())
-                                }}
-                                onMouseLeave={event => {
-                                    // @ts-ignore
-                                    event.target.style.background = 'none'
-                                    overlays.clear();
-                                }}
-                                style={{ display: 'grid', 'grid-template-columns': 'subgrid', 'grid-column': '1 / -1'}}
+                            
+                            <div class="hover:bg-[rgba(from_currentColor_r_g_b_/_0.1)] grid grid-cols-[subgrid] grid-col-[1/-1] gap-[5px]"
+                                onMouseEnter={() => getter() && setOverlayForSelector(getter())}
+                                onMouseLeave={() => (document.activeElement as HTMLInputElement | undefined)?.value ? setOverlayForSelector((document.activeElement as HTMLInputElement).value) :overlays.clear}
                             >
-                                <label style={{ 'align-self': 'center', 'font-size': '0.8em'}} onMouseEnter={() => setOverlayForSelector(getter())}>{label}</label>
-                                <input 
+                                {/* <label style={{ 'align-self': 'center', 'font-size': '0.8em'}} onMouseEnter={() => setOverlayForSelector(getter())}>{label}</label> */}
+                                <FieldLabel>{label}</FieldLabel>
+                                <Input 
                                     id={`data-mapping-field-${label}`} 
                                     placeholder="html#css.selector"
-                                    style={{ padding: '5px 10px', 'width': '300px'}} 
                                     value={getter()} 
-                                    onBlur={overlays.clear} 
-                                    onChange={(event) => (setter(event.target.value), changeTextContentForSelector(event.target.value, label, typeGetter()))} 
-                                    onInput={(event) => (setter(event.target.value), setOverlayForSelector(event.target.value))}></input>
+                                    onBlur={overlays.clear}
+                                    onInput={(event) => (setter(event.target.value), setOverlayForSelector(event.target.value))}/>
                                 <Show when={customfields[label]}>
-                                     <input 
-                                        id={`data-mapping-field-new`} 
-                                        style={{ padding: '5px 10px', 'width': '300px'}} 
+                                     <Input 
+                                        id={`data-mapping-field-${label}-value`} 
                                         value={customfields[label]?.value} 
+                                        onBlur={overlays.clear} 
                                         onChange={(event) => (setCustomFields(label, 'value', event.target.value), changeTextContentForSelector(event.target.value, newFieldName()))} 
-                                        onInput={(event) => (setCustomFields(label, 'value', event.target.value), setOverlayForSelector(event.target.value))}></input>
+                                        onInput={(event) => (setCustomFields(label, 'value', event.target.value), setOverlayForSelector(event.target.value))}/>
                                 </Show>
                                 <Show when={!customfields[label]}>
                                     <div style={{ 'height': '50%', 'border-bottom': '1px solid rgba(from currentColor r g b / 0.2)'}}></div>
                                 </Show>
-                                <Button size="xs" onClick={() => changeTextContentForSelector(getter(), label, typeGetter())}>&#9658;</Button>
+                                <Button  variant="neutral" class={`bg-[${workflowStepToColor[3]}]`} size="xs" onClick={() => changeTextContentForSelector(getter(), label, typeGetter())}>&#9658;</Button>
                                 {/* @ts-ignore */}
-                                <Button size="xs" onClick={() => customfields[label] ? setCustomFields(label, undefined) : setDeletedFields(s => [...s, label])}>-</Button>
+                                <Button variant="secondary" size="xs" onClick={() => customfields[label] ? setCustomFields(label, undefined) : setDeletedFields(s => [...s, label])}>-</Button>
                                 {/* @ts-ignore */}
                                 <select value={typeGetter()} onChange={(event) => typeSetter(event.target.value)}>
                                     <option value="text">text</option>
@@ -172,49 +172,48 @@ export const DataMappingView: Component = () => {
                         )
                     }
                 </For>
-                 <input 
-                    id={`data-mapping-field-new`} 
+                 <Input 
+                    id={`data-mapping-field-new-name`} 
                     placeholder="name"
-                    style={{ padding: '5px 10px', 'width': '300px'}} 
+                    class="text-end"
                     value={newFieldName()} 
                     onChange={(event) => (setNewFieldName(event.target.value), changeTextContentForSelector(event.target.value, newFieldName()))} 
-                    onInput={(event) => (setNewFieldName(event.target.value), setOverlayForSelector(event.target.value))}>
-                </input>
-                    <input 
-                        id={`data-mapping-field-value`} 
-                        
-                        style={{ padding: '5px 10px', 'width': '300px'}} 
-                        value={newFieldSelector()} 
-                        placeholder="html#css.selector"
-                        onBlur={overlays.clear} 
-                        onChange={(event) => (setNewFieldSelector(event.target.value), changeTextContentForSelector(event.target.value, newFieldSelector()))} 
-                        onInput={(event) => (setNewFieldSelector(event.target.value), setOverlayForSelector(event.target.value))}
-                        onKeyDown={(event) => newFieldSelector() && newFieldName() && event.key === 'Enter' &&
-                            (
-                                setCustomFields(s => ({ ...s, [newFieldName()]: { selector: newFieldSelector(), value: newFieldValue() }})),
-                                setNewFieldName(''),
-                                setNewFieldSelector(''),
-                                setNewFieldValue('')
-                            )}  
-                        >
-                    </input>
-                    <input 
-                        id={`data-mapping-field-value`} 
+                    onInput={(event) => (setNewFieldName(event.target.value), setOverlayForSelector(event.target.value))}
+                />
+                <Input 
+                    id={`data-mapping-field-new-selector`} 
+                    class="w-[20vw] min-w-[200px]"
+                    value={newFieldSelector()} 
+                    placeholder="html#css.selector"
+                    onBlur={overlays.clear}
+                    onChange={(event) => (setNewFieldSelector(event.target.value), changeTextContentForSelector(event.target.value, newFieldSelector()))} 
+                    onInput={(event) => (setNewFieldSelector(event.target.value), setOverlayForSelector(event.target.value))}
+                    onKeyDown={(event) => newFieldSelector() && newFieldName() && event.key === 'Enter' &&
+                        (
+                            newFieldSelector() && newFieldValue() && changeTextContentForSelector(newFieldSelector(), newFieldName(), 'text', newFieldValue()),
+                            setCustomFields(s => ({ ...s, [newFieldName()]: { selector: newFieldSelector(), value: newFieldValue() }})),
+                            setNewFieldName(''),
+                            setNewFieldSelector(''),
+                            setNewFieldValue('')
+                        )}  
+                    />
+                    <Input 
+                        id={`data-mapping-field-new-value`} 
                         placeholder="data"
-                        style={{ padding: '5px 10px', 'width': '300px'}} 
                         value={newFieldValue()} 
                         onBlur={overlays.clear} 
-                        onChange={(event) => (setNewFieldValue(event.target.value), changeTextContentForSelector(event.target.value, newFieldValue()))} 
-                        onInput={(event) => (setNewFieldValue(event.target.value), setOverlayForSelector(event.target.value))}
+                        onFocus={() => setOverlayForSelector(newFieldSelector())}
+                        onChange={(event) => setNewFieldValue(event.target.value)} 
+                        onInput={(event) => setNewFieldValue(event.target.value)}
                         onKeyDown={(event) => newFieldValue() && newFieldName() && event.key === 'Enter' &&
                             (
+                                changeTextContentForSelector(newFieldSelector(), newFieldName(), 'text', newFieldValue()),
                                 setCustomFields(s => ({ ...s, [newFieldName()]: { selector: newFieldSelector(), value: newFieldValue() }})),
                                 setNewFieldName(''),
                                 setNewFieldSelector(''),
                                 setNewFieldValue('')
                             )} 
-                        >
-                    </input>
+                    />
 
                 </div>
             </Match>

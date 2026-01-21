@@ -2,5 +2,9 @@ packages:
   - extension
   - packages/*
   - examples/*
+
 onlyBuiltDependencies:
   - esbuild
+
+overrides:
+  overlay: link:../../Users/stolzp/AppData/Local/pnpm/global/5/node_modules/overlay

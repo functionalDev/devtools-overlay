@@ -1,7 +1,11 @@
 import { createSignal, For, type Component } from "solid-js"
 import { Button } from "../../ui/Button"
 import { getCopyTemplateContext } from "./CopyTemplateContext"
-import { colors } from "@devtoolsoverlay/shared";
+import { workflowStepToColor } from "./OverlayOnElement";
+import { Input } from "../../ui/Input";
+import { ToggleButton } from "../../ui/ToggleButton";
+import { Divider } from "../../ui/Divider";
+import { ErrorMessage } from "../../ui/ErrorMessage";
 
 
 const [templateSelector, setTemplateSelector] = createSignal("section[id][data-tracking-name]");
@@ -17,32 +21,53 @@ const { overlays, template, workflow } = getCopyTemplateContext();
 
 const setOverlayToSelectable = () => overlays.set(templatesSelectable())
 
+const manualSelectionHandler = (event: PointerEvent) => {
+    const target = event.target as HTMLElement;
+    const foundTemplate = target.closest(templateSelector()) as HTMLElement | undefined;
+    if(!foundTemplate) return;
+    template.select(foundTemplate); 
+    workflow.nextStep();
+}
+
 export const TemplateSelectionView: Component = () => {
     return (
     <div>     
-        <input 
-            onFocus={setOverlayToSelectable} 
-            style={{ "text-align": 'center', padding: '5px 0px', 'font-size': '0.8em', 'width': `calc(${templateSelector().length - 3}ch)`}} 
-            value={templateSelector()} 
-            onInput={(event) => (setTemplateSelector(event.target.value), setOverlayToSelectable())}>
-        </input>
-        <Button style="margin-left: 2px" onClick={() => (setTemplateSelector(s => s + ' '), setOverlayToSelectable())} variant="secondary" size="s">&#8634;</Button>
-        <hr style={{ 'grid-column': '1 / -1', width: '96%', margin: '5px', 'margin-left': '2%', 'border-color': 'rgba(from currentColor r g b / 0.5)'}}/>
-        <div style={{
-            display: 'grid',
-        }}>
-            <For fallback={<span style={{color: 'white', background: colors.red, padding: '3px'}}>No elements found</span>} each={templatesSelectable()}>
-                {
-                    (element) => 
-                        <Button 
-                            size="s"
-                            onMouseEnter={() => overlays.setToElement(element)} 
-                            onMouseLeave={setOverlayToSelectable}
-                            onClick={() => (template.select(element), workflow.nextStep())} 
-                            style={{
-                            "text-align": 'start',
-                            }}>
-                        {element.dataset["trackingName"] || element.textContent}
+        <div class="grid grid-flow-col auto-cols-[min-content] gap-1">
+            <Input
+                style={{ "text-align": 'center', 'font-size': '0.8em', 'width': `calc(${templateSelector().length - 3}ch)`}} 
+                value={templateSelector()} 
+                onInput={(event) => (setTemplateSelector(event.target.value), setOverlayToSelectable())}
+            />
+            <ToggleButton 
+                // @ts-ignore no idea why ts throws on build here
+                onOn={() => document.body.addEventListener('click', manualSelectionHandler, { once: true })}
+                // @ts-ignore no idea why ts throws on build here
+                onOff={() => document.body.removeEventListener('click', manualSelectionHandler)}
+                size="s"
+            >
+                &#x2609;
+            </ToggleButton>
+            <Button 
+                onClick={() => (setTemplateSelector(s => s + ' '), setOverlayToSelectable())} 
+                variant="secondary" 
+                size="s"
+            >
+                &#8634;
+            </Button>
+        </div>
+        <Divider/>
+        <div class="grid">
+            <For fallback={<ErrorMessage>No elements found</ErrorMessage>} each={templatesSelectable()}>
+                {(element) =>
+                    <Button 
+                        size="s"
+                        variant="neutral"
+                        class={`bg-[${workflowStepToColor[0]}] [text-align:start]`}
+                        onMouseEnter={() => overlays.setToElement(element)} 
+                        onMouseLeave={setOverlayToSelectable}
+                        onClick={() => (element.scrollIntoView({ behavior: "smooth", block: "end" }), template.select(element), workflow.nextStep())} 
+                    >
+                        {element.dataset["trackingName"] || element.textContent?.substring(0, 150)}
                     </Button>
                 }
             </For>

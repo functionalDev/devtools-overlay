@@ -74,6 +74,7 @@
     "dependencies": {
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "overlay": "link:../../Users/stolzp/AppData/Local/pnpm/global/5/node_modules/overlay",
         "tailwind-merge": "^3.3.1",
         "unocss-preset-animations": "^1.2.1"
     }

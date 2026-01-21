@@ -1,16 +1,16 @@
 import { Dynamic, Portal, render } from "solid-js/web";
 import type { ModuleFactory } from "../ModuleFactory.tsx";
-import { createEffect, For, untrack, type Component } from "solid-js";
+import { createEffect, For, Show, untrack, type Component } from "solid-js";
 import { TemplateIcon } from "../../icons/TemplateIcon.jsx";
 import { Button } from "../../ui/Button.tsx";
 import { CopyTemplateWorkflowSteps, getCopyTemplateContext } from "./CopyTemplateContext.ts";
-import { OverlayOnElement } from "./OverlayOnElement.tsx";
+import { OverlayOnElement, workflowStepToColor } from "./OverlayOnElement.tsx";
 import { TemplateSelectionView } from "./TemplateSelectionView.tsx";
 import { TemplateInsertionView } from "./TemplateInsertionView.tsx";
 import { DataSourceView } from "./DataSourceView.tsx";
 import { DataMappingView } from "./DataMappingView.tsx";
 
-const { workflow, overlays } = getCopyTemplateContext();
+const { workflow, overlays, template } = getCopyTemplateContext();
 
 
 const Actions = () => 
@@ -41,14 +41,35 @@ const Header = () =>
             {
                 (step) => (
                     <>
-                        <div style={{
-                            'grid-row': '1 / 3',
-                            border: '1px solid rgba(from currentColor r g b / 0.3)',
-                            'border-radius': '10px',
-                            padding: workflow.current.step === step ?'10px 3vw': '4px 2vw',
-                            'place-self': 'center',
-                            opacity: workflow.current.step === step ? 1: 0.5,
-                        }}>
+                        <div
+                            onClick={() => {
+                                if(step < workflow.current.step) {
+                                    workflow.setStep(step);
+                                }
+                            }}
+                            onMouseEnter={(event) => {
+                                if(step < workflow.current.step) {
+                                    // @ts-ignore
+                                    event.target.style.opacity = 0.8;
+                                }
+                            }}
+                            onMouseLeave={(event) => {
+                                if(step < workflow.current.step) {
+                                    // @ts-ignore
+                                    event.target.style.opacity = workflow.current.step === step ? 1: 0.5;
+                                }
+                            }}
+                            class={step < workflow.current.step ? "hover:opacity-70": ''}
+                            style={{
+                                'grid-row': '1 / 3',
+                                border: '1px solid rgba(from currentColor r g b / 0.3)',
+                                'border-radius': '10px',
+                                padding: workflow.current.step === step ?'10px 3vw': '4px 2vw',
+                                'place-self': 'center',
+                                opacity: workflow.current.step === step ? 1: 0.5,
+                                background: workflowStepToColor[step],
+                                cursor: step < workflow.current.step ? 'pointer': 'default',
+                            }}>
                             { workflow.current.step === step ? workflow.current.headline : workflow.getStep(step).shortName }
                         </div>
                         <div style={{ 'border-bottom': '1px solid rgba(from currentColor r g b / 0.3)', 'grid-row': '1'}}></div>
@@ -90,6 +111,14 @@ const Layout: Component = () => {
                 <For each={overlays.getAll()}>{
                     pos => <OverlayOnElement element={pos}/>
                 }</For>
+                <Show when={template.get() && workflow.current.step === CopyTemplateWorkflowSteps.TemplateInsertion}>
+                    {/* @ts-ignore */}
+                    <OverlayOnElement color={workflowStepToColor[CopyTemplateWorkflowSteps.TemplateSelection]} element={template.get()}/>
+                </Show>
+                <Show when={template.getCopy() && workflow.current.step === CopyTemplateWorkflowSteps.DataSource}>
+                    {/* @ts-ignore */}
+                    <OverlayOnElement color={workflowStepToColor[CopyTemplateWorkflowSteps.TemplateInsertion]} element={template.getCopy()}/>
+                </Show>
             </Portal>
         </div>
 )}

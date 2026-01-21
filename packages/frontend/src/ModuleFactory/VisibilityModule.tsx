@@ -1,8 +1,9 @@
 import { Portal, render } from "solid-js/web";
 import type { ModuleFactory } from "./ModuleFactory.tsx";
 import { VisibilityIcon } from "../icons/VisibilityIcon.jsx";
-import { createSignal } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import { Switch } from "../ui/Switch.tsx";
+import { getCurrentModule } from "../UIContext.tsx";
 
 
 const markCbs = () => {
@@ -49,36 +50,43 @@ export const VisibilityModule: ModuleFactory = () => {
                 <input id="devtools-rootmargin-bottom" type="range" value={rootMarginBottom()} min="0" max="49" onChange={e => setRootMarginBottom(+e.target.value)}/>
                 <input value={rootMarginBottom()} onChange={e => setRootMarginBottom(+e.target.value)}>{rootMarginBottom()}</input>%
                 <Portal mount={document.body}>
-
-                    <div style={{
-                        'z-index': 9999999,
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: `${rootMarginTop()}%`,
-                        background: 'rgba(255,0,0,0.3)',
-                        transition: 'height 50ms',
-                        'pointer-events': 'none',
-                    }}/>
+                    <Show when={getCurrentModule()?.title ==='Visibility' }>
+                        <div 
+                            id="devtools-vis-top"
+                            style={{
+                                'z-index': 9999999,
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                height: `${rootMarginTop()}%`,
+                                background: 'rgba(255,0,0,0.3)',
+                                transition: 'height 50ms',
+                                'pointer-events': 'none',
+                        }}/>
+                    </Show>
                 </Portal>
                 <Portal mount={document.body}>
+                    <Show when={getCurrentModule()?.title ==='Visibility'}>
 
-                    <div style={{
-                        'z-index': 9999999,
-                        position: 'fixed',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: `${rootMarginBottom()}%`,
-                        background: 'rgba(255,0,0,0.3)',
-                        transition: 'height 50ms',
-                        'pointer-events': 'none',
-                    }}/>
+                        <div 
+                            id="devtools-vis-top"
+                            style={{
+                            'z-index': 9999999,
+                            position: 'fixed',
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            height: `${rootMarginBottom()}%`,
+                            background: 'rgba(255,0,0,0.3)',
+                            transition: 'height 50ms',
+                            'pointer-events': 'none',
+                        }}/>
+                    </Show>
                 </Portal>
                 </div>
         )},
-        title: 'Visibility',
+        title: 'Visibility 1231231',
         Icon: <VisibilityIcon/>,
         render
 }

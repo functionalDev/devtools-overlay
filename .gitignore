@@ -1,6 +1,5 @@
 node_modules
 dist
-gitignore
 .nx
 
 # tsc build artifacts

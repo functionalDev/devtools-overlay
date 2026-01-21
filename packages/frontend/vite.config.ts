@@ -5,13 +5,10 @@ import UnoCSS from 'unocss/vite';
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url';
 import dts from 'vite-plugin-dts';
-import { presetKobalte } from 'unocss-preset-primitives'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig(() => {
-
-    return {
+export default defineConfig({
     build: {
         target: "esnext",
         lib: {
@@ -24,11 +21,9 @@ export default defineConfig(() => {
     server: { port: 3006 },
     plugins: [
         solid(),
-        presetKobalte(/* options */),
         UnoCSS({
             configFile: '../../uno.config.ts'
         }),
         dts(),
     ],
-    }
 })

@@ -1,6 +1,6 @@
 {
     "name": "@devtoolsoverlay/overlay",
-    "version": "0.0.9",
+    "version": "0.0.11",
     "description": "On-page Devtools Overlay for applications.",
     "license": "MIT",
     "author": "Paul Stolz <functionalgamer2s@gmail.com>",

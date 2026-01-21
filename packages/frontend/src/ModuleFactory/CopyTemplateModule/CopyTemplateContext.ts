@@ -48,6 +48,7 @@ const Workflow = {
             if(!templateSelected()){
                 setWorkflowStep(0);
             }
+            overlaysContext.clear();
             copiedElement()?.remove();
             setCopiedElement(null);
         },
@@ -60,7 +61,7 @@ const Workflow = {
     [CopyTemplateWorkflowSteps.DataSource]: {
         step: CopyTemplateWorkflowSteps.DataSource,
         init: () => {
-            setOverlays([]);
+            overlaysContext.clear();
         },
         actions: {
             'Back': back,
@@ -94,7 +95,8 @@ const workflowContext = {
         return Workflow[workflowStep()];
     },
     nextStep: () => setWorkflowStep(s => (s + 1)%Object.keys(CopyTemplateWorkflowSteps).length),
-    getStep: (step: CopyTemplateWorkflowSteps) => Workflow[step]
+    getStep: (step: CopyTemplateWorkflowSteps) => Workflow[step],
+    setStep: (step: CopyTemplateWorkflowSteps) => setWorkflowStep(step),
 }
 
 // templates
