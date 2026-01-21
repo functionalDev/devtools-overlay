@@ -1,5 +1,7 @@
 node_modules
 dist
+.vscode
+.nx
 
 # tsc build artifacts
 tsconfig.tsbuildinfo
