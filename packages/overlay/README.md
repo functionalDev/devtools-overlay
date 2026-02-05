@@ -32,6 +32,34 @@ yarn add @devtoolsoverlay/overlay
 pnpm add @devtoolsoverlay/overlay
 ```
 
+### Using via Bookmarklet (Local Development)
+
+To use the overlay on any website via a bookmarklet during local development:
+
+1. **Build and serve the overlay:**
+   ```bash
+   pnpm install
+   pnpm build:packages
+   cd packages/overlay && npx serve dist -p 3006 --cors
+   ```
+
+2. **Create a bookmarklet with this code:**
+   ```javascript
+   javascript:(function() {
+       var script = document.createElement('script');
+       script.type = "module";
+       script.textContent = `
+       import { attachDevtoolsOverlay } from 'http://localhost:3006/index.js';
+       attachDevtoolsOverlay();
+       `;
+       document.head.append(script);
+   })()
+   ```
+
+3. Click the bookmarklet on any page to inject the devtools overlay.
+
+**Note:** If port 3006 is in use, `serve` will pick another port - check the terminal output and update the bookmarklet URL accordingly.
+
 ### Attach the overlay
 
 Simply call the overlay component in the client entry file.

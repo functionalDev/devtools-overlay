@@ -5,6 +5,7 @@ import { type Module, type ModuleFactory } from "./ModuleFactory.tsx";
 import { TrackingModule } from "./TrackingModule.tsx";
 import { VisibilityModule } from "./VisibilityModule.tsx";
 import { CopyTemplateModule } from "./CopyTemplateModule/index.tsx";
+import { CollaborativeFilteringModule } from "./CollaborativeFilteringModule.tsx";
 import { createSignal } from "solid-js";
 
 const ourModule: ModuleFactory = () => {
@@ -22,6 +23,7 @@ export const exampleModules: Module[] = [
     ModesModule(),
     TrackingModule(),
     VisibilityModule(),
+    CollaborativeFilteringModule(),
     CopyTemplateModule(),
     ourModule(),
     // GraphqlDataModule(),
