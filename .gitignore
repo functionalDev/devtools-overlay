@@ -20,6 +20,10 @@ lerna-debug.log
 .env.test.local
 .env.production.local
 
+# collab config files
+**/collab-config.ts
+!**/collab-config.example.ts
+
 # solid
 .solid
 
