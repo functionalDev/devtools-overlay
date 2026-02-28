@@ -86,7 +86,7 @@ export const VisibilityModule: ModuleFactory = () => {
                 </Portal>
                 </div>
         )},
-        title: 'Visibility 1231231',
+        title: 'Visibility',
         Icon: <VisibilityIcon/>,
         render
 }

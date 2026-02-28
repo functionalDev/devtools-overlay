@@ -5,18 +5,101 @@ import { type Module, type ModuleFactory } from "./ModuleFactory.tsx";
 import { TrackingModule } from "./TrackingModule.tsx";
 import { VisibilityModule } from "./VisibilityModule.tsx";
 import { CopyTemplateModule } from "./CopyTemplateModule/index.tsx";
-import { createSignal } from "solid-js";
+import { createResource, createSignal, For, Show } from "solid-js";
+import { Input } from "../ui/Input.tsx";
+
+function getCookie(name: string) {
+  return new URLSearchParams(document.cookie.replace(/; /g, "&")).get(name);
+}
+function setCookie(name: string, value: string, days?: number) {
+  let cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=/`;
+
+  if (days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    cookie += `; expires=${expires}`;
+  }
+
+  document.cookie = cookie;
+}
 
 const ourModule: ModuleFactory = () => {
-    const [counter, setCounter] = createSignal(0);
+    const [userId, setUserId] = createSignal(getCookie('_pc_c') || '');
+    const handleUserIdChange = (e: Event) => {
+        const newUserId = (e.target as HTMLInputElement).value;
+        setCookie('_pc_c', newUserId);
+        setUserId(newUserId);
+    }
+
+    const getHistory = (user: string | null) => {
+        if(user){
+            return fetch('/graphql', {
+                "headers": {
+                    // "accept": "application/graphql-response+json, application/json, multipart/mixed",
+                    // "accept-language": "en,en-US;q=0.9,sv;q=0.8",
+                    // "cache-control": "no-cache",
+                    "content-type": "application/json",
+                },
+                "body": `{\"query\":\"{peachExperimentContents(amount:50 lang:ENGLISH peachPath:\\\"user_history\\\" filters:[{field:\\\"user_id\\\" value:\\\"${user}\\\"}]){...on ModelAspect{modelType}...on NamedAspect{title}}}\",\"extensions\":{}}`,
+                "method": "POST",
+                // "mode": "cors",
+                // "credentials": "include"
+            })
+            .then(response => response.json())
+            .then((response: any) => {
+                        const newHistory = response.data?.peachExperimentContents as any[];
+                        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                        return newHistory || [];
+            });
+        } 
+        return Promise.resolve([]);
+    }
+
+    const [history] = createResource(userId, getHistory);
     return {
-        title: 'my new fancy module',
+        title: 'Peach user',
         MainView: () => 
-            <button onClick={() => setCounter(s => s + 1)}>{counter()}</button>,
+            <>
+            <div class="flex gap-10">
+                <label class="text-sm self-center ">user_id</label>
+                <Input class="w-fit text-lg inline-block py2 px2" onChange={handleUserIdChange} value={userId()}/>
+            </div>
+            <div class="p-5 grid auto-cols-[max-content] gap-x-10 gap-y-1">
+                <Show when={!history.loading && !history.error && history() }>
+
+                    <For each={Object.keys(history()?.[0] || {})}>{
+                        (columnName, index) => <div style={{ '--col':  index() + 1 }} class="b-bottom-1 b-white col-start-[--col]">{columnName}</div>    
+                    }</For>
+                    <hr class="col-span-2 w-full m-0"/>
+                    <For each={history()}>{
+                        (row) => 
+                            <For each={Object.values(row)}>{
+                                (cell, index) => <div style={{ '--col':  index() + 1 }} class="col-start-[--col]">{cell as string}</div>    
+                            }</For>   
+                        }</For>
+                </Show>
+                
+            </div>
+            </>
+        ,
         SidePanel: () => 'sidepanel',
         render,
     }
 }
+// const searchModule: ModuleFactory = () => {
+    
+//     const [userId, setUserId] = createSignal(getCookie('_pc_c'));
+
+//     return {
+//         title: 'Search endpoints',
+//         MainView: () => 
+//             <>
+//                 <input value={userId()}>{userId()} + 1123213</input>
+//             </>
+//         ,
+//         SidePanel: () => 'sidepanel',
+//         render,
+//     }
+// }
 
 export const exampleModules: Module[] = [
     ModesModule(),
@@ -24,6 +107,7 @@ export const exampleModules: Module[] = [
     VisibilityModule(),
     CopyTemplateModule(),
     ourModule(),
+    // searchModule(),
     // GraphqlDataModule(),
     // {
     //     connector: {

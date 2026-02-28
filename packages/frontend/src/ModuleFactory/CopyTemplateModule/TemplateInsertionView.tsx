@@ -25,7 +25,7 @@ export const TemplateInsertionView: Component = () => {
                         <div 
                             onMouseEnter={() => overlays.setToElement(element)} 
                             onMouseLeave={overlays.clear} 
-                            class={`text-[14px] px-1 py-1 font-medium [text-align:start] ${template.get() === element ? "bg-[rgba(0,117,163,0.1)] dark:bg-[rgba(0,117,163,0.2)]" : ""}`}
+                            class={`text-[14px] p1 font-medium [text-align:start] ${template.get() === element ? "bg-[rgba(0,117,163,0.1)] dark:bg-[rgba(0,117,163,0.2)]" : ""}`}
                         >
                             {element.dataset["trackingName"] || element.textContent?.substring(0,200)}
                         </div>

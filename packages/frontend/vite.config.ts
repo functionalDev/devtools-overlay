@@ -1,5 +1,5 @@
 
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
 import UnoCSS from 'unocss/vite';
 import { dirname, resolve } from 'node:path'
@@ -18,7 +18,16 @@ export default defineConfig({
             fileName: 'index',
         },
     },
-    server: { port: 3006 },
+    server: {
+        open: true,
+        port: 3006,
+
+        proxy: {
+            '/graphql': {
+                target: 'http://localhost:4000/',
+            },
+        },
+    },
     plugins: [
         solid(),
         UnoCSS({
